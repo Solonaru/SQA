@@ -1,5 +1,6 @@
 package sms.utils;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import sms.entities.account.IAccountService;
+import sms.entities.category.Category;
+import sms.entities.category.ICategoryService;
 import sms.entities.customer.Customer;
 import sms.entities.employee.Admin;
 import sms.entities.employee.Employee;
@@ -38,6 +41,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private IAccountService accountService;
 	@Autowired
 	private ISubscriptionService subscriptionService;
+	@Autowired
+	private ICategoryService categoryService;
 
 	@Autowired
 	private DisplayData displayData;
@@ -126,6 +131,36 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Employee employee2 = new Employee("andrei", "andrei123", "Andrei", "andreihumulescu@gmail.com", "0721314417",
 				EmployeeStatus.INTERNSHIP, operatorProducts);
 		employee2.setAddress(address8);
+		
+		// ------------------------------------------------------------------- //
+		
+		Category category1 = new Category("Pizzas", new Date(System.currentTimeMillis()),
+				"Pizzas category");
+		Category category2 = new Category("Deserts", new Date(System.currentTimeMillis()),
+				"Deserts category");
+		Category category3 = new Category("Beverages", new Date(System.currentTimeMillis()),
+				"Beverages category");
+		Category category4 = new Category("Ingredients", new Date(System.currentTimeMillis()),
+				"Ingredients category");
+		Category category401 = new Category("Vegetables", new Date(System.currentTimeMillis()),
+				"Vegetables category");
+		category401.setParentCategory(category4);
+		Category category402 = new Category("Fruits", new Date(System.currentTimeMillis()),
+				"Fruits category");
+		category402.setParentCategory(category4);
+		Category category403 = new Category("Grains, Beans and Nuts", new Date(System.currentTimeMillis()),
+				"Grains, beans and nuts category");
+		category403.setParentCategory(category4);
+		Category category404 = new Category("Meat and Poultry", new Date(System.currentTimeMillis()),
+				"Meat and poultry category");
+		category404.setParentCategory(category4);
+		Category category405 = new Category("Fish and Seafood", new Date(System.currentTimeMillis()),
+				"Fish and seafood category");
+		category405.setParentCategory(category4);
+		Category category406 = new Category("Dairy Foods", new Date(System.currentTimeMillis()),
+				"Dairy foods category");
+		category406.setParentCategory(category4);
+		
 
 		// ------------------------------------------------------------------- //
 		// --------------------------- Persisting here ----------------------- //
@@ -167,6 +202,19 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		accountService.insertAccount(employee1);
 		accountService.insertAccount(employee2);
 
+		// ------------------------------------------------------------------- //
+		
+		categoryService.insertCategory(category1);
+		categoryService.insertCategory(category2);
+		categoryService.insertCategory(category3);
+		categoryService.insertCategory(category4);
+		categoryService.insertCategory(category401);
+		categoryService.insertCategory(category402);
+		categoryService.insertCategory(category403);
+		categoryService.insertCategory(category404);
+		categoryService.insertCategory(category405);
+		categoryService.insertCategory(category406);
+		
 		// ------------------------------------------------------------------- //
 
 		displayData.printInfo("Data successfully loaded.");
