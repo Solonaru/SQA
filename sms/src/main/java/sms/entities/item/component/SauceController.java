@@ -1,4 +1,4 @@
-package sms.entities.item;
+package sms.entities.item.component;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,43 +15,42 @@ import org.springframework.web.bind.annotation.RestController;
 import sms.utils.DisplayData;
 
 @RestController
-@RequestMapping("/software")
+@RequestMapping("/sauce")
 @CrossOrigin(origins = "http://localhost:4200")
-public class SoftwareController {
-
+public class SauceController {
+	
 	@Autowired
-	private ISoftwareService softwareService;
+	private ISauceService sauceService;
 	@Autowired
 	private DisplayData dataDisplay;
 
-
-	@RequestMapping(value = "/{softwareId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Software> findSoftwareById(@PathVariable("softwareId") int softwareId) {
-		dataDisplay.printCrudInfo(softwareId); 
-		return softwareService.findSoftwareById(softwareId);
+	@RequestMapping(value = "/{sauceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Sauce> findSauceById(@PathVariable("sauceId") int sauceId) {
+		dataDisplay.printCrudInfo(sauceId); 
+		return sauceService.findSauceById(sauceId);
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Software> getSoftwares() {
+	public List<Sauce> getSauces() {
 		dataDisplay.printCrudInfo(); 
-		return softwareService.findAllSoftwares();
+		return sauceService.findAllSauces();
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void insertCategory(@RequestBody Software software) {
+	public void insertCategory(@RequestBody Sauce sauce) {
 		dataDisplay.printCrudInfo(); 
-		softwareService.insertSoftware(software);
+		sauceService.insertSauce(sauce);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void updateSoftware(@RequestBody Software software) {
+	public void updateSauce(@RequestBody Sauce sauce) {
 		dataDisplay.printCrudInfo(); 
-		softwareService.updateSoftware(software);
+		sauceService.updateSauce(sauce);
 	}
 
-	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteSoftware(@PathVariable("softwareId") int softwareId) {
-		dataDisplay.printCrudInfo(softwareId); 
-		softwareService.deleteSoftwareById(softwareId);
+	@RequestMapping(value = "/delete/{sauceId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteSauce(@PathVariable("sauceId") int sauceId) {
+		dataDisplay.printCrudInfo(sauceId); 
+		sauceService.deleteSauceById(sauceId);
 	}
 }

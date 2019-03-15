@@ -1,4 +1,4 @@
-package sms.entities.item;
+package sms.entities.item.component;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,42 +15,42 @@ import org.springframework.web.bind.annotation.RestController;
 import sms.utils.DisplayData;
 
 @RestController
-@RequestMapping("/hardware")
+@RequestMapping("/consumable")
 @CrossOrigin(origins = "http://localhost:4200")
-public class HardwareController {
+public class ConsumableController {
 	
 	@Autowired
-	private IHardwareService hardwareService;
+	private IConsumableService consumableService;
 	@Autowired
 	private DisplayData dataDisplay;
 
-	@RequestMapping(value = "/{hardwareId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Hardware> findHardwareById(@PathVariable("hardwareId") int hardwareId) {
-		dataDisplay.printCrudInfo(hardwareId); 
-		return hardwareService.findHardwareById(hardwareId);
+	@RequestMapping(value = "/{consumableId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Consumable> findConsumableById(@PathVariable("consumableId") int consumableId) {
+		dataDisplay.printCrudInfo(consumableId); 
+		return consumableService.findConsumableById(consumableId);
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Hardware> getHardwares() {
+	public List<Consumable> getConsumables() {
 		dataDisplay.printCrudInfo(); 
-		return hardwareService.findAllHardwares();
+		return consumableService.findAllConsumables();
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void insertCategory(@RequestBody Hardware hardware) {
+	public void insertCategory(@RequestBody Consumable consumable) {
 		dataDisplay.printCrudInfo(); 
-		hardwareService.insertHardware(hardware);
+		consumableService.insertConsumable(consumable);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void updateHardware(@RequestBody Hardware hardware) {
+	public void updateConsumable(@RequestBody Consumable consumable) {
 		dataDisplay.printCrudInfo(); 
-		hardwareService.updateHardware(hardware);
+		consumableService.updateConsumable(consumable);
 	}
 
-	@RequestMapping(value = "/delete/{hardwareId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteHardware(@PathVariable("hardwareId") int hardwareId) {
-		dataDisplay.printCrudInfo(hardwareId); 
-		hardwareService.deleteHardwareById(hardwareId);
+	@RequestMapping(value = "/delete/{consumableId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteConsumable(@PathVariable("consumableId") int consumableId) {
+		dataDisplay.printCrudInfo(consumableId); 
+		consumableService.deleteConsumableById(consumableId);
 	}
 }
