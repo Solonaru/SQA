@@ -40,4 +40,8 @@ export class CategoryService {
             .pipe(map((resp: any) => { return resp }));
     }
     
+    deleteCategory(category: Category) {
+        return this.http.delete(this.BASE_URL + 'delete/' + category.id, this.httpOptions)
+          .pipe(map((resp: any) => { return resp }));
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.enums.Status;
 import sms.utils.DisplayData;
 
 @RestController
@@ -36,7 +37,7 @@ public class CategoryController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Category> getCategories() {
 		dataDisplay.printCrudInfo();
-		List<Category> categories = categoryService.findAllCategories();
+		List<Category> categories = categoryService.findAllActiveCategories();
 		Collections.sort(categories);
 		return categories;
 	}
@@ -44,7 +45,7 @@ public class CategoryController {
 	@RequestMapping(value = "/all/noParent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Category> getNoParentCategories() {
 		dataDisplay.printCrudInfo();
-		List<Category> categories = categoryService.findAllCategories();
+		List<Category> categories = categoryService.findAllActiveCategories();
 		List<Category> noParentCategories = new ArrayList<Category>();
 
 		for (Category category : categories) {
@@ -69,9 +70,12 @@ public class CategoryController {
 		categoryService.updateCategory(category);
 	}
 
+	/* TODO: Optimise, receive a Category object, not an ID */
 	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteCategory(@PathVariable("categoryId") int categoryId) {
 		dataDisplay.printCrudInfo(categoryId);
-		categoryService.deleteCategoryById(categoryId);
+		Category category = categoryService.findCategoryById(categoryId).get();
+		category.setStatus(Status.INACTIVE);
+		categoryService.updateCategory(category);
 	}
 }

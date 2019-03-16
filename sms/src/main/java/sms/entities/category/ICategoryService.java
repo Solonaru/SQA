@@ -8,6 +8,8 @@ public interface ICategoryService {
 	public Optional<Category> findCategoryById(int categoryId);
 
 	public List<Category> findAllCategories();
+	
+	public List<Category> findAllActiveCategories();
 
 	public void insertCategory(Category category);
 

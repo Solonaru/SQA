@@ -1,7 +1,11 @@
 package sms.entities.category;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
-public interface ICategoryRepository extends CrudRepository<Category, Integer>{
+import sms.enums.Status;
 
+public interface ICategoryRepository extends CrudRepository<Category, Integer>{
+	public List<Category> findAllByStatus(Status status);
 }

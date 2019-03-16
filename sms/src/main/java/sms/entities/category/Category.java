@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sms.entities.employee.Employee;
 import sms.entities.item.IItemIterator;
 import sms.entities.item.Item;
+import sms.enums.Status;
 
 @Entity
 @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
@@ -47,6 +48,7 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	@OneToMany(mappedBy = "category")
 	@JsonIgnoreProperties(value = "category")
 	private List<Item> items = new ArrayList<Item>();
+	private Status status;
 
 	// ----- Constructors -----
 	public Category() {
@@ -58,6 +60,7 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 		this.name = name;
 		this.updateDate = updateDate;
 		this.description = description;
+		this.status = Status.ACTIVE;
 	}
 
 	// ----- Getters and Setters -----
@@ -127,6 +130,14 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 
 	public Iterator<Item> createIterator() {
 		return this.items.iterator();
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	// ----- Methods -----

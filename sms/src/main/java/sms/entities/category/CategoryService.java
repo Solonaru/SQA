@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sms.enums.Status;
+
 @Service
 public class CategoryService implements ICategoryService {
 	
@@ -18,6 +20,10 @@ public class CategoryService implements ICategoryService {
 
 	public List<Category> findAllCategories() {
 		return (List<Category>) categoryRepository.findAll();
+	}
+	
+	public List<Category> findAllActiveCategories() {
+		return (List<Category>) categoryRepository.findAllByStatus(Status.ACTIVE);
 	}
 
 	public void insertCategory(Category category) {
