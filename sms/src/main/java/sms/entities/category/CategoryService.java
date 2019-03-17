@@ -10,7 +10,7 @@ import sms.enums.Status;
 
 @Service
 public class CategoryService implements ICategoryService {
-	
+
 	@Autowired
 	private ICategoryRepository categoryRepository;
 
@@ -21,9 +21,17 @@ public class CategoryService implements ICategoryService {
 	public List<Category> findAllCategories() {
 		return (List<Category>) categoryRepository.findAll();
 	}
-	
+
 	public List<Category> findAllActiveCategories() {
 		return (List<Category>) categoryRepository.findAllByStatus(Status.ACTIVE);
+	}
+
+	public List<Category> findAllNoParentCategories() {
+		return (List<Category>) categoryRepository.findAllByChildCategoriesIsNullAndStatus(Status.ACTIVE);
+	}
+	
+	public List<Category> findAllNoChildCategories() {
+		return (List<Category>) categoryRepository.findAllByParentCategoryIsNullAndStatus(Status.ACTIVE);
 	}
 
 	public void insertCategory(Category category) {

@@ -1,6 +1,5 @@
 package sms.entities.category;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sms.enums.Status;
 import sms.utils.DisplayData;
 
 @RestController
@@ -45,17 +43,17 @@ public class CategoryController {
 	@RequestMapping(value = "/all/noParent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Category> getNoParentCategories() {
 		dataDisplay.printCrudInfo();
-		List<Category> categories = categoryService.findAllActiveCategories();
-		List<Category> noParentCategories = new ArrayList<Category>();
+		List<Category> categories = categoryService.findAllNoParentCategories();
+		Collections.sort(categories);
+		return categories;
+	}
 
-		for (Category category : categories) {
-			if (category.getChildCategories().size() == 0) {
-				noParentCategories.add(category);
-			}
-		}
-
-		Collections.sort(noParentCategories);
-		return noParentCategories;
+	@RequestMapping(value = "/all/noChild", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Category> getNoChildCategories() {
+		dataDisplay.printCrudInfo();
+		List<Category> categories = categoryService.findAllNoChildCategories();
+		Collections.sort(categories);
+		return categories;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -75,7 +73,7 @@ public class CategoryController {
 	public void deleteCategory(@PathVariable("categoryId") int categoryId) {
 		dataDisplay.printCrudInfo(categoryId);
 		Category category = categoryService.findCategoryById(categoryId).get();
-		category.setStatus(Status.INACTIVE);
+		category.removeCategory();
 		categoryService.updateCategory(category);
 	}
 }

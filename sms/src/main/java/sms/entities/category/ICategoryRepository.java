@@ -6,6 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 
 import sms.enums.Status;
 
-public interface ICategoryRepository extends CrudRepository<Category, Integer>{
+public interface ICategoryRepository extends CrudRepository<Category, Integer> {
+
 	public List<Category> findAllByStatus(Status status);
+
+	public List<Category> findAllByParentCategoryIsNullAndStatus(Status status);
+
+	public List<Category> findAllByChildCategoriesIsNullAndStatus(Status status);
+
 }

@@ -8,4 +8,5 @@ export class Category {
     parentCategory: Category;
     childCategories: Category[];
     items: Item[];
+    parent: Boolean;
 }

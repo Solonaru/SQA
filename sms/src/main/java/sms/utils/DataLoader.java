@@ -135,22 +135,16 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Employee employee2 = new Employee("andrei", "andrei123", "Andrei", "andreihumulescu@gmail.com", "0721314417",
 				EmployeeStatus.INTERNSHIP, operatorProducts);
 		employee2.setAddress(address8);
-		
+
 		// ------------------------------------------------------------------- //
-		
-		Category category1 = new Category("Pizzas", new Date(System.currentTimeMillis()),
-				"Pizzas category");
-		Category category2 = new Category("Deserts", new Date(System.currentTimeMillis()),
-				"Deserts category");
-		Category category3 = new Category("Beverages", new Date(System.currentTimeMillis()),
-				"Beverages category");
-		Category category4 = new Category("Ingredients", new Date(System.currentTimeMillis()),
-				"Ingredients category");
-		Category category401 = new Category("Vegetables", new Date(System.currentTimeMillis()),
-				"Vegetables category");
+
+		Category category1 = new Category("Pizzas", new Date(System.currentTimeMillis()), "Pizzas category");
+		Category category2 = new Category("Deserts", new Date(System.currentTimeMillis()), "Deserts category");
+		Category category3 = new Category("Beverages", new Date(System.currentTimeMillis()), "Beverages category");
+		Category category4 = new Category("Ingredients", new Date(System.currentTimeMillis()), "Ingredients category");
+		Category category401 = new Category("Vegetables", new Date(System.currentTimeMillis()), "Vegetables category");
 		category401.setParentCategory(category4);
-		Category category402 = new Category("Fruits", new Date(System.currentTimeMillis()),
-				"Fruits category");
+		Category category402 = new Category("Fruits", new Date(System.currentTimeMillis()), "Fruits category");
 		category402.setParentCategory(category4);
 		Category category403 = new Category("Grains, Beans and Nuts", new Date(System.currentTimeMillis()),
 				"Grains, beans and nuts category");
@@ -164,51 +158,65 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Category category406 = new Category("Dairy Foods", new Date(System.currentTimeMillis()),
 				"Dairy foods category");
 		category406.setParentCategory(category4);
-		
-		
-		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, new Date(System.currentTimeMillis()), "");
+
+		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, new Date(System.currentTimeMillis()),
+				"");
 		meatAndPoultry1.setCategory(category404);
-		meatAndPoultry1.setImageUrl("../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgBeefEyeRoundSteak.jpg");
+		meatAndPoultry1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgBeefEyeRoundSteak.jpg");
 		Ingredient meatAndPoultry2 = new Ingredient("Rib Eye Steak", 16, new Date(System.currentTimeMillis()), "");
 		meatAndPoultry2.setCategory(category404);
-		meatAndPoultry2.setImageUrl("../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgRibEyeSteak.jpg");
-		
+		meatAndPoultry2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgRibEyeSteak.jpg");
+
 		Ingredient vegetables1 = new Ingredient("Sweet Cherry Tomatoes", 2, new Date(System.currentTimeMillis()), "");
 		vegetables1.setCategory(category401);
-		vegetables1.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgSweetCherryTomatoes.jpg");
+		vegetables1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgSweetCherryTomatoes.jpg");
 		Ingredient vegetables2 = new Ingredient("Campari Tomatoes", 2, new Date(System.currentTimeMillis()), "");
 		vegetables2.setCategory(category401);
-		vegetables2.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgCampariTomatoes.jpg");
+		vegetables2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgCampariTomatoes.jpg");
 		Ingredient vegetables3 = new Ingredient("Baby Bella Mushrooms", 1, new Date(System.currentTimeMillis()), "");
 		vegetables3.setCategory(category401);
-		vegetables3.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgBabyBellaMushrooms.jpg");
+		vegetables3.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgBabyBellaMushrooms.jpg");
 		Ingredient vegetables4 = new Ingredient("White Mushrooms", 1, new Date(System.currentTimeMillis()), "");
 		vegetables4.setCategory(category401);
-		vegetables4.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgWhiteMushrooms.jpg");
+		vegetables4.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgWhiteMushrooms.jpg");
 		Ingredient vegetables5 = new Ingredient("Garlic", 2, new Date(System.currentTimeMillis()), "");
 		vegetables5.setCategory(category401);
-		vegetables5.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgGarlic.jpg");
+		vegetables5.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgGarlic.jpg");
 		Ingredient vegetables6 = new Ingredient("Red Onion", 1, new Date(System.currentTimeMillis()), "");
 		vegetables6.setCategory(category401);
-		vegetables6.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgRedOnion.jpg");
+		vegetables6.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgRedOnion.jpg");
 		Ingredient vegetables7 = new Ingredient("Yellow Onion", 1, new Date(System.currentTimeMillis()), "");
 		vegetables7.setCategory(category401);
-		vegetables7.setImageUrl("../../../../assets/images/items/products/components/ingredients/vegetables/imgYellowOnion.jpg");
-		
+		vegetables7.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgYellowOnion.jpg");
+
 		Ingredient dairyFoods1 = new Ingredient("Swiss Emmental", 16, new Date(System.currentTimeMillis()), "");
 		dairyFoods1.setCategory(category406);
-		dairyFoods1.setImageUrl("../../../../assets/images/items/products/components/ingredients/dairy_foods/imgSwissEmmental.jpg");
+		dairyFoods1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgSwissEmmental.jpg");
 		Ingredient dairyFoods2 = new Ingredient("Grana Padano", 18, new Date(System.currentTimeMillis()), "");
 		dairyFoods2.setCategory(category406);
-		dairyFoods2.setImageUrl("../../../../assets/images/items/products/components/ingredients/dairy_foods/imgGranaPadano.jpg");
-		
+		dairyFoods2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgGranaPadano.jpg");
+
 		Ingredient grainsBeansAndNuts1 = new Ingredient("White Flour", 4, new Date(System.currentTimeMillis()), "");
 		grainsBeansAndNuts1.setCategory(category403);
-		grainsBeansAndNuts1.setImageUrl("../../../../assets/images/items/products/components/ingredients/grains_beans_and_nuts/imgWhiteFlour.jpg");
-		Ingredient grainsBeansAndNuts2 = new Ingredient("Whole Wheat Flour", 6, new Date(System.currentTimeMillis()), "");
+		grainsBeansAndNuts1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/grains_beans_and_nuts/imgWhiteFlour.jpg");
+		Ingredient grainsBeansAndNuts2 = new Ingredient("Whole Wheat Flour", 6, new Date(System.currentTimeMillis()),
+				"");
 		grainsBeansAndNuts2.setCategory(category403);
-		grainsBeansAndNuts2.setImageUrl("../../../../assets/images/items/products/components/ingredients/grains_beans_and_nuts/imgWholeWheatFlour.jpg");
-		
+		grainsBeansAndNuts2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/grains_beans_and_nuts/imgWholeWheatFlour.jpg");
+
 		// ------------------------------------------------------------------- //
 		// --------------------------- Persisting here ----------------------- //
 		// ------------------------------------------------------------------- //
@@ -250,7 +258,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		accountService.insertAccount(employee2);
 
 		// ------------------------------------------------------------------- //
-		
+
 		categoryService.insertCategory(category1);
 		categoryService.insertCategory(category2);
 		categoryService.insertCategory(category3);
@@ -261,12 +269,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		categoryService.insertCategory(category404);
 		categoryService.insertCategory(category405);
 		categoryService.insertCategory(category406);
-		
+
 		// ------------------------------------------------------------------- //
-		
+
 		itemService.insertItem(meatAndPoultry1);
 		itemService.insertItem(meatAndPoultry2);
-		
+
 		itemService.insertItem(vegetables1);
 		itemService.insertItem(vegetables2);
 		itemService.insertItem(vegetables3);
@@ -274,13 +282,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(vegetables5);
 		itemService.insertItem(vegetables6);
 		itemService.insertItem(vegetables7);
-		
+
 		itemService.insertItem(dairyFoods1);
 		itemService.insertItem(dairyFoods2);
-		
+
 		itemService.insertItem(grainsBeansAndNuts1);
 		itemService.insertItem(grainsBeansAndNuts2);
-		
+
 		// ------------------------------------------------------------------- //
 
 		displayData.printInfo("Data successfully loaded.");

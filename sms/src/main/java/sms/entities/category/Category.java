@@ -42,7 +42,7 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	private Category parentCategory;
 	@OneToMany(mappedBy = "parentCategory")
 	@JsonIgnoreProperties(value = "parentCategory")
-	private List<Category> childCategories = new ArrayList<Category>();
+	private List<Category> childCategories;
 	@ManyToOne
 	private Employee employee;
 	@OneToMany(mappedBy = "category")
@@ -143,5 +143,30 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	// ----- Methods -----
 	public int compareTo(Category category) {
 		return -category.getName().compareToIgnoreCase(this.getName());
+	}
+
+	public Boolean isParent() {
+		return this.childCategories.size() != 0 ? true : false;
+	}
+
+	public void removeCategory() {
+		this.setStatus(Status.INACTIVE);
+		this.setParentCategory(null);
+
+		if (null != this.getChildCategories()) {
+			for (Category childCategory : this.getChildCategories()) {
+				childCategory.setParentCategory(null);
+			}
+		}
+
+		this.childCategories = null;
+
+		if (null != this.getItems()) {
+			for (Item item : this.getItems()) {
+				item.setCategory(null);
+			}
+		}
+
+		this.items = null;
 	}
 }

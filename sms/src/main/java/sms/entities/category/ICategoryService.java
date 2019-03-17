@@ -10,6 +10,10 @@ public interface ICategoryService {
 	public List<Category> findAllCategories();
 	
 	public List<Category> findAllActiveCategories();
+	
+	public List<Category> findAllNoParentCategories();
+	
+	public List<Category> findAllNoChildCategories();
 
 	public void insertCategory(Category category);
 

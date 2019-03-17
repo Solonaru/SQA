@@ -11,6 +11,7 @@ export class CategoryMngComponent implements OnInit {
 
   category: Category;
   categories: Category[];
+  icon: String = "fas fa-plus-circle";
 
   constructor(private categoryService: CategoryService) { }
 
@@ -19,7 +20,7 @@ export class CategoryMngComponent implements OnInit {
   }
 
   populateCategories() {
-    this.categoryService.getCategories().subscribe(data => { this.categories = data; });
+    this.categoryService.getNoChildCategories().subscribe(data => { this.categories = data; });
   }
 
   onAdd() {
@@ -48,6 +49,14 @@ export class CategoryMngComponent implements OnInit {
 
   updateCategory() {
     
+  }
+
+  switch() {
+    if(this.icon === "fas fa-minus-circle") {
+      this.icon = "fas fa-plus-circle"
+    } else {
+      this.icon = "fas fa-minus-circle"
+    }
   }
 
 }
