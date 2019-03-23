@@ -15,7 +15,9 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import sms.entities.customer.Customer;
+import sms.entities.account.customer.Customer;
+import sms.entities.order.cart.Cart;
+import sms.entities.order.payment.Payment;
 import sms.enums.OrderStatus;
 
 @Entity

@@ -18,7 +18,8 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import sms.entities.location.Address;
+import sms.entities.account.a_account_logic.AccountDeserializer;
+import sms.entities.address.Address;
 import sms.enums.AccountStatus;
 
 @Entity
