@@ -13,8 +13,8 @@ import sms.entities.account.Account;
 import sms.entities.account.employee.a_employee_logic.IRight;
 import sms.entities.account.employee.a_employee_logic.NoRight;
 import sms.entities.account.employee.a_employee_logic.RightConverter;
-import sms.enums.AccountStatus;
-import sms.enums.EmployeeStatus;
+import sms.enums.account_enums.AccountStatus;
+import sms.enums.account_enums.EmployeeStatus;
 
 @Entity
 @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")

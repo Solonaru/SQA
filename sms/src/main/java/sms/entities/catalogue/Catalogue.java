@@ -22,8 +22,8 @@ import sms.entities.account.employee.Employee;
 import sms.entities.catalogue.catalogue_item.CatalogueItem;
 import sms.entities.z_lines_logic.ILine;
 import sms.entities.z_lines_logic.ILineIterator;
-import sms.enums.CatalogueStatus;
 import sms.enums.Month;
+import sms.enums.catalogue_enums.CatalogueStatus;
 
 @Entity
 @NamedQuery(name = "Catalogue.findAll", query = "SELECT c FROM Catalogue c")

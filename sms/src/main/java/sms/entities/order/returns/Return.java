@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import sms.entities.order.cart.cart_line.CartLine;
-import sms.enums.ReturnStatus;
+import sms.enums.order_enums.ReturnStatus;
 
 @Entity
 @NamedQuery(name = "Return.findAll", query = "SELECT r FROM Return r")

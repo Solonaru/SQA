@@ -7,7 +7,7 @@ import sms.entities.account.customer.Customer;
 import sms.entities.account.customer.subscription.Subscription;
 import sms.entities.address.Address;
 import sms.entities.order.Orders;
-import sms.enums.AccountStatus;
+import sms.enums.account_enums.AccountStatus;
 
 public class CustomerProxy implements ICustomer {
 

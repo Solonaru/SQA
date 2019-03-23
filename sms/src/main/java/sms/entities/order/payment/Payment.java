@@ -15,8 +15,8 @@ import javax.persistence.SequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.order.Orders;
-import sms.enums.PaymentStatus;
-import sms.enums.PaymentType;
+import sms.enums.order_enums.PaymentStatus;
+import sms.enums.order_enums.PaymentType;
 
 @Entity
 @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p")

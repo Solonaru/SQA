@@ -27,8 +27,8 @@ import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
 import sms.entities.item.component.ingredient.Ingredient;
-import sms.enums.EmployeeStatus;
-import sms.enums.SubscriptionType;
+import sms.enums.account_enums.EmployeeStatus;
+import sms.enums.account_enums.SubscriptionType;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -158,6 +158,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Category category406 = new Category("Dairy Foods", new Date(System.currentTimeMillis()),
 				"Dairy foods category");
 		category406.setParentCategory(category4);
+		Category category407 = new Category("Pantry", new Date(System.currentTimeMillis()), "Pantry category");
+		category407.setParentCategory(category4);
 
 		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, new Date(System.currentTimeMillis()),
 				"");

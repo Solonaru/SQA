@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sms.entities.item.component.Component;
 import sms.entities.item.recipe.Recipe;
 import sms.entities.z_lines_logic.ILine;
-import sms.enums.ComponentType;
 
 @Entity
 @NamedQuery(name = "RecipeLine.findAll", query = "SELECT r FROM RecipeLine r")
@@ -31,8 +28,6 @@ public class RecipeLine implements Serializable, ILine {
 	@SequenceGenerator(name = "recipe_line_generator", sequenceName = "recipe_line_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	@Enumerated(EnumType.STRING)
-	private ComponentType componentType;
 	private Integer quantity;
 	@ManyToOne
 	@JoinColumn(name = "recipe_id")
@@ -47,9 +42,8 @@ public class RecipeLine implements Serializable, ILine {
 		super();
 	}
 
-	public RecipeLine(ComponentType componentType, Integer quantity) {
+	public RecipeLine(Integer quantity) {
 		super();
-		this.componentType = componentType;
 		this.quantity = quantity;
 	}
 
@@ -76,14 +70,6 @@ public class RecipeLine implements Serializable, ILine {
 
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
-	}
-
-	public ComponentType getComponentType() {
-		return componentType;
-	}
-
-	public void setComponentType(ComponentType componentType) {
-		this.componentType = componentType;
 	}
 
 	public Component getComponent() {

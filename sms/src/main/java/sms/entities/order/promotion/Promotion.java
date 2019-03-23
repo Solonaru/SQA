@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import sms.entities.order.promotion.promotion_range.PromotionRange;
-import sms.enums.PromotionStatus;
+import sms.enums.order_enums.PromotionStatus;
 
 @Entity
 @NamedQuery(name = "Promotion.findAll", query = "SELECT p FROM Promotion p")

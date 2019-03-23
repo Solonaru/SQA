@@ -1,4 +1,4 @@
-package sms.enums;
+package sms.enums.account_enums;
 
 public enum PermissionType {
 	PRODUCT_CREATE, PRODUCT_UPDATE, PRODUCT_DELETE, PRODUCT_FULL,

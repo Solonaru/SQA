@@ -1,13 +1,11 @@
 package sms.entities.item.pack;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -28,10 +26,10 @@ import sms.enums.Month;
 public class Package extends Item implements ILineIterator {
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "pack")
+	@OneToMany(mappedBy = "pack")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnoreProperties(value = { "pack", "category" })
-	private List<PackageLine> packageLines = new ArrayList<PackageLine>();
+	private List<PackageLine> packageLines;
 
 	// ------ Constructors -------
 	public Package() {
