@@ -16,15 +16,14 @@ import sms.entities.account.customer.subscription.ISubscriptionService;
 import sms.entities.account.customer.subscription.Subscription;
 import sms.entities.account.employee.Employee;
 import sms.entities.account.employee.logic.Admin;
-import sms.entities.account.employee.logic.IRight;
 import sms.entities.account.employee.logic.OperatorProducts;
 import sms.entities.address.Address;
 import sms.entities.address.IAddressService;
-import sms.entities.address.logic.AddressBuilder;
 import sms.entities.address.city.City;
 import sms.entities.address.city.ICityService;
 import sms.entities.address.county.County;
 import sms.entities.address.county.ICountyService;
+import sms.entities.address.logic.AddressBuilder;
 import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
@@ -103,7 +102,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         }
     }
 
-    /*Have to rethink this */
+    /*Have to re-think this */
     private void updateAddress() {
         Address address1 = new AddressBuilder("Alexandru cel Bun", 51).setApartamentNr(15).setZipCode(270123)
                 .getAddress();

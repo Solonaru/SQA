@@ -5,13 +5,13 @@ import java.util.Optional;
 
 public interface ISimplePackageService {
 
-    Optional<SimplePackage> findSimplePackageById(int simplePackageId);
+	Optional<SimplePackage> findSimplePackageById(int simplePackageId);
 
-    List<SimplePackage> findAllSimplePackages();
+	List<SimplePackage> findAllSimplePackages();
 
-    void insertSimplePackage(SimplePackage simplePackage);
+	void insertSimplePackage(SimplePackage simplePackage);
 
-    void updateSimplePackage(SimplePackage simplePackage);
+	void updateSimplePackage(SimplePackage simplePackage);
 
-    void deleteSimplePackageById(int simplePackageId);
+	void deleteSimplePackageById(int simplePackageId);
 }
