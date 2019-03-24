@@ -17,11 +17,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import sms.entities.account.Account;
-import sms.entities.account.customer.a_customer_logic.ICustomer;
+import sms.entities.account.customer.logic.ICustomer;
 import sms.entities.account.customer.subscription.Subscription;
 import sms.entities.address.Address;
 import sms.entities.order.Orders;
-import sms.enums.account_enums.AccountStatus;
+import sms.enums.account.AccountStatus;
 
 @Entity
 @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")

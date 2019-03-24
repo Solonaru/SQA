@@ -19,10 +19,10 @@ import javax.persistence.SequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.order.Orders;
-import sms.entities.order.cart.cart_line.CartLine;
+import sms.entities.order.cart.line.CartLine;
 import sms.entities.order.promotion.Promotion;
-import sms.entities.z_lines_logic.ILine;
-import sms.entities.z_lines_logic.ILineIterator;
+import sms.entities.logic.ILine;
+import sms.entities.logic.ILineIterator;
 
 @Entity
 @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c")

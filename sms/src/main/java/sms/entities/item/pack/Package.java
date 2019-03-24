@@ -15,9 +15,9 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.item.Item;
-import sms.entities.item.pack.pack_line.PackageLine;
-import sms.entities.z_lines_logic.ILine;
-import sms.entities.z_lines_logic.ILineIterator;
+import sms.entities.item.pack.line.PackageLine;
+import sms.entities.logic.ILine;
+import sms.entities.logic.ILineIterator;
 import sms.enums.Month;
 
 @Entity

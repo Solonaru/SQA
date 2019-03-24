@@ -18,7 +18,7 @@ import javax.persistence.SequenceGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.account.customer.Customer;
-import sms.enums.account_enums.SubscriptionType;
+import sms.enums.account.SubscriptionType;
 
 @Entity
 @NamedQuery(name = "Subscription.findAll", query = "SELECT s FROM Subscription s")

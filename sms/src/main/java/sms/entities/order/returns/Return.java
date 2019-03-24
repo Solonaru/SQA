@@ -12,8 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-import sms.entities.order.cart.cart_line.CartLine;
-import sms.enums.order_enums.ReturnStatus;
+import sms.entities.order.cart.line.CartLine;
+import sms.enums.order.ReturnStatus;
 
 @Entity
 @NamedQuery(name = "Return.findAll", query = "SELECT r FROM Return r")

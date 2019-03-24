@@ -13,12 +13,12 @@ import sms.entities.account.customer.Customer;
 import sms.entities.account.customer.subscription.ISubscriptionService;
 import sms.entities.account.customer.subscription.Subscription;
 import sms.entities.account.employee.Employee;
-import sms.entities.account.employee.a_employee_logic.Admin;
-import sms.entities.account.employee.a_employee_logic.IRight;
-import sms.entities.account.employee.a_employee_logic.OperatorProducts;
+import sms.entities.account.employee.logic.Admin;
+import sms.entities.account.employee.logic.IRight;
+import sms.entities.account.employee.logic.OperatorProducts;
 import sms.entities.address.Address;
 import sms.entities.address.IAddressService;
-import sms.entities.address.a_address_logic.AddressBuilder;
+import sms.entities.address.logic.AddressBuilder;
 import sms.entities.address.city.City;
 import sms.entities.address.city.ICityService;
 import sms.entities.address.county.County;
@@ -27,8 +27,8 @@ import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
 import sms.entities.item.component.ingredient.Ingredient;
-import sms.enums.account_enums.EmployeeStatus;
-import sms.enums.account_enums.SubscriptionType;
+import sms.enums.account.EmployeeStatus;
+import sms.enums.account.SubscriptionType;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {

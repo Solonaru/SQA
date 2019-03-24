@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.account.employee.Employee;
 import sms.entities.item.Item;
-import sms.entities.item.a_item_logic.IItemIterator;
+import sms.entities.item.logic.IItemIterator;
 import sms.enums.Status;
 
 @Entity

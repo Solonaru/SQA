@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sms.entities.account.customer.Customer;
 import sms.entities.order.cart.Cart;
 import sms.entities.order.payment.Payment;
-import sms.enums.order_enums.OrderStatus;
+import sms.enums.order.OrderStatus;
 
 @Entity
 @NamedQuery(name = "Order.findAll", query = "SELECT o FROM Orders o")

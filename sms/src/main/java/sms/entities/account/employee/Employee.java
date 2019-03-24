@@ -10,11 +10,11 @@ import javax.persistence.NamedQuery;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import sms.entities.account.Account;
-import sms.entities.account.employee.a_employee_logic.IRight;
-import sms.entities.account.employee.a_employee_logic.NoRight;
-import sms.entities.account.employee.a_employee_logic.RightConverter;
-import sms.enums.account_enums.AccountStatus;
-import sms.enums.account_enums.EmployeeStatus;
+import sms.entities.account.employee.logic.IRight;
+import sms.entities.account.employee.logic.NoRight;
+import sms.entities.account.employee.logic.RightConverter;
+import sms.enums.account.AccountStatus;
+import sms.enums.account.EmployeeStatus;
 
 @Entity
 @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")

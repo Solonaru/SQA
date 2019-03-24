@@ -28,7 +28,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import sms.entities.account.customer.comment.Comment;
 import sms.entities.account.customer.rating.Rating;
 import sms.entities.account.employee.Employee;
-import sms.entities.catalogue.catalogue_item.CatalogueItem;
+import sms.entities.catalogue.item.CatalogueItem;
 import sms.entities.category.Category;
 import sms.enums.Month;
 import sms.utils.UtilMethods;

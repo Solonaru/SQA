@@ -15,9 +15,9 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.item.product.Product;
-import sms.entities.item.recipe.recipe_line.RecipeLine;
-import sms.entities.z_lines_logic.ILine;
-import sms.entities.z_lines_logic.ILineIterator;
+import sms.entities.item.recipe.line.RecipeLine;
+import sms.entities.logic.ILine;
+import sms.entities.logic.ILineIterator;
 
 @Entity
 @NamedQuery(name = "Recipe.findAll", query = "SELECT r FROM Recipe r")
