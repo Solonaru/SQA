@@ -1,4 +1,4 @@
-package sms.entities.order.cart.line.a_cart_line_logic;
+package sms.entities.order.cart.line.logic;
 
 import java.util.HashMap;
 
