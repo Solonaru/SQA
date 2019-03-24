@@ -1,15 +1,16 @@
 package sms.entities.item.pack.simplepack;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SimplePackageService implements ISimplePackageService {
 
     @Autowired
-    private
-    ISimplePackageRepository simplePackageRepository;
+    private ISimplePackageRepository simplePackageRepository;
 
     @Override
     public Optional<SimplePackage> findSimplePackageById(int simplePackageId) {

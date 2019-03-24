@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppTypeService } from 'src/app/providers/services/apptype.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apptype : AppTypeService) { }
 
   ngOnInit() {
   }
 
+  appChanged = (evt : any) => {    
+    console.log("Changed " + evt.target.checked);
+    this.sendAppChanged(evt.target.checked ? 1 : 0);
+    }
+
+  sendAppChanged(i : Number){
+    console.log("Number changed " + i);
+    this.apptype.changeType(i).subscribe();
+
+  }
 }

@@ -15,6 +15,7 @@ public class SimplePlackageController {
 
     @Autowired
     private ISimplePackageService simplePackageService;
+
     @Autowired
     private DisplayData dataDisplay;
 

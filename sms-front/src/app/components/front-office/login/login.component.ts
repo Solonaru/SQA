@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  loginUser(event) {
+  loginUser(event : any) {
     this.user = new User();
 
     event.preventDefault();
