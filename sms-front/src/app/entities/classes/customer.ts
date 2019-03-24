@@ -1,3 +1,5 @@
+import { Address } from './address';
+
 export class Customer {
     id: Number;
     username: String;
@@ -5,4 +7,5 @@ export class Customer {
     name: String;
     email: String;
     phoneNumber: String;
+    address: Address;
 }

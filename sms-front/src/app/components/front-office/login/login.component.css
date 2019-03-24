@@ -14,7 +14,7 @@ div{
 
 .login-box{
     width: 320px;
-    height: 360px;
+    height: 390px;
     background: lightsteelblue;
     color: #fff;
     top: 50%;
@@ -98,4 +98,13 @@ h3{
 .login-box a:hover
 {
     color: #39dc79;
+}
+
+.form__register a{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.form__register a:hover {
+    color: #333;
 }

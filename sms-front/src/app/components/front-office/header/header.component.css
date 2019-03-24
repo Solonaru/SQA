@@ -39,7 +39,10 @@
     transition: all .2s;
 } 
 
-.my-account {
-    margin-left: auto;
+@media (min-width: 768px) {
+    .my-account {
+        margin-left: auto;
+    }
 }
+
 
