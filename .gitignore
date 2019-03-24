@@ -11,3 +11,4 @@
 sms/target/*
 sms/.idea
 sms/*.iml
+sms/src/main/resources/application.properties
