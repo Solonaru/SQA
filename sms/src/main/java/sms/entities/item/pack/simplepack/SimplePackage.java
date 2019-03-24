@@ -18,56 +18,55 @@ import sms.enums.Month;
 @NamedQuery(name = "SimplePackage.findAll", query = "SELECT sp FROM SimplePackage sp")
 @DiscriminatorValue("Simple package")
 public class SimplePackage extends Item {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@ManyToMany
-	@JoinTable(name = "simple_package_items", joinColumns = {
-			@JoinColumn(name = "simple_package_id") }, inverseJoinColumns = { @JoinColumn(name = "item_id") })
-	List<Item> packageComponents = new ArrayList<Item>();
+    @ManyToMany
+    @JoinTable(name = "simple_package_items", joinColumns = {
+            @JoinColumn(name = "simple_package_id")}, inverseJoinColumns = {@JoinColumn(name = "item_id")})
+    private
+    List<Item> packageComponents = new ArrayList<>();
 
-	// ------ Constructors -------
-	public SimplePackage() {
-		super();
-	}
+    // ------ Constructors -------
+    public SimplePackage() {
+        super();
+    }
 
-	public SimplePackage(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
-	}
+    public SimplePackage(String name, Integer stockQuantity, Date updateDate, String description) {
+        super(name, stockQuantity, updateDate, description);
+    }
 
-	// ----- Getters and Setters -----
-	public List<Item> getPackageComponents() {
-		return packageComponents;
-	}
+    // ----- Getters and Setters -----
+    public List<Item> getPackageComponents() {
+        return packageComponents;
+    }
 
-	public void setPackageComponents(List<Item> packageComponents) {
-		this.packageComponents = packageComponents;
-	}
+    public void setPackageComponents(List<Item> packageComponents) {
+        this.packageComponents = packageComponents;
+    }
 
-	// ----- Methods -----
-	public void addComponent(Item component) {
-		packageComponents.add(component);
-	}
+    // ----- Methods -----
+    public void addComponent(Item component) {
+        packageComponents.add(component);
+    }
 
-	/* TODO: See if desired implementation */
-	public Double getPrice() {
-		Double price = 0.0;
+    public Double getPrice() {
+        Double price = 0.0;
 
-		for (Item component : packageComponents) {
-			price += component.getPrice();
-		}
+        for (Item component : packageComponents) {
+            price += component.getPrice();
+        }
 
-		return (double) Math.round(price * 0.9);
-	}
+        return (double) Math.round(price * 0.9);
+    }
 
-	/* TODO: See if desired implementation */
-	public Double getPrice(Month month) {
-		Double price = 0.0;
+    public Double getPrice(Month month) {
+        Double price = 0.0;
 
-		for (Item component : packageComponents) {
-			price += component.getPrice(month);
-		}
+        for (Item component : packageComponents) {
+            price += component.getPrice(month);
+        }
 
-		return (double) Math.round(price * 0.9);
-	}
+        return (double) Math.round(price * 0.9);
+    }
 
 }
