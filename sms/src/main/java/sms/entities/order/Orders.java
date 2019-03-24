@@ -15,8 +15,10 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import sms.entities.customer.Customer;
-import sms.enums.OrderStatus;
+import sms.entities.account.customer.Customer;
+import sms.entities.order.cart.Cart;
+import sms.entities.order.payment.Payment;
+import sms.enums.order_enums.OrderStatus;
 
 @Entity
 @NamedQuery(name = "Order.findAll", query = "SELECT o FROM Orders o")

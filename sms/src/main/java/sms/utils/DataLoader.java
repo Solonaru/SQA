@@ -9,26 +9,26 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import sms.entities.account.IAccountService;
+import sms.entities.account.customer.Customer;
+import sms.entities.account.customer.subscription.ISubscriptionService;
+import sms.entities.account.customer.subscription.Subscription;
+import sms.entities.account.employee.Employee;
+import sms.entities.account.employee.a_employee_logic.Admin;
+import sms.entities.account.employee.a_employee_logic.IRight;
+import sms.entities.account.employee.a_employee_logic.OperatorProducts;
+import sms.entities.address.Address;
+import sms.entities.address.IAddressService;
+import sms.entities.address.a_address_logic.AddressBuilder;
+import sms.entities.address.city.City;
+import sms.entities.address.city.ICityService;
+import sms.entities.address.county.County;
+import sms.entities.address.county.ICountyService;
 import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
-import sms.entities.customer.Customer;
-import sms.entities.employee.Admin;
-import sms.entities.employee.Employee;
-import sms.entities.employee.IRight;
-import sms.entities.employee.OperatorProducts;
 import sms.entities.item.IItemService;
-import sms.entities.item.component.Ingredient;
-import sms.entities.location.Address;
-import sms.entities.location.AddressBuilder;
-import sms.entities.location.City;
-import sms.entities.location.County;
-import sms.entities.location.IAddressService;
-import sms.entities.location.ICityService;
-import sms.entities.location.ICountyService;
-import sms.entities.subscription.ISubscriptionService;
-import sms.entities.subscription.Subscription;
-import sms.enums.EmployeeStatus;
-import sms.enums.SubscriptionType;
+import sms.entities.item.component.ingredient.Ingredient;
+import sms.enums.account_enums.EmployeeStatus;
+import sms.enums.account_enums.SubscriptionType;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -158,6 +158,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Category category406 = new Category("Dairy Foods", new Date(System.currentTimeMillis()),
 				"Dairy foods category");
 		category406.setParentCategory(category4);
+		Category category407 = new Category("Pantry", new Date(System.currentTimeMillis()), "Pantry category");
+		category407.setParentCategory(category4);
 
 		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, new Date(System.currentTimeMillis()),
 				"");

@@ -32,7 +32,11 @@ export class CategoryMngComponent implements OnInit {
   }
 
   onDelete(category: Category) {
-    this.categoryService.deleteCategory(category).subscribe(data => {location.reload(); });
+    this.category = category;
+  }
+
+  onConfirmDelete() {
+    this.categoryService.deleteCategory(this.category).subscribe(data => { location.reload(); });
   }
 
   onSubmit() {
@@ -44,15 +48,15 @@ export class CategoryMngComponent implements OnInit {
   }
 
   insertCategory() {
-
+    this.categoryService.insertCategory(this.category).subscribe(date => { location.reload(); });
   }
 
   updateCategory() {
-    
+    this.categoryService.updateCategory(this.category).subscribe();
   }
 
   switch() {
-    if(this.icon === "fas fa-minus-circle") {
+    if (this.icon === "fas fa-minus-circle") {
       this.icon = "fas fa-plus-circle"
     } else {
       this.icon = "fas fa-minus-circle"

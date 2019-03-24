@@ -18,8 +18,9 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-import sms.entities.location.Address;
-import sms.enums.AccountStatus;
+import sms.entities.account.a_account_logic.AccountDeserializer;
+import sms.entities.address.Address;
+import sms.enums.account_enums.AccountStatus;
 
 @Entity
 @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")

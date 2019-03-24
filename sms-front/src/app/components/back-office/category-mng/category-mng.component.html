@@ -8,6 +8,8 @@
 
     <h1 class="is-title">Category management</h1>
 
+    <button type="button" (click)="onAdd()" class="btn btn-success is-create-button" data-toggle="modal" data-target="#categoryModal">Create a new category</button>
+
     <table class="table table-hover">
       <thead class="thead-light">
         <tr>
@@ -28,8 +30,9 @@
             <td>{{category.description}}</td>
             <td class="text-center">{{category.updateDate}}</td>
             <td class="text-center">
-              <button type="button" class="btn btn-info btn-sm">Edit</button>
-              <button type="button" (click)="onDelete(category)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm">Delete</button>
+              <button type="button" (click)="onUpdate(category)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#categoryModal">Edit</button>
+              <button type="button" (click)="onDelete(category)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                data-target="#deleteCategoryModal">Delete</button>
             </td>
           </tr>
           <tr [id]="'abc' + i" class="collapse" *ngFor="let childCategory of category.childCategories; let j = index">
@@ -38,13 +41,73 @@
             <td>{{childCategory.description}}</td>
             <td class="text-center">{{childCategory.updateDate}}</td>
             <td class="text-center">
-              <button type="button" class="btn btn-info btn-sm">Edit</button>
-              <button type="button" (click)="onDelete(childCategory)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm">Delete</button>
+              <button type="button" (click)="onUpdate(childCategory)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#categoryModal">Edit</button>
+              <button type="button" (click)="onDelete(childCategory)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                data-target="#deleteCategoryModal">Delete</button>
             </td>
           </tr>
         </ng-container>
       </tbody>
     </table>
+
+    <div *ngIf="category" class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="categoryModalTitle">{{category.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="CateogryNameLabel">Name</span>
+              </div>
+              <input type="text" [(ngModel)]="category.name" class="form-control" placeholder="Category name" aria-label="CategoryName"
+                aria-describedby="CateogryNameLabel">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="CateogryDescriptionLabel">Description</span>
+              </div>
+              <textarea type="text" [(ngModel)]="category.description" class="form-control" placeholder="Category description" aria-label="CategoryDescription"
+                aria-describedby="CateogryDescriptionLabel">
+              </textarea>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onSubmit()" class="btn btn-success" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="category" class="modal fade" id="deleteCategoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteCategoryModalTitle">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete the {{category.name}} category?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onConfirmDelete()" class="btn btn-outline-success" data-dismiss="modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 </body>

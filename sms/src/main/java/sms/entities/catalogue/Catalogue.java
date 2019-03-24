@@ -18,11 +18,12 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import sms.entities.employee.Employee;
-import sms.entities.lines.ILine;
-import sms.entities.lines.ILineIterator;
-import sms.enums.CatalogueStatus;
+import sms.entities.account.employee.Employee;
+import sms.entities.catalogue.catalogue_item.CatalogueItem;
+import sms.entities.z_lines_logic.ILine;
+import sms.entities.z_lines_logic.ILineIterator;
 import sms.enums.Month;
+import sms.enums.catalogue_enums.CatalogueStatus;
 
 @Entity
 @NamedQuery(name = "Catalogue.findAll", query = "SELECT c FROM Catalogue c")

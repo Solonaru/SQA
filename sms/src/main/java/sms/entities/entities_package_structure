@@ -1,0 +1,30 @@
+			----- Package structure -----
+			
+entities:
+	* account
+		 - customer
+		 - employee
+		 
+	* address
+		 - city
+		 - county
+		 
+	* catalogue
+		 
+	* category
+		
+	* item
+		 - component
+		 		beverage
+		 		consumable
+		 		ingredient
+		 		sauce
+		 - pack
+		 - product
+		 - recipe
+		 
+	* order
+		 - cart
+		 - payment
+		 - promotion
+		 - returns

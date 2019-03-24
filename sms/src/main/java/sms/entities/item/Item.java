@@ -25,11 +25,11 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import sms.entities.catalogue.CatalogueItem;
+import sms.entities.account.customer.comment.Comment;
+import sms.entities.account.customer.rating.Rating;
+import sms.entities.account.employee.Employee;
+import sms.entities.catalogue.catalogue_item.CatalogueItem;
 import sms.entities.category.Category;
-import sms.entities.customer.Comment;
-import sms.entities.customer.Rating;
-import sms.entities.employee.Employee;
 import sms.enums.Month;
 import sms.utils.UtilMethods;
 
