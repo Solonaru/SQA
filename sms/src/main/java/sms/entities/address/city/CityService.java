@@ -9,26 +9,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class CityService implements ICityService {
 
-	@Autowired
-	private ICityRepository cityRepository;
+    @Autowired
+    private ICityRepository cityRepository;
 
-	public Optional<City> findCityById(int cityId) {
-		return cityRepository.findById(cityId);
-	}
+    public Optional<City> findCityById(int cityId) {
+        return cityRepository.findById(cityId);
+    }
 
-	public List<City> findAllCities() {
-		return (List<City>) cityRepository.findAll();
-	}
+    public List<City> findAllCities() {
+        return (List<City>) cityRepository.findAll();
+    }
 
-	public void insertCity(City city) {
-		cityRepository.save(city);
-	}
+    public void insertCity(City city) {
+        cityRepository.save(city);
+    }
 
-	public void updateCity(City city) {
-		cityRepository.save(city);
-	}
+    public void updateCity(City city) {
+        cityRepository.save(city);
+    }
 
-	public void deleteCityById(int cityId) {
-		cityRepository.deleteById(cityId);
-	}
+    public void deleteCityById(int cityId) {
+        cityRepository.deleteById(cityId);
+    }
+
+    public Optional<City> findCityByName(String name) {
+        return cityRepository.findCityByName(name);
+    }
 }

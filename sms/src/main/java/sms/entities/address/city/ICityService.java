@@ -5,13 +5,15 @@ import java.util.Optional;
 
 public interface ICityService {
 
-public Optional<City> findCityById(int cityId);
-	
-	public List<City> findAllCities();
+    Optional<City> findCityById(int cityId);
 
-	public void insertCity(City city);
+    List<City> findAllCities();
 
-	public void updateCity(City city);
+    void insertCity(City city);
 
-	public void deleteCityById(int cityId);
+    void updateCity(City city);
+
+    void deleteCityById(int cityId);
+
+    Optional<City> findCityByName(String name);
 }
