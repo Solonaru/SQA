@@ -7,3 +7,7 @@
 .is-create-button {
     margin: 1.2rem;
 }
+
+tr {
+    transition: none;
+}
