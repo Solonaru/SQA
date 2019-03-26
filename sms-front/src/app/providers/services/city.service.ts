@@ -25,6 +25,11 @@ export class CityService {
             .pipe(map((res: City) => { return res }));
     }
 
+    getCityByName(cityName: String) {
+        return this.http.get(this.BASE_URL + cityName)
+            .pipe(map((res: City) => { return res }));
+    }
+
     updateCity(city: City) {
         return this.http.put<City>(this.BASE_URL + 'update', JSON.stringify(city), this.httpOptions)
             .pipe(map((resp: any) => { return resp }));
