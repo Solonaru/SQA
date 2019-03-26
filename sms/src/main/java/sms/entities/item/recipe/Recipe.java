@@ -1,6 +1,7 @@
 package sms.entities.item.recipe;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,6 +50,10 @@ public class Recipe extends Product implements ILineIterator {
 
 	// ----- Methods -----
 	public void addLine(RecipeLine recipeLine) {
+		if (null == recipeLines) {
+			recipeLines = new ArrayList<RecipeLine>();
+		}
+		
 		recipeLines.add(recipeLine);
 		recipeLine.setRecipe(this);
 	}
