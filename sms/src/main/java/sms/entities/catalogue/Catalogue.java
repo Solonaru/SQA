@@ -37,25 +37,25 @@ public class Catalogue implements Serializable, ILineIterator {
 	private Integer id;
 	private Month month;
 	private Integer year;
-	private Date updateDate;
-	private CatalogueStatus status;
-	@ManyToOne
-	private Employee employee;
+	private CatalogueStatus catalogueStatus;
 	@OneToMany(mappedBy = "catalogue")
 	@JsonIgnoreProperties(value = "catalogue")
 	private List<CatalogueItem> catalogueItems = new ArrayList<CatalogueItem>();
+	@ManyToOne
+	private Employee employee;
+	private Date updateDate;
 
 	// -----Constructors-----
 	public Catalogue() {
 		super();
 	}
 
-	public Catalogue(Month month, Integer year, Date updateDate, CatalogueStatus status) {
+	public Catalogue(Month month, Integer year, CatalogueStatus catalogueStatus) {
 		super();
 		this.month = month;
 		this.year = year;
-		this.updateDate = updateDate;
-		this.status = status;
+		this.catalogueStatus = catalogueStatus;
+		this.updateDate = new Date(System.currentTimeMillis());
 	}
 
 	// -----Getters and Setters-----
@@ -83,12 +83,12 @@ public class Catalogue implements Serializable, ILineIterator {
 		this.year = year;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public List<CatalogueItem> getCatalogueItems() {
+		return catalogueItems;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setCatalogueItems(List<CatalogueItem> catalogueItems) {
+		this.catalogueItems = catalogueItems;
 	}
 
 	public Employee getEmployee() {
@@ -99,20 +99,20 @@ public class Catalogue implements Serializable, ILineIterator {
 		this.employee = employee;
 	}
 
-	public List<CatalogueItem> getCatalogueItems() {
-		return catalogueItems;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setCatalogueItems(List<CatalogueItem> catalogueItems) {
-		this.catalogueItems = catalogueItems;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
-	public CatalogueStatus getStatus() {
-		return status;
+	public CatalogueStatus getCatalogueStatus() {
+		return catalogueStatus;
 	}
 
-	public void setStatus(CatalogueStatus status) {
-		this.status = status;
+	public void setCatalogueStatus(CatalogueStatus catalogueStatus) {
+		this.catalogueStatus = catalogueStatus;
 	}
 
 	// ----- Methods -----

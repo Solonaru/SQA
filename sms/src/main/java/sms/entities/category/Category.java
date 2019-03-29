@@ -34,7 +34,6 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 	private String name;
-	private Date updateDate;
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	@ManyToOne
@@ -43,11 +42,12 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	@OneToMany(mappedBy = "parentCategory")
 	@JsonIgnoreProperties(value = "parentCategory")
 	private List<Category> childCategories;
-	@ManyToOne
-	private Employee employee;
 	@OneToMany(mappedBy = "category")
 	@JsonIgnoreProperties(value = "category")
 	private List<Item> items = new ArrayList<Item>();
+	@ManyToOne
+	private Employee employee;
+	private Date updateDate;
 	private Status status;
 
 	// ----- Constructors -----
@@ -55,11 +55,11 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 		super();
 	}
 
-	public Category(String name, Date updateDate, String description) {
+	public Category(String name, String description) {
 		super();
 		this.name = name;
-		this.updateDate = updateDate;
 		this.description = description;
+		this.updateDate = new Date(System.currentTimeMillis());
 		this.status = Status.ACTIVE;
 	}
 
@@ -78,14 +78,6 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
 	}
 
 	public String getDescription() {
@@ -112,14 +104,6 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 		this.childCategories = childCategories;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public List<Item> getItems() {
 		return items;
 	}
@@ -130,6 +114,22 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 
 	public Iterator<Item> createIterator() {
 		return this.items.iterator();
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public Status getStatus() {

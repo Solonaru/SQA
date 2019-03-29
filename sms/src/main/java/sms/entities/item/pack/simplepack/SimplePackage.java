@@ -1,6 +1,5 @@
 package sms.entities.item.pack.simplepack;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +29,8 @@ public class SimplePackage extends Item {
 		super();
 	}
 
-	public SimplePackage(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public SimplePackage(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
 
 	// ----- Getters and Setters -----

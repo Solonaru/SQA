@@ -17,7 +17,7 @@ import sms.enums.order.ReturnStatus;
 
 @Entity
 @NamedQuery(name = "Return.findAll", query = "SELECT r FROM Return r")
-public class Return implements Serializable{
+public class Return implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,22 +25,22 @@ public class Return implements Serializable{
 	@SequenceGenerator(name = "return_generator", sequenceName = "return_sequence", initialValue = 700000001, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	private Date date;
 	private String details;
-	private ReturnStatus status;
 	@OneToOne
 	private CartLine cartLine;
+	private ReturnStatus status;
+	private Date date;
 
 	// ----- Constructors -----
 	public Return() {
 		super();
 	}
 
-	public Return(Date date, String details, ReturnStatus status) {
+	public Return(String details) {
 		super();
-		this.date = date;
 		this.details = details;
-		this.status = status;
+		this.status = ReturnStatus.PENDING;
+		this.date = new Date(System.currentTimeMillis());
 	}
 
 	// ----- Getters and Setters -----
@@ -52,20 +52,20 @@ public class Return implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	public String getDetails() {
 		return details;
 	}
 
 	public void setDetails(String details) {
 		this.details = details;
+	}
+
+	public CartLine getCartLine() {
+		return cartLine;
+	}
+
+	public void setCartLine(CartLine cartLine) {
+		this.cartLine = cartLine;
 	}
 
 	public ReturnStatus getStatus() {
@@ -76,11 +76,11 @@ public class Return implements Serializable{
 		this.status = status;
 	}
 
-	public CartLine getCartLine() {
-		return cartLine;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setCartLine(CartLine cartLine) {
-		this.cartLine = cartLine;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

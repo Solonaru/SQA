@@ -1,6 +1,5 @@
 package sms.entities.item.pack;
 
-import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,8 +35,8 @@ public class Package extends Item implements ILineIterator {
 		super();
 	}
 
-	public Package(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public Package(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
 
 	// ------ Getters and Setters ------

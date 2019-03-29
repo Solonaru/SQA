@@ -100,22 +100,6 @@ public class Job implements Serializable, Comparable<Job> {
 		this.imageUrl = imageUrl;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 	public List<String> getRequirements() {
 		return requirements;
 	}
@@ -130,6 +114,22 @@ public class Job implements Serializable, Comparable<Job> {
 
 	public void setResponsabilities(List<String> responsibilities) {
 		this.responsabilities = responsibilities;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	public Status getStatus() {

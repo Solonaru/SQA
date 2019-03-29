@@ -57,6 +57,7 @@ public abstract class Account implements Serializable, Comparable<Account> {
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.creationDate = new Date(System.currentTimeMillis());
 	}
 
 	// -----Getters and Setters-----

@@ -1,7 +1,5 @@
 package sms.entities.item.product;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
@@ -17,8 +15,8 @@ public abstract class Product extends Item {
 		super();
 	}
 
-	public Product(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public Product(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
 
 }

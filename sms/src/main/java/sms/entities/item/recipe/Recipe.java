@@ -1,6 +1,5 @@
 package sms.entities.item.recipe;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -36,8 +35,8 @@ public class Recipe extends Product implements ILineIterator {
 		super();
 	}
 
-	public Recipe(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public Recipe(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
 
 	public List<RecipeLine> getRecipeLines() {
@@ -53,7 +52,7 @@ public class Recipe extends Product implements ILineIterator {
 		if (null == recipeLines) {
 			recipeLines = new ArrayList<RecipeLine>();
 		}
-		
+
 		recipeLines.add(recipeLine);
 		recipeLine.setRecipe(this);
 	}

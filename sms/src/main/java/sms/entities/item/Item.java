@@ -47,7 +47,6 @@ public abstract class Item implements Serializable, Comparable<Item> {
 	protected Integer id;
 	protected String name;
 	protected Integer stockQuantity;
-	protected Date updateDate;
 	protected String description;
 	protected String imageUrl;
 	@OneToMany(mappedBy = "item")
@@ -62,18 +61,19 @@ public abstract class Item implements Serializable, Comparable<Item> {
 	protected List<Comment> comments = new ArrayList<Comment>();
 	@ManyToOne
 	protected Employee employee;
+	protected Date updateDate;
 
 	// -----Constructors-----
 	public Item() {
 		super();
 	}
 
-	public Item(String name, Integer stockQuantity, Date updateDate, String description) {
+	public Item(String name, Integer stockQuantity, String description) {
 		super();
 		this.name = name;
 		this.stockQuantity = stockQuantity;
-		this.updateDate = updateDate;
 		this.description = description;
+		this.updateDate = new Date(System.currentTimeMillis());
 	}
 
 	// -----Getters and Setters-----
@@ -99,14 +99,6 @@ public abstract class Item implements Serializable, Comparable<Item> {
 
 	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
 	}
 
 	public String getDescription() {
@@ -163,6 +155,14 @@ public abstract class Item implements Serializable, Comparable<Item> {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	// -----Methods-----

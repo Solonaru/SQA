@@ -1,7 +1,5 @@
 package sms.entities.item.component;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
@@ -17,7 +15,7 @@ public abstract class Component extends Product {
 		super();
 	}
 
-	public Component(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public Component(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
 }

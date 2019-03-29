@@ -29,21 +29,22 @@ public class Payment implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 	private PaymentType type;
+	@OneToOne
+	@JsonIgnoreProperties(value = "payment")
+	private Orders orderz;
 	private PaymentStatus paymentStatus;
 	private Date date;
-	@OneToOne
-	private Orders orderz;
 
 	// -----Constructors-----
 	public Payment() {
 		super();
 	}
 
-	public Payment(PaymentType type, PaymentStatus paymentStatus, Date date) {
+	public Payment(PaymentType type) {
 		super();
 		this.type = type;
-		this.paymentStatus = paymentStatus;
-		this.date = date;
+		this.paymentStatus = PaymentStatus.PENDING;
+		this.date = new Date(System.currentTimeMillis());
 	}
 
 	// -----Getters and Setters-----
@@ -63,15 +64,6 @@ public class Payment implements Serializable {
 		this.type = type;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	@JsonIgnoreProperties(value = "payment")
 	public Orders getOrder() {
 		return orderz;
 	}
@@ -86,5 +78,13 @@ public class Payment implements Serializable {
 
 	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

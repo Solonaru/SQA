@@ -30,8 +30,6 @@ public class Orders implements Serializable {
 	@SequenceGenerator(name = "order_generator", sequenceName = "order_sequence", initialValue = 300000001, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	private Date date;
-	private OrderStatus status;
 	@OneToOne
 	@JsonIgnoreProperties(value = "order")
 	private Cart cart;
@@ -41,16 +39,14 @@ public class Orders implements Serializable {
 	@ManyToOne
 	@JsonIgnoreProperties(value = "orders")
 	private Customer customer;
+	private OrderStatus status;
+	private Date date;
 
 	// -----Constructors-----
 	public Orders() {
 		super();
-	}
-
-	public Orders(Date date, OrderStatus status) {
-		super();
-		this.date = date;
-		this.status = status;
+		this.status = OrderStatus.PENDING;
+		this.date = new Date(System.currentTimeMillis());
 	}
 
 	// -----Getters and Setters-----
@@ -60,22 +56,6 @@ public class Orders implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public OrderStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(OrderStatus status) {
-		this.status = status;
 	}
 
 	public Cart getCart() {
@@ -100,6 +80,22 @@ public class Orders implements Serializable {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
 	}
 
 	// ----- Methods -----

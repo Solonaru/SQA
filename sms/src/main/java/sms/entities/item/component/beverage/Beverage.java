@@ -1,7 +1,5 @@
 package sms.entities.item.component.beverage;
 
-import java.sql.Date;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
@@ -19,10 +17,10 @@ public class Beverage extends Component {
 		super();
 	}
 
-	public Beverage(String name, Integer stockQuantity, Date updateDate, String description) {
-		super(name, stockQuantity, updateDate, description);
+	public Beverage(String name, Integer stockQuantity, String description) {
+		super(name, stockQuantity, description);
 	}
-	
+
 	// -----Methods-----
 	public String toString() {
 		return "Name: " + name;
