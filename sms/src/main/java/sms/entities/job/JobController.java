@@ -1,5 +1,6 @@
 package sms.entities.job;
 
+import java.sql.Date;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sms.entities.job.IJobService;
-import sms.entities.job.Job;
 import sms.utils.DisplayData;
 
 @RestController
@@ -41,7 +40,6 @@ public class JobController {
 		return jobs;
 	}
 
-
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void insertJob(@RequestBody Job job) {
 		dataDisplay.printCrudInfo();
@@ -55,9 +53,12 @@ public class JobController {
 	}
 
 	@RequestMapping(value = "/delete/{jobId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void deleteJob(@PathVariable("jobId") int jobId) {
+	public void deleteCategory(@PathVariable("jobId") int jobId) {
 		dataDisplay.printCrudInfo(jobId);
-		jobService.deleteJobById(jobId);
+		Job job = jobService.findJobById(jobId).get();
+		job.removeJob();
+		job.setUpdateDate(new Date(System.currentTimeMillis()));
+		jobService.updateJob(job);
 	}
 
 }

@@ -1,73 +1,65 @@
 package sms.entities.job;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import sms.entities.account.employee.Employee;
-import sms.entities.job.requirements.Requirements;
-import sms.entities.job.responsibilities.Responsibilities;
 import sms.enums.Status;
 
 @Entity
 @NamedQuery(name = "Job.findAll", query = "SELECT j FROM Job j")
-@DiscriminatorValue("Job")
-@JsonDeserialize(as = Job.class)
-public class Job implements Serializable,  Comparable<Job> {
-
+public class Job implements Serializable, Comparable<Job> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "job_generator")
-	@SequenceGenerator(name = "job_generator", sequenceName = "job_sequence", initialValue = 661, allocationSize = 1)
+	@SequenceGenerator(name = "job_generator", sequenceName = "job_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 	private String name;
-	private String imageUrl;
+	private String jobStatus;
 	@Column(columnDefinition = "TEXT")
 	private String description;
+	private String imageUrl;
+	@ElementCollection
+	private List<String> requirements;
+	@ElementCollection
+	private List<String> responsabilities;
 	@ManyToOne
 	private Employee employee;
-	@OneToMany(mappedBy = "job")
-	@JsonIgnoreProperties(value = "job")
-	private List<Requirements> requirements = new ArrayList<Requirements>();
-	@OneToMany(mappedBy = "job")
-	@JsonIgnoreProperties(value = "job")
-	private List<Responsibilities> responsibilities = new ArrayList<Responsibilities>();
+	private Date updateDate;
 	private Status status;
 
-	//// Constructors
-
+	// ----- Constructors -----
 	public Job() {
 		super();
 	}
 
-	public Job(String name, String description, List<String> requirements, List<String> responsibilities) {
+	public Job(String name, String jobStatus, String description, String imageUrl, List<String> requirements,
+			List<String> responsabilities) {
 		super();
-		this.name=name;
-		this.description=description;
-		this.requirements=new ArrayList<Requirements>();
-		this.responsibilities=new ArrayList<Responsibilities>();
+		this.name = name;
+		this.jobStatus = jobStatus;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.requirements = requirements;
+		this.responsabilities = responsabilities;
+		this.updateDate = new Date(System.currentTimeMillis());
 		this.status = Status.ACTIVE;
 	}
 
-
-	///// Getters and setters
-
+	// ----- Getters and Setters -----
 	public Integer getId() {
 		return id;
 	}
@@ -84,12 +76,12 @@ public class Job implements Serializable,  Comparable<Job> {
 		this.name = name;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getJobStatus() {
+		return jobStatus;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setJobStatus(String jobStatus) {
+		this.jobStatus = jobStatus;
 	}
 
 	public String getDescription() {
@@ -100,6 +92,22 @@ public class Job implements Serializable,  Comparable<Job> {
 		this.description = description;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -108,20 +116,20 @@ public class Job implements Serializable,  Comparable<Job> {
 		this.employee = employee;
 	}
 
-	public List<Requirements> getRequirements() {
+	public List<String> getRequirements() {
 		return requirements;
 	}
 
-	public void setRequirements(List<Requirements> requirements) {
+	public void setRequirements(List<String> requirements) {
 		this.requirements = requirements;
 	}
 
-	public List<Responsibilities> getResponsibilities() {
-		return responsibilities;
+	public List<String> getResponsabilities() {
+		return responsabilities;
 	}
 
-	public void setResponsibilities(List<Responsibilities> responsibilities) {
-		this.responsibilities = responsibilities;
+	public void setResponsabilities(List<String> responsibilities) {
+		this.responsabilities = responsibilities;
 	}
 
 	public Status getStatus() {
@@ -132,11 +140,6 @@ public class Job implements Serializable,  Comparable<Job> {
 		this.status = status;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 	// ----- Methods -----
 	public int compareTo(Job job) {
 		return -job.getName().compareToIgnoreCase(this.getName());
@@ -144,19 +147,5 @@ public class Job implements Serializable,  Comparable<Job> {
 
 	public void removeJob() {
 		this.setStatus(Status.INACTIVE);
-
-		if (null != this.getRequirements()) {
-			for (Requirements requirements : this.getRequirements()) {
-				requirements.setJob(null);
-			}
-		}
-
-		if (null != this.getResponsibilities()) {
-			for (Responsibilities responsibilities : this.getResponsibilities()) {
-				responsibilities.setJob(null);
-			}
-		}
-		this.responsibilities=null;
-		this.requirements = null;
 	}
 }

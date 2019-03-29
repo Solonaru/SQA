@@ -1,4 +1,5 @@
 package sms.entities.job;
+
 import java.util.List;
 
 import java.util.Optional;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import sms.enums.Status;
 
 @Service
-public class JobService implements IJobService{
+public class JobService implements IJobService {
 
 	@Autowired
 	private IJobRepository jobRepository;
@@ -21,8 +22,9 @@ public class JobService implements IJobService{
 	public List<Job> findAllJobs() {
 		return (List<Job>) jobRepository.findAll();
 	}
+
 	public List<Job> findAllActiveJobs() {
-		return(List<Job>) jobRepository.findAllByStatus(Status.ACTIVE);
+		return (List<Job>) jobRepository.findAllByStatus(Status.ACTIVE);
 	}
 
 	public void insertJob(Job job) {
@@ -37,6 +39,4 @@ public class JobService implements IJobService{
 		jobRepository.deleteById(jobId);
 	}
 
-
-	
 }

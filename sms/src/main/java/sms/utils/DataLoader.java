@@ -92,142 +92,175 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	}
 
 	private void updateJob() {
-		Job waiter = new Job("Waiter", "Part-time",
-				Arrays.asList("Math Skills ", "Previous experience as a waiter ", 
+		Job waiter = new Job("Waiter", "Part-time", "to add description", "to add image",
+				Arrays.asList("Math Skills ",
+						"Previous experience as a waiter ",
 						"Hands-on experience with cash register and ordering information system (e.g. Revel POS or Toast POS)",
 						"Attentiveness and patience for customers", "Flexibility to work in shifts",
-						"High school diploma; food safety training is a plus"), 
-				Arrays.asList("Serve food to clients ", "Clean tables", "Follow all relevant health department regulations ", 
-						"Deliver checks and collect bill payments","Offer menu recommendations upon request", 
+						"High school diploma; food safety training is a plus"),
+				Arrays.asList("Serve food to clients ",
+						"Clean tables",
+						"Follow all relevant health department regulations ",
+						"Deliver checks and collect bill payments", "Offer menu recommendations upon request",
 						"Present menu and provide detailed information when asked (e.g. about portions, ingredients or potential food allergies)"));
-		
-		Job manager = new Job("Manager", "Full-time",
+
+		Job manager = new Job("Manager", "Full-time", "to add description", "to add image",
 				Arrays.asList("Proven experience as a General Manager or similar executive role ",
-				"Experience in planning and budgeting ", "Strong analytical ability", 
-				"Knowledge of business process and functions (finance, HR, procurement, operations etc.)", 
-				"Problem-solving aptitude", "BSc/BA in Business or relevant field; MSc/MA is a plus"), 
-				Arrays.asList("Oversee day-to-day operations ", "Design strategy and set goals for growth"
-						,"Maintain budgets and optimize expenses", "Set policies and processes", 
-						"Ensure employees work productively and develop professionally", "Cooperate with the rest of the staff",
+						"Experience in planning and budgeting ",
+						"Strong analytical ability",
+						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
+						"Problem-solving aptitude",
+						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
+				Arrays.asList("Oversee day-to-day operations ",
+						"Design strategy and set goals for growth",
+						"Maintain budgets and optimize expenses",
+						"Set policies and processes",
+						"Ensure employees work productively and develop professionally",
+						"Cooperate with the rest of the staff",
 						"Provide solutions to issues (e.g. profit decline, employee conflicts, loss of business to competitors)"));
-		
-		Job sysAdmin = new Job("System Administrator", "Full-time", 
+
+		Job sysAdmin = new Job("System Administrator", "Full-time", "to add description", "to add image",
 				Arrays.asList("Proven experience as a System Administrator, Network Administrator or similar role ",
 						"Experience with databases, networks (LAN, WAN) and patch management ",
 						"Knowledge of system security (e.g. intrusion detection systems) and data backup/recovery",
 						"Familiarity with various operating systems and platforms", "Problem-solving aptitude",
-						"BSc/Ba in Information Technology, Computer Science or a related discipline; professional "
-						+ "certification (e.g. Microsoft Certified Systems Administrator (MCSA)) is a plus"), 
-				Arrays.asList("Install and configure software and hardware ", 
+						"BSc/Ba in Information Technology, Computer Science or a related discipline; professional certification (e.g. Microsoft Certified Systems Administrator (MCSA)) is a plus"),
+				Arrays.asList("Install and configure software and hardware ",
 						"Manage network servers and technology toolss",
-						"Set up accounts and workstations", "Troubleshoot issues and outages",
-						"Monitor performance and maintain systems according to requirements", 
-						"Upgrade systems with new releases and models", 
+						"Set up accounts and workstations",
+						"Troubleshoot issues and outages",
+						"Monitor performance and maintain systems according to requirements",
+						"Upgrade systems with new releases and models",
 						"Develop expertise to train staff on new technologies",
 						"Build an internal wiki with technical documentation, manuals and IT policies"));
-		
-		Job operator = new Job("Operator", "Full-time", 
-				Arrays.asList("Great communication skills ", "Great English skills ",
+
+		Job operator = new Job("Operator", "Full-time", "to add description", "to add image",
+				Arrays.asList("Great communication skills ",
+						"Great English skills ",
 						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
-						"Proeficient with handling software programs", "Problem-solving aptitude", 
-						"BSc/BA in Business or relevant field; MSc/MA is a plus"), 
-				Arrays.asList("Perform day-to-day operations ", "Keep in touch with the administrators"
-						,"Cooperate with the rest of the staff"));
-		
-		Job janitor = new Job("Janitor", "Full-time", 
-				Arrays.asList("Proven working experience as a janitor ", "Ability to handle heavy equipment and machinery",
-						"Knowledge of cleaning chemicals and supplies", "Familiarity with Material Safety Data Sheets", 
-						"Integrity and ability to work independently", "High school degree"), 
-				Arrays.asList("Clean and supply designated building areas (dusting, sweeping, vacuuming, mopping,"
-						+ " cleaning ceiling vents, restroom cleaning etc) ", "Stock and maintain supply rooms",
+						"Proeficient with handling software programs",
+						"Problem-solving aptitude",
+						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
+				Arrays.asList("Perform day-to-day operations ",
+						"Keep in touch with the administrators",
+						"Cooperate with the rest of the staff"));
+
+		Job janitor = new Job("Janitor", "Full-time", "to add description", "to add image",
+				Arrays.asList("Proven working experience as a janitor ",
+						"Ability to handle heavy equipment and machinery",
+						"Knowledge of cleaning chemicals and supplies",
+						"Familiarity with Material Safety Data Sheets",
+						"Integrity and ability to work independently",
+						"High school degree"),
+				Arrays.asList(
+						"Clean and supply designated building areas (dusting, sweeping, vacuuming, mopping, cleaning ceiling vents, restroom cleaning etc) ",
+						"Stock and maintain supply rooms",
 						"Perform and document routine inspection and maintenance activities",
 						"Notify management of occurring deficiencies or needs for repairs",
-						"Make adjustments and minor repairs", "Follow all health and safety regulations"));
-		
-		Job frontendDev = new Job("Front End Developer", "Full-time",
-				Arrays.asList("Proven work experience as a Front-end developer ", 
+						"Make adjustments and minor repairs",
+						"Follow all health and safety regulations"));
+
+		Job frontendDev = new Job("Front End Developer", "Full-time", "to add description", "to add image",
+				Arrays.asList("Proven work experience as a Front-end developer ",
 						"Hands on experience with markup languages ",
-						"Experience with JavaScript, CSS and jQuery", 
+						"Experience with JavaScript, CSS and jQuery",
 						"In-depth understanding of the entire web development process (design, development and deployment)",
-						"Understanding of layout aesthetics", "Knowledge of SEO principles",
+						"Understanding of layout aesthetics",
+						"Knowledge of SEO principles",
 						"Familiarity with software like Adobe Suite, Photoshop and content management systems",
-						"BSc degree in Computer Science or relevant field"), 
-				Arrays.asList("Maintain and improve website ", 
+						"BSc degree in Computer Science or relevant field"),
+				Arrays.asList("Maintain and improve website ",
 						"Use markup languages like HTML to create user-friendly web pages",
-						"Optimize applications for maximum speed", "Design mobile-based features", 
-						"Manage cutting-edge technologies to improve legacy applications", 
+						"Optimize applications for maximum speed",
+						"Design mobile-based features",
+						"Manage cutting-edge technologies to improve legacy applications",
 						"Collaborate with back-end developers and web designers to improve usability",
 						"Get feedback from, and build solutions for, users and customers",
 						"Write functional requirement documents and guides",
 						"Create quality mockups and prototypes",
 						"Ensure high quality graphic standards and brand consistency",
 						"Stay up-to-date on emerging technologies"));
-		
-		Job backendDev = new Job("Back End Developer", "Full-time", 
-				Arrays.asList("Proven work experience as a Back-end developer ", 
+
+		Job backendDev = new Job("Back End Developer", "Full-time", "to add description", "to add image",
+				Arrays.asList("Proven work experience as a Back-end developer ",
 						"In-depth understanding of the entire web development process"
-						+ " (design, development and deployment) ",
+								+ " (design, development and deployment) ",
 						"Hands on experience with programming languages like Java, Ruby, PHP and Python",
-						"Working knowledge of CMS framework", "Familiarity with front-end languages (e.g. HTML, JavaScript and CSS)",
-						"Teamwork skills with a problem-solving attitude", "BSc degree in Computer Science or relevant field"),
+						"Working knowledge of CMS framework",
+						"Familiarity with front-end languages (e.g. HTML, JavaScript and CSS)",
+						"Teamwork skills with a problem-solving attitude",
+						"BSc degree in Computer Science or relevant field"),
 				Arrays.asList("Participate in the entire application lifecycle, focusing on coding and debugging ",
-						"Write clean code to develop functional web applications", 
-						"Troubleshoot and debug applications", "Perform UI tests to optimize performance", 
-						"Manage cutting-edge technologies to improve legacy applications", 
-						"Gather and address technical and design requirements", 
+						"Write clean code to develop functional web applications",
+						"Troubleshoot and debug applications", "Perform UI tests to optimize performance",
+						"Manage cutting-edge technologies to improve legacy applications",
+						"Gather and address technical and design requirements",
 						"Provide training and support to internal teams",
 						"Build reusable code and libraries for future use",
 						"Liaise with developers, designers and system administrators to identify new features",
 						"Follow emerging technologies"));
-		
-		Job deliveryDriver = new Job("Delivery Driver", "Full-time", 
-				Arrays.asList("Proven working experience as a Delivery Driver ", 
+
+		Job deliveryDriver = new Job("Delivery Driver", "Full-time", "to add description", "to add image",
+				Arrays.asList("Proven working experience as a Delivery Driver ",
 						"Valid professional driver’s license ",
 						"Ability to operate forklifts and tractors in a variety of weather and traffic conditions",
 						"Excellent organizational and time management skills",
-						"Good driving record with no traffic violations", "High school degree"), 
-				Arrays.asList("Deliver a wide variety of items to different addresses and through different routes ", 
-						"Follow routes and time schedule", "Collect payments",
+						"Good driving record with no traffic violations",
+						"High school degree"),
+				Arrays.asList("Deliver a wide variety of items to different addresses and through different routes ",
+						"Follow routes and time schedule",
+						"Collect payments",
 						"Load, unload, prepare, inspect and operate a delivery vehicle",
 						"Ask for feedback on provided services and resolve clients’ complaints",
 						"Inform customers about new products and services"));
-		
-		Job economist = new Job("Economist", "Full-time",
-				Arrays.asList("Proven experience as an economist", "Excellent communication skills",
+
+		Job economist = new Job("Economist", "Full-time", "to add description", "to add image",
+				Arrays.asList("Proven experience as an economist",
+						"Excellent communication skills",
 						"Excellent knowledge of accounting regulations and practices",
 						"In-depth experience in risk analysis, budgeting and forecasting",
 						"Excellent organizational and time management skills",
 						"Proficient in MS Office (especially Excel) and finance software",
-						"BSc/BA in Accounting, Finance or related field; professional certification (e.g. CPA) is a plus"), 
-				Arrays.asList("Gather financial data and ledgers ", "Manage periodical reporting",
+						"BSc/BA in Accounting, Finance or related field; professional certification (e.g. CPA) is a plus"),
+				Arrays.asList("Gather financial data and ledgers ",
+						"Manage periodical reporting",
 						"Consolidate and analyze financial statements and results",
-						"Prepare budgets and monitor expenditures", "Handle monthly, quarterly and annual closings",
+						"Prepare budgets and monitor expenditures",
+						"Handle monthly, quarterly and annual closings",
 						"Oversee external and internal audits"));
-		
-		Job cook = new Job("Cook", "Part-time", 
-				Arrays.asList("Proven experience as cook", "Ability to work in a team ",
+
+		Job cook = new Job("Cook", "Part-time", "to add description", "to add image",
+				Arrays.asList("Proven experience as cook",
+						"Ability to work in a team ",
 						"Experience in using cutting tools, cookware and bakeware",
 						"Knowledge of various cooking procedures and methods (grilling, baking, boiling etc.)",
-						"Very good communication skills", "Excellent physical condition and stamina",
-						"High school diploma or equivalent; Diploma from a culinary school will be an advantage"), 
-				Arrays.asList("Set up workstations with all needed ingredients and cooking equipment ", 
+						"Very good communication skills",
+						"Excellent physical condition and stamina",
+						"High school diploma or equivalent; Diploma from a culinary school will be an advantage"),
+				Arrays.asList("Set up workstations with all needed ingredients and cooking equipment ",
 						"Prepare ingredients to use in cooking (chopping and peeling vegetables, cutting meat etc.)",
-						"Cook food in various utensils or grillers", "Check food while cooking to stir or turn",
+						"Cook food in various utensils or grillers",
+						"Check food while cooking to stir or turn",
 						"Ensure great presentation by dressing dishes before they are served",
-						"Keep a sanitized and orderly environment in the kitchen","Ensure all food and other items are stored properly",
-						"Check quality of ingredients", "Monitor stock and place orders when there are shortages"));
-		
-		Job custRel = new Job("Customer Relations Representant", "Full-time", 
-				Arrays.asList("Experience as a Customer Relations Specialist or similar CS role ", 
-						"Familiarity with our industry is a plus ", "Understanding of how CRM systems work",
+						"Keep a sanitized and orderly environment in the kitchen",
+						"Ensure all food and other items are stored properly",
+						"Check quality of ingredients",
+						"Monitor stock and place orders when there are shortages"));
+
+		Job custRel = new Job("Customer Relations Representant", "Full-time", "to add description", "to add image",
+				Arrays.asList("Experience as a Customer Relations Specialist or similar CS role ",
+						"Familiarity with our industry is a plus ",
+						"Understanding of how CRM systems work",
 						"Experience using help desk software and remote support tools",
-						"Ability to work in a team", "Very good communication skills",
-						"Multi-tasking abilities", "BSc in Information Technology or relevant diploma"), 
-				Arrays.asList("Respond to customer queries in a timely and accurate way, via phone, email or chat ", 
+						"Ability to work in a team",
+						"Very good communication skills",
+						"Multi-tasking abilities",
+						"BSc in Information Technology or relevant diploma"),
+				Arrays.asList("Respond to customer queries in a timely and accurate way, via phone, email or chat ",
 						"Identify customer needs and help customers use specific features",
 						"Monitor customer complaints on social media and reach out to provide assistance",
 						"Share feature requests and effective workarounds with team member"));
-		
+
 		jobService.insertJob(waiter);
 		jobService.insertJob(manager);
 		jobService.insertJob(sysAdmin);
@@ -239,7 +272,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		jobService.insertJob(economist);
 		jobService.insertJob(cook);
 		jobService.insertJob(custRel);
-		
 	}
 
 	private void updateCounty() {
