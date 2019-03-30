@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../providers/services/category.service';
-import { Category } from '../../../entities/category';
+import { Category } from '../../../entities/classes/category';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../providers/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   categories: Category[];
 
-  constructor(private categoryService: CategoryService, private router: Router) {
+  constructor(private auth: AuthService, private categoryService: CategoryService, private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -27,6 +28,11 @@ export class HeaderComponent implements OnInit {
   onClick(category: Category) {
     /* Load the products page */
     this.router.navigate(['products/', { cat: category.id }]);
+  }
+
+  logout() {
+    this.auth.setLoggedOut();
+    this.router.navigate(['login']);
   }
 
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SlideshowModule } from 'ng-simple-slideshow';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/front-office/header/header.component';
@@ -25,6 +26,7 @@ import { BackEndDevComponent } from './components/front-office/careers/back-end-
 import { CustomerRelationsComponent } from './components/front-office/careers/customer-relations/customer-relations.component';
 import { DeliveryPersonComponent } from './components/front-office/careers/delivery-person/delivery-person.component';
 import { OperatorComponent } from './components/front-office/careers/operator/operator.component';
+import { HomeComponent } from './components/front-office/home/home.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +50,15 @@ import { OperatorComponent } from './components/front-office/careers/operator/op
     BackEndDevComponent,
     CustomerRelationsComponent,
     DeliveryPersonComponent,
-    OperatorComponent
+    OperatorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SlideshowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

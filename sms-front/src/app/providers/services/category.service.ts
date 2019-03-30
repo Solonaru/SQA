@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import { map } from 'rxjs/operators';
 
-import { Category } from '../../entities/category';
+import { Category } from '../../entities/classes/category';
 
 
 @Injectable({

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 import { User } from '../../entities/classes/user';
+import { Observable } from '../../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +12,28 @@ import { User } from '../../entities/classes/user';
 export class AuthService {
 
   private BASE_URL: string = "http://localhost:8090/account/";
-  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn' || 'false'));
 
   constructor(private http: HttpClient) { }
 
-  setLoggedIn(value: boolean) {
-    this.loggedInStatus = value;
-    localStorage.setItem('loggedIn', 'true');
+  setLoggedIn(userId: Number) {
+    console.log(userId);
+    localStorage.setItem('userLoggedIn', JSON.stringify(userId));
   }
 
-  get isLoggedIn() {
-    return JSON.parse(localStorage.getItem('loggedIn' || this.loggedInStatus.toString()));
+  setLoggedOut() {
+    localStorage.removeItem('userLoggedIn');
   }
 
-  login(user: User): Observable<any> {
+  /* Should always check if a user is logged in before calling this method (isAUserLoggedIn())*/
+  getUserLoggedIn() : Observable<User> {
+    return this.http.get(this.BASE_URL + localStorage.getItem('userLoggedIn')).pipe(map((res: User) => { return res }));
+  }
+
+  isAUserLoggedIn(): Boolean {
+    return null !== localStorage.getItem('userLoggedIn');
+  }
+
+  login(user: User) {
     return this.http.post(this.BASE_URL + 'login', user)
       .pipe(map((res: any) => { return res }));
   }

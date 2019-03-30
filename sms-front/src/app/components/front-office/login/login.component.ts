@@ -26,15 +26,13 @@ export class LoginComponent implements OnInit {
     this.user.username = target.querySelector('#username').value;
     this.user.password = target.querySelector('#password').value;
 
-    this.auth.login(this.user).subscribe(data => { this.foundUser = data; console.log(data); this.loginCheck(); });
+    this.auth.login(this.user).subscribe(data => { this.foundUser = data; this.loginCheck(); });
   }
 
-  // TODO: Decide how login works
   loginCheck() {
     if (this.foundUser != null) {
-      //this.router.navigate(['admin']);
-      this.auth.setLoggedIn(true);
-      window.alert("Successfully logged in!");
+      this.router.navigate(['home']);
+      this.auth.setLoggedIn(this.foundUser.id);
     } else {
       window.alert("No user found!!");
     }
