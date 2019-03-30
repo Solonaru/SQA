@@ -27,7 +27,11 @@ import sms.entities.address.logic.AddressBuilder;
 import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
+import sms.entities.item.component.beverage.Beverage;
 import sms.entities.item.component.ingredient.Ingredient;
+import sms.entities.item.pack.Package;
+import sms.entities.item.pack.line.IPackageLineService;
+import sms.entities.item.pack.line.PackageLine;
 import sms.entities.item.recipe.Recipe;
 import sms.entities.item.recipe.line.IRecipeLineService;
 import sms.entities.item.recipe.line.RecipeLine;
@@ -55,6 +59,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private IItemService itemService;
 	@Autowired
 	private IRecipeLineService recipeLineService;
+	@Autowired
+	private IPackageLineService packageLineService;
 	@Autowired
 	private IJobService jobService;
 
@@ -404,6 +410,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		Category category5 = new Category("Dough recipes", "Dough recipes category");
 		Category category6 = new Category("Tomato sauce recipes", "Tomato sauce recipes category");
+		
+		Category category7 = new Category("Packages", "Packages cateogry");
 
 		categoryService.insertCategory(category1);
 		categoryService.insertCategory(category2);
@@ -420,6 +428,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		categoryService.insertCategory(category5);
 		categoryService.insertCategory(category6);
+		
+		categoryService.insertCategory(category7);
 
 		/*-------------------------------------------*/
 
@@ -527,6 +537,13 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		pantry9.setCategory(category407);
 		pantry9.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgDarkBrownSugar.jpg");
+		
+		
+		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar", 4, "");
+		beverage1.setCategory(category3);
+		beverage1.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgCocaColaZeroSugar.jpg");
+		
 
 		itemService.insertItem(meatAndPoultry1);
 		itemService.insertItem(meatAndPoultry2);
@@ -557,6 +574,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(pantry7);
 		itemService.insertItem(pantry8);
 		itemService.insertItem(pantry9);
+		
+		
+		itemService.insertItem(beverage1);
 
 		/*-------------------------------------------*/
 
@@ -609,8 +629,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		recipeLineService.insertRecipeLine(recipeLine10202);
 		recipeLineService.insertRecipeLine(recipeLine10203);
 		recipeLineService.insertRecipeLine(recipeLine10204);
-		
-		/* TODO: Add the listed recipes
 
 		/*
 		 * Tomato Sauce
@@ -620,6 +638,32 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		 *  - Oregano
 		 *  - Salt)
 		 */
+		RecipeLine recipeLine10301 = new RecipeLine(300);
+		recipeLine10301.setComponent(vegetables1);
+		RecipeLine recipeLine10302 = new RecipeLine(5);
+		recipeLine10302.setComponent(vegetables5);
+		RecipeLine recipeLine10303 = new RecipeLine(10);
+		recipeLine10303.setComponent(pantry1);
+		RecipeLine recipeLine10304 = new RecipeLine(30);
+		recipeLine10304.setComponent(vegetables8);
+		RecipeLine recipeLine10305 = new RecipeLine(10);
+		recipeLine10305.setComponent(pantry2);
+		
+		Recipe recipe103 = new Recipe("Tomato Sauce", 1,
+				"Tomato Sauce recipe");
+		recipe103.setCategory(category6);
+		recipe103.addLine(recipeLine10301);
+		recipe103.addLine(recipeLine10302);
+		recipe103.addLine(recipeLine10303);
+		recipe103.addLine(recipeLine10304);
+		recipe103.addLine(recipeLine10305);
+		
+		itemService.insertItem(recipe103);
+		recipeLineService.insertRecipeLine(recipeLine10301);
+		recipeLineService.insertRecipeLine(recipeLine10302);
+		recipeLineService.insertRecipeLine(recipeLine10303);
+		recipeLineService.insertRecipeLine(recipeLine10304);
+		recipeLineService.insertRecipeLine(recipeLine10305);
 		
 		/* Grilled Thin-Crust Sweet Italian Sausage Pizza
 		 * 	- Grilled Thin-Crust (Unbleached All-Purpose Flour, Salt)
@@ -628,6 +672,33 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		 *  - Fresh Mozzarella Cheese
 		 *  - Italian Pork Sausage
 		 */
+		RecipeLine recipeLine10401 = new RecipeLine(1);
+		recipeLine10401.setComponent(recipe101);
+		RecipeLine recipeLine10402 = new RecipeLine(1);
+		recipeLine10402.setComponent(recipe103);
+		RecipeLine recipeLine10403 = new RecipeLine(300);
+		recipeLine10403.setComponent(dairyFoods3);
+		RecipeLine recipeLine10404 = new RecipeLine(280);
+		recipeLine10404.setComponent(dairyFoods4);
+		RecipeLine recipeLine10405 = new RecipeLine(120);
+		recipeLine10405.setComponent(meatAndPoultry3);
+		
+		Recipe recipe104 = new Recipe("Grilled Thin-Crust Sweet Italian Sausage Pizza", 1,
+				"Grilled Thin-Crust Sweet Italian Sausage Pizza recipe");
+		recipe104.setCategory(category1);
+		recipe104.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledThinCrustSweetItalianSausagePizza.jpg");
+		recipe104.addLine(recipeLine10401);
+		recipe104.addLine(recipeLine10402);
+		recipe104.addLine(recipeLine10403);
+		recipe104.addLine(recipeLine10404);
+		recipe104.addLine(recipeLine10405);
+		
+		itemService.insertItem(recipe104);
+		recipeLineService.insertRecipeLine(recipeLine10401);
+		recipeLineService.insertRecipeLine(recipeLine10402);
+		recipeLineService.insertRecipeLine(recipeLine10403);
+		recipeLineService.insertRecipeLine(recipeLine10404);
+		recipeLineService.insertRecipeLine(recipeLine10405);
 		
 		/*
 		 * Grilled Whole-Wheat Crust Mozzarella Pizza
@@ -636,15 +707,81 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		 *  - Pecorino-Romano Cheese
 		 *  - Fresh Mozzarella Cheese
 		 */
+		RecipeLine recipeLine10501 = new RecipeLine(1);
+		recipeLine10501.setComponent(recipe102);
+		RecipeLine recipeLine10502 = new RecipeLine(1);
+		recipeLine10502.setComponent(recipe103);
+		RecipeLine recipeLine10503 = new RecipeLine(220);
+		recipeLine10503.setComponent(dairyFoods3);
+		RecipeLine recipeLine10504 = new RecipeLine(420);
+		recipeLine10504.setComponent(dairyFoods4);
+		
+		Recipe recipe105 = new Recipe("Grilled Whole-Wheat Crust Mozzarella Pizza", 1,
+				"Grilled Whole-Wheat Crust Mozzarella Pizza recipe");
+		recipe105.setCategory(category1);
+		recipe105.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledWholeWheatCrustMozzarellaPizza.jpg");
+		recipe105.addLine(recipeLine10501);
+		recipe105.addLine(recipeLine10502);
+		recipe105.addLine(recipeLine10503);
+		recipe105.addLine(recipeLine10504);
+		
+		itemService.insertItem(recipe105);
+		recipeLineService.insertRecipeLine(recipeLine10501);
+		recipeLineService.insertRecipeLine(recipeLine10502);
+		recipeLineService.insertRecipeLine(recipeLine10503);
+		recipeLineService.insertRecipeLine(recipeLine10504);
 		
 		/*
 		 * Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza
-		 *  - Grilled Thin-Crust (Enriched Unbromated Wheat Flour, Salt)
+		 *  - Grilled Thin-Crust (Unbleached All-Purpose Flour, Salt)
 		 *  - Gorgonzola Cheese
 		 *  - Fresh Mozzarella Cheese
 		 *  - Pork Bacon
 		 *  - Onion
 		 */
+		RecipeLine recipeLine10601 = new RecipeLine(1);
+		recipeLine10601.setComponent(recipe101);
+		RecipeLine recipeLine10602 = new RecipeLine(140);
+		recipeLine10602.setComponent(dairyFoods5);
+		RecipeLine recipeLine10603 = new RecipeLine(280);
+		recipeLine10603.setComponent(dairyFoods4);
+		RecipeLine recipeLine10604 = new RecipeLine(220);
+		recipeLine10604.setComponent(meatAndPoultry4);
+		RecipeLine recipeLine10605 = new RecipeLine(30);
+		recipeLine10605.setComponent(vegetables6);
+		
+		Recipe recipe106 = new Recipe("Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza", 1,
+				"Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza recipe");
+		recipe106.setCategory(category1);
+		recipe106.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledThinCrustOnionGorgonzolaAndBaconPizza.jpg");
+		recipe106.addLine(recipeLine10601);
+		recipe106.addLine(recipeLine10602);
+		recipe106.addLine(recipeLine10603);
+		recipe106.addLine(recipeLine10604);
+		recipe106.addLine(recipeLine10605);
+		
+		itemService.insertItem(recipe106);
+		recipeLineService.insertRecipeLine(recipeLine10601);
+		recipeLineService.insertRecipeLine(recipeLine10602);
+		recipeLineService.insertRecipeLine(recipeLine10603);
+		recipeLineService.insertRecipeLine(recipeLine10604);
+		recipeLineService.insertRecipeLine(recipeLine10605);
+		
+		/*-------------------------------------------*/
+		
+		PackageLine packageLine10101 = new PackageLine(1);
+		packageLine10101.setProduct(recipe106);
+		PackageLine packageLine10102 = new PackageLine(1);
+		packageLine10102.setProduct(beverage1);
+		
+		Package package101 = new Package("Pizza + Coca-Cola", 1, "");
+		package101.setCategory(category7);
+		package101.addLine(packageLine10101);
+		package101.addLine(packageLine10102);
+		
+		itemService.insertItem(package101);
+		packageLineService.insertPackageLine(packageLine10101);
+		packageLineService.insertPackageLine(packageLine10102);
 
 	}
 

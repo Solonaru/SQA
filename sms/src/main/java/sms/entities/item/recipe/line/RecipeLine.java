@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import sms.entities.item.component.Component;
+import sms.entities.item.product.Product;
 import sms.entities.item.recipe.Recipe;
 import sms.entities.logic.ILine;
 
@@ -35,7 +35,7 @@ public class RecipeLine implements Serializable, ILine {
 	private Recipe recipe;
 	@ManyToOne
 	@JsonIgnoreProperties(value = "category")
-	private Component component;
+	private Product product;
 
 	// ------- Constructors ------
 	public RecipeLine() {
@@ -72,12 +72,12 @@ public class RecipeLine implements Serializable, ILine {
 		this.recipe = recipe;
 	}
 
-	public Component getComponent() {
-		return component;
+	public Product getComponent() {
+		return product;
 	}
 
-	public void setComponent(Component component) {
-		this.component = component;
+	public void setComponent(Product component) {
+		this.product = component;
 	}
 
 	// ----- Methods -----
