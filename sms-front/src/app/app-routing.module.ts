@@ -12,6 +12,7 @@ import { CategoryMngComponent } from './components/back-office/category-mng/cate
 
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
+import { ProductMngComponent } from './components/back-office/product-mng/product-mng.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
   { path: 'category-mng', component: CategoryMngComponent },
+  { path: 'product-mng', component: ProductMngComponent },
 
   { path: 'careers', component: CareersComponent },
   { path: 'job', component: JobComponent }

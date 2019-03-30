@@ -17,6 +17,7 @@ import { CategoryMngComponent } from './components/back-office/category-mng/cate
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { HomeComponent } from './components/front-office/home/home.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
+import { ProductMngComponent } from './components/back-office/product-mng/product-mng.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { JobComponent } from './components/front-office/careers/job/job.componen
 
     CareersComponent,
     JobComponent,
-    HomeComponent
+    HomeComponent,
+    ProductMngComponent
   ],
   imports: [
     BrowserModule,
