@@ -4,31 +4,29 @@
 </head>
 
 <body>
-<main>
+  <main>
     <div *ngFor="let job of jobs" class="container">
-      <div *ngIf="job">  
+      <div *ngIf="job">
 
-      <h1>Job brief</h1>
+        <h1>Job brief</h1>
         <br>
-        <div *ngFor="let url of job.imageUrl">
-           <img src="{{url}}" alt="imageUrl">
-         </div>
+        <img src="{{job.imageUrl}}" alt="imageUrl">
         <br>
-      <p>We are looking for {{job.name}}s.
+        <p>We are looking for {{job.name}}s.
+          <br> The job is {{job.jobStatus}}.
+        </p>
         <br>
-        The job is {{job.jobStatus}}.
-      </p>
-        <br>
-      <h2> Responsibilities</h2> 
+        <h2> Responsibilities</h2>
         <ul *ngFor="let responsibility of job.responsabilities">
           <li>{{responsibility}}</li>
         </ul>
-      <h2> Requirements</h2> 
+        <h2> Requirements</h2>
         <ul *ngFor="let requirement of job.requirements">
           <li>{{requirement}}</li>
         </ul>
-       </div>
+
+      </div>
     </div>
-      
+
   </main>
 </body>

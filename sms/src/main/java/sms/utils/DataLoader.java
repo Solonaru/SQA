@@ -97,7 +97,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	private void updateJob() {
 		Job waiter = new Job("Waiter", "Part-time", "to add description", 
-				"../../../../assets/images/jobs/imgWaiter.jpeg",
+				"../../../../assets/images/jobs/imgWaiter.jpg",
 				Arrays.asList("Math Skills ",
 						"Previous experience as a waiter ",
 						"Hands-on experience with cash register and ordering information system (e.g. Revel POS or Toast POS)",
@@ -110,7 +110,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Present menu and provide detailed information when asked (e.g. about portions, ingredients or potential food allergies)"));
 
 		Job manager = new Job("Manager", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgManager.jpeg",
+				"../../../../assets/images/jobs/imgManager.jpg",
 				Arrays.asList("Proven experience as a General Manager or similar executive role ",
 						"Experience in planning and budgeting ",
 						"Strong analytical ability",
@@ -126,7 +126,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Provide solutions to issues (e.g. profit decline, employee conflicts, loss of business to competitors)"));
 
 		Job sysAdmin = new Job("System Administrator", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgSysAdmin.jpeg",
+				"../../../../assets/images/jobs/imgSysAdmin.jpg",
 				Arrays.asList("Proven experience as a System Administrator, Network Administrator or similar role ",
 						"Experience with databases, networks (LAN, WAN) and patch management ",
 						"Knowledge of system security (e.g. intrusion detection systems) and data backup/recovery",
@@ -142,7 +142,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Build an internal wiki with technical documentation, manuals and IT policies"));
 
 		Job operator = new Job("Operator", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgOperator.jpeg",
+				"../../../../assets/images/jobs/imgOperator.jpg",
 				Arrays.asList("Great communication skills ",
 						"Great English skills ",
 						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
@@ -154,7 +154,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Cooperate with the rest of the staff"));
 
 		Job janitor = new Job("Janitor", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgJanitor.jpeg",
+				"../../../../assets/images/jobs/imgJanitor.jpg",
 				Arrays.asList("Proven working experience as a janitor ",
 						"Ability to handle heavy equipment and machinery",
 						"Knowledge of cleaning chemicals and supplies",
@@ -170,7 +170,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Follow all health and safety regulations"));
 
 		Job frontendDev = new Job("Front End Developer", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgFrontEndDev.jpeg",
+				"../../../../assets/images/jobs/imgFrontEndDev.jpg",
 				Arrays.asList("Proven work experience as a Front-end developer ",
 						"Hands on experience with markup languages ",
 						"Experience with JavaScript, CSS and jQuery",
@@ -192,7 +192,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Stay up-to-date on emerging technologies"));
 
 		Job backendDev = new Job("Back End Developer", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgBackEndDev.jpeg",
+				"../../../../assets/images/jobs/imgBackEndDev.jpg",
 				Arrays.asList("Proven work experience as a Back-end developer ",
 						"In-depth understanding of the entire web development process"
 								+ " (design, development and deployment) ",
@@ -212,7 +212,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Follow emerging technologies"));
 
 		Job deliveryDriver = new Job("Delivery Driver", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgDelivery.jpeg",
+				"../../../../assets/images/jobs/imgDelivery.jpg",
 				Arrays.asList("Proven working experience as a Delivery Driver ",
 						"Valid professional driver’s license ",
 						"Ability to operate forklifts and tractors in a variety of weather and traffic conditions",
@@ -227,7 +227,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Inform customers about new products and services"));
 
 		Job economist = new Job("Economist", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgEconomist.jpeg",
+				"../../../../assets/images/jobs/imgEconomist.jpg",
 				Arrays.asList("Proven experience as an economist",
 						"Excellent communication skills",
 						"Excellent knowledge of accounting regulations and practices",
@@ -243,7 +243,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Oversee external and internal audits"));
 
 		Job cook = new Job("Cook", "Part-time", "to add description", 
-				"../../../../assets/images/jobs/imgCook.jpeg",
+				"../../../../assets/images/jobs/imgCook.jpg",
 				Arrays.asList("Proven experience as cook",
 						"Ability to work in a team ",
 						"Experience in using cutting tools, cookware and bakeware",
@@ -262,7 +262,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Monitor stock and place orders when there are shortages"));
 
 		Job custRel = new Job("Customer Relations Representant", "Full-time", "to add description", 
-				"../../../../assets/images/jobs/imgCustomerSupport.jpeg",
+				"../../../../assets/images/jobs/imgCustomerSupport.jpg",
 				Arrays.asList("Experience as a Customer Relations Specialist or similar CS role ",
 						"Familiarity with our industry is a plus ",
 						"Understanding of how CRM systems work",
