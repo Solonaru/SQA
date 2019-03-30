@@ -1,20 +1,22 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/entities/job';
-import { JobService } from '../../../providers/services/job.service';
+import { JobService } from 'src/app/providers/services/job.service';
 
 @Component({
-  selector: 'app-careers',
-  templateUrl: './careers.component.html',
-  styleUrls: ['./careers.component.css']
+  selector: 'app-job',
+  templateUrl: './job.component.html',
+  styleUrls: ['./job.component.css']
 })
-
-export class CareersComponent implements OnInit {
+export class JobComponent implements OnInit {
 
   job : Job;
   jobs: Job[];
+  
+
 
   constructor(private jobService:JobService) { }
+
   ngOnInit() {
     this.populateJobs();
   }
@@ -22,6 +24,5 @@ export class CareersComponent implements OnInit {
   populateJobs() {
     this.jobService.getJobs().subscribe(data => { this.jobs = data; });
   }
- 
 }
 
