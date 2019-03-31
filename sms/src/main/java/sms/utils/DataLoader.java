@@ -38,7 +38,6 @@ import sms.entities.item.recipe.line.RecipeLine;
 import sms.entities.job.IJobService;
 import sms.entities.job.Job;
 import sms.enums.account.EmployeeStatus;
-import sms.enums.account.SubscriptionType;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -347,11 +346,12 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	}
 
 	private void updateSubscription() {
-		SubscriptionType[] subscriptions = { SubscriptionType.DISCOUNTS, SubscriptionType.NEW_PRODUCTS,
-				SubscriptionType.PROMOTIONAL };
+		String[] subscriptions = { "Discounts", "New products", "Promotional" };
+		String[] descriptions = { "Notifications regarding discounts on available products",
+				"Notifications regarding new pizzas and related products", "Promotional offers" };
 
-		for (SubscriptionType s : subscriptions) {
-			subscriptionService.insertSubscription(new Subscription(s));
+		for (int i = 0; i < subscriptions.length; i++) {
+			subscriptionService.insertSubscription(new Subscription(subscriptions[i], descriptions[i]));
 		}
 	}
 

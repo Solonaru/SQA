@@ -1,0 +1,99 @@
+<head>
+
+</head>
+
+<body>
+  <main>
+
+    <h1 class="is-title">Subscriptions management</h1>
+
+    <button type="button" (click)="onAdd()" class="btn btn-success is-create-button" data-toggle="modal" data-target="#subscriptionModal">Create a new subscription</button>
+
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-center" scope="col" style="width: 4%">#</th>
+          <th scope="col" style="width: 20%">Type</th>
+          <th scope="col" style="width: 52%">Description</th>
+          <th class="text-center" scope="col" style="width: 12%">Update Date</th>
+          <th class="text-center" scope="col" style="width: 12%">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let subscription of subscriptions; let i = index">
+          <tr>
+            <th class="text-center" scope="row">{{i+1}}</th>
+            <td>{{subscription.type}}</td>
+            <td>{{subscription.description}}</td>
+            <td class="text-center">{{subscription.updateDate}}</td>
+            <td class="text-center">
+              <button type="button" (click)="onUpdate(subscription)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#subscriptionModal">Edit</button>
+              <button type="button" (click)="onDelete(subscription)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                data-target="#deleteSubscriptionModal">Delete</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <div *ngIf="subscription" class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="subscriptionModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="subscriptionModalTitle">{{subscription.type}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="SubscriptionTypeLabel">Type</span>
+              </div>
+              <input type="text" [(ngModel)]="subscription.type" class="form-control" placeholder="Subscription type" aria-label="SubscriptionType"
+                aria-describedby="SubscriptionTypeLabel">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="SubscriptionDescriptionLabel">Description</span>
+              </div>
+              <textarea type="text" [(ngModel)]="subscription.description" class="form-control" placeholder="Subscription description" aria-label="SubscriptionDescription"
+                aria-describedby="SubscriptionDescriptionLabel">
+              </textarea>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onSubmit()" class="btn btn-success" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="subscription" class="modal fade" id="deleteSubscriptionModal" tabindex="-1" role="dialog" aria-labelledby="subscriptionModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteSubscriptionModalTitle">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete the {{subscription.name}} subscription?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onConfirmDelete()" class="btn btn-outline-success" data-dismiss="modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>

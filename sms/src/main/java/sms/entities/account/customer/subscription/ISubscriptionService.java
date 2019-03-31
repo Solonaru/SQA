@@ -9,6 +9,8 @@ public interface ISubscriptionService {
 
 	public List<Subscription> findAllSubscriptions();
 
+	public List<Subscription> findAllActiveSubscriptions();
+
 	public void insertSubscription(Subscription subscription);
 
 	public void updateSubscription(Subscription subscription);

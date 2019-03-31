@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sms.enums.Status;
+
 @Service
-public class SubscriptionService implements ISubscriptionService{
-	
+public class SubscriptionService implements ISubscriptionService {
+
 	@Autowired
 	private ISubscriptionRepository subscriptionRepository;
 
@@ -18,6 +20,10 @@ public class SubscriptionService implements ISubscriptionService{
 
 	public List<Subscription> findAllSubscriptions() {
 		return (List<Subscription>) subscriptionRepository.findAll();
+	}
+
+	public List<Subscription> findAllActiveSubscriptions() {
+		return (List<Subscription>) subscriptionRepository.findAllByStatus(Status.ACTIVE);
 	}
 
 	public void insertSubscription(Subscription subscription) {

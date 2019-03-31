@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/front-office/register/register.c
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
+import { SubscriptionsMngComponent } from './components/back-office/subscriptions-mng/subscriptions-mng.component';
 
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { HomeComponent } from './components/front-office/home/home.component';
@@ -30,6 +31,7 @@ import { JobComponent } from './components/front-office/careers/job/job.componen
 
     CategoryMngComponent,
     ItemMngComponent,
+    SubscriptionsMngComponent,
 
     CareersComponent,
     JobComponent,
