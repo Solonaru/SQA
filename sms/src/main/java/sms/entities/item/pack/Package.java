@@ -19,6 +19,7 @@ import sms.entities.item.pack.line.PackageLine;
 import sms.entities.logic.ILine;
 import sms.entities.logic.ILineIterator;
 import sms.enums.Month;
+import sms.enums.item.ItemType;
 
 @Entity
 @NamedQuery(name = "Package.findAll", query = "SELECT p FROM Package p")
@@ -34,10 +35,12 @@ public class Package extends Item implements ILineIterator {
 	// ------ Constructors -------
 	public Package() {
 		super();
+		this.itemType = ItemType.PACKAGE;
 	}
 
-	public Package(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public Package(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
+		this.itemType = ItemType.PACKAGE;
 	}
 
 	// ------ Getters and Setters ------

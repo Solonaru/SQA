@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppTypeService } from 'src/app/providers/services/apptype.service';
+import { AppTypeService } from '../../../providers/services/apptype.service';
 
 @Component({
   selector: 'app-footer',

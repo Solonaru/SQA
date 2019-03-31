@@ -444,113 +444,113 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		/*-------------------------------------------*/
 
-		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, "");
+		Ingredient meatAndPoultry1 = new Ingredient("Beef Eye Round Steak", 10, 10.0, "");
 		meatAndPoultry1.setCategory(category404);
 		meatAndPoultry1.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgBeefEyeRoundSteak.jpg");
-		Ingredient meatAndPoultry2 = new Ingredient("Rib Eye Steak", 16, "");
+		Ingredient meatAndPoultry2 = new Ingredient("Rib Eye Steak", 10, 16.0 , "");
 		meatAndPoultry2.setCategory(category404);
 		meatAndPoultry2.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgRibEyeSteak.jpg");
-		Ingredient meatAndPoultry3 = new Ingredient("Sweet Italian Pork Sausage", 22, "");
+		Ingredient meatAndPoultry3 = new Ingredient("Sweet Italian Pork Sausage", 10, 22.0, "");
 		meatAndPoultry3.setCategory(category404);
 		meatAndPoultry3.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgSweetItalianPorkSausage.jpg");
-		Ingredient meatAndPoultry4 = new Ingredient("Pork Bacon", 22, "");
+		Ingredient meatAndPoultry4 = new Ingredient("Pork Bacon", 10, 22.0, "");
 		meatAndPoultry4.setCategory(category404);
 		meatAndPoultry4.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/meat_and_poultry/imgPorkBacon.jpg");
 
-		Ingredient vegetables1 = new Ingredient("Sweet Cherry Tomatoes", 2, "");
+		Ingredient vegetables1 = new Ingredient("Sweet Cherry Tomatoes", 10, 2.0, "");
 		vegetables1.setCategory(category401);
 		vegetables1.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgSweetCherryTomatoes.jpg");
-		Ingredient vegetables2 = new Ingredient("Campari Tomatoes", 2, "");
+		Ingredient vegetables2 = new Ingredient("Campari Tomatoes", 10, 2.0, "");
 		vegetables2.setCategory(category401);
 		vegetables2.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgCampariTomatoes.jpg");
-		Ingredient vegetables3 = new Ingredient("Baby Bella Mushrooms", 1, "");
+		Ingredient vegetables3 = new Ingredient("Baby Bella Mushrooms", 10, 1.0, "");
 		vegetables3.setCategory(category401);
 		vegetables3.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgBabyBellaMushrooms.jpg");
-		Ingredient vegetables4 = new Ingredient("White Mushrooms", 1, "");
+		Ingredient vegetables4 = new Ingredient("White Mushrooms", 10, 1.0, "");
 		vegetables4.setCategory(category401);
 		vegetables4.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgWhiteMushrooms.jpg");
-		Ingredient vegetables5 = new Ingredient("Garlic", 2, "");
+		Ingredient vegetables5 = new Ingredient("Garlic", 10, 2.0, "");
 		vegetables5.setCategory(category401);
 		vegetables5.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgGarlic.jpg");
-		Ingredient vegetables6 = new Ingredient("Red Onion", 1, "");
+		Ingredient vegetables6 = new Ingredient("Red Onion", 10, 1.0, "");
 		vegetables6.setCategory(category401);
 		vegetables6.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgRedOnion.jpg");
-		Ingredient vegetables7 = new Ingredient("Yellow Onion", 1, "");
+		Ingredient vegetables7 = new Ingredient("Yellow Onion", 10, 1.0, "");
 		vegetables7.setCategory(category401);
 		vegetables7.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgYellowOnion.jpg");
-		Ingredient vegetables8 = new Ingredient("Oregano", 2, "");
+		Ingredient vegetables8 = new Ingredient("Oregano", 10, 2.0, "");
 		vegetables8.setCategory(category401);
 		vegetables8.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgOregano.jpg");
 
-		Ingredient dairyFoods1 = new Ingredient("Swiss Emmental", 16, "");
+		Ingredient dairyFoods1 = new Ingredient("Swiss Emmental", 10, 16.0, "");
 		dairyFoods1.setCategory(category406);
 		dairyFoods1.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgSwissEmmental.jpg");
-		Ingredient dairyFoods2 = new Ingredient("Grana Padano", 18, "");
+		Ingredient dairyFoods2 = new Ingredient("Grana Padano", 10, 18.0, "");
 		dairyFoods2.setCategory(category406);
 		dairyFoods2.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgGranaPadano.jpg");
-		Ingredient dairyFoods3 = new Ingredient("Pecorino Romano", 12, "");
+		Ingredient dairyFoods3 = new Ingredient("Pecorino Romano", 10, 12.0, "");
 		dairyFoods3.setCategory(category406);
 		dairyFoods3.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgPecorinoRomano.jpg");
-		Ingredient dairyFoods4 = new Ingredient("Fresh Mozzarella", 9, "");
+		Ingredient dairyFoods4 = new Ingredient("Fresh Mozzarella", 10, 9.0, "");
 		dairyFoods4.setCategory(category406);
 		dairyFoods4.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgFreshMozzarella.jpg");
-		Ingredient dairyFoods5 = new Ingredient("Gorgonzola", 18, "");
+		Ingredient dairyFoods5 = new Ingredient("Gorgonzola", 10, 18.0, "");
 		dairyFoods5.setCategory(category406);
 		dairyFoods5.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/dairy_foods/imgGorgonzola.jpg");
 
-		Ingredient pantry1 = new Ingredient("Extra-Virgin Olive Oil", 11, "");
+		Ingredient pantry1 = new Ingredient("Extra-Virgin Olive Oil", 10, 11.0, "");
 		pantry1.setCategory(category407);
 		pantry1.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgExtraVirginOliveOil.jpg");
-		Ingredient pantry2 = new Ingredient("Table Salt", 11, "");
+		Ingredient pantry2 = new Ingredient("Table Salt", 10, 11.0, "");
 		pantry2.setCategory(category407);
 		pantry2.setImageUrl("../../../../assets/images/items/products/components/ingredients/pantry/imgTableSalt.jpg");
-		Ingredient pantry3 = new Ingredient("Whole Wheat Pre-Sifted Flour", 5, "");
+		Ingredient pantry3 = new Ingredient("Whole Wheat Pre-Sifted Flour", 10, 5.0, "");
 		pantry3.setCategory(category407);
 		pantry3.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgWholeWheatPreSiftedFlour.jpg");
-		Ingredient pantry4 = new Ingredient("Unbleached All-Purpose Flour", 4, "");
+		Ingredient pantry4 = new Ingredient("Unbleached All-Purpose Flour", 10, 4.0, "");
 		pantry4.setCategory(category407);
 		pantry4.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgUnbleachedAllPurposeFlour.jpg");
-		Ingredient pantry5 = new Ingredient("Canola Oil", 4, "");
+		Ingredient pantry5 = new Ingredient("Canola Oil", 10, 4.0, "");
 		pantry5.setCategory(category407);
 		pantry5.setImageUrl("../../../../assets/images/items/products/components/ingredients/pantry/imgCanolaOil.jpg");
-		Ingredient pantry6 = new Ingredient("White Flour", 4, "");
+		Ingredient pantry6 = new Ingredient("White Flour", 10, 4.0, "");
 		pantry6.setCategory(category407);
 		pantry6.setImageUrl("../../../../assets/images/items/products/components/ingredients/pantry/imgWhiteFlour.jpg");
-		Ingredient pantry7 = new Ingredient("Whole Wheat Flour", 6, "");
+		Ingredient pantry7 = new Ingredient("Whole Wheat Flour", 10, 6.0, "");
 		pantry7.setCategory(category407);
 		pantry7.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgWholeWheatFlour.jpg");
-		Ingredient pantry8 = new Ingredient("Light Brown Sugar", 2, "");
+		Ingredient pantry8 = new Ingredient("Light Brown Sugar", 10, 2.0, "");
 		pantry8.setCategory(category407);
 		pantry8.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgLightBrownSugar.jpg");
-		Ingredient pantry9 = new Ingredient("Dark Brown Sugar", 2, "");
+		Ingredient pantry9 = new Ingredient("Dark Brown Sugar", 10, 2.0, "");
 		pantry9.setCategory(category407);
 		pantry9.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgDarkBrownSugar.jpg");
 		
 		
-		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar", 4, "");
+		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar", 10, 4.0, "");
 		beverage1.setCategory(category3);
 		beverage1.setImageUrl(
 				"../../../../assets/images/items/products/components/beverages/imgCocaColaZeroSugar.jpg");
@@ -601,7 +601,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10102 = new RecipeLine(10);
 		recipeLine10102.setComponent(pantry2);
 
-		Recipe recipe101 = new Recipe("Grilled Thin-Crust", 1,
+		Recipe recipe101 = new Recipe("Grilled Thin-Crust", 10, 1.0,
 				"Grilled Thin-Crust recipe");
 		recipe101.setCategory(category5);
 		recipe101.addLine(recipeLine10101);
@@ -627,7 +627,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10204 = new RecipeLine(14);
 		recipeLine10204.setComponent(pantry8);
 
-		Recipe recipe102 = new Recipe("Grilled Whole-Wheat Crust", 1,
+		Recipe recipe102 = new Recipe("Grilled Whole-Wheat Crust", 10, 1.0,
 				"Grilled Whole-Wheat Crust recipe");
 		recipe102.setCategory(category5);
 		recipe102.addLine(recipeLine10201);
@@ -660,7 +660,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10305 = new RecipeLine(10);
 		recipeLine10305.setComponent(pantry2);
 		
-		Recipe recipe103 = new Recipe("Tomato Sauce", 1,
+		Recipe recipe103 = new Recipe("Tomato Sauce", 10, 1.0,
 				"Tomato Sauce recipe");
 		recipe103.setCategory(category6);
 		recipe103.addLine(recipeLine10301);
@@ -694,7 +694,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10405 = new RecipeLine(120);
 		recipeLine10405.setComponent(meatAndPoultry3);
 		
-		Recipe recipe104 = new Recipe("Grilled Thin-Crust Sweet Italian Sausage Pizza", 1,
+		Recipe recipe104 = new Recipe("Grilled Thin-Crust Sweet Italian Sausage Pizza", 10, 1.0,
 				"Grilled Thin-Crust Sweet Italian Sausage Pizza recipe");
 		recipe104.setCategory(category1);
 		recipe104.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledThinCrustSweetItalianSausagePizza.jpg");
@@ -727,7 +727,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10504 = new RecipeLine(420);
 		recipeLine10504.setComponent(dairyFoods4);
 		
-		Recipe recipe105 = new Recipe("Grilled Whole-Wheat Crust Mozzarella Pizza", 1,
+		Recipe recipe105 = new Recipe("Grilled Whole-Wheat Crust Mozzarella Pizza", 10, 1.0,
 				"Grilled Whole-Wheat Crust Mozzarella Pizza recipe");
 		recipe105.setCategory(category1);
 		recipe105.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledWholeWheatCrustMozzarellaPizza.jpg");
@@ -761,7 +761,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		RecipeLine recipeLine10605 = new RecipeLine(30);
 		recipeLine10605.setComponent(vegetables6);
 		
-		Recipe recipe106 = new Recipe("Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza", 1,
+		Recipe recipe106 = new Recipe("Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza", 10, 1.0,
 				"Grilled Thin-Crust Onion, Gorgonzola and Bacon Pizza recipe");
 		recipe106.setCategory(category1);
 		recipe106.setImageUrl("../../../../assets/images/items/products/recipes/pizzas/imgGrilledThinCrustOnionGorgonzolaAndBaconPizza.jpg");
@@ -785,7 +785,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		PackageLine packageLine10102 = new PackageLine(1);
 		packageLine10102.setProduct(beverage1);
 		
-		Package package101 = new Package("Pizza + Coca-Cola", 1, "");
+		Package package101 = new Package("Pizza + Coca-Cola", 10, 1.0, "");
 		package101.setCategory(category7);
 		package101.addLine(packageLine10101);
 		package101.addLine(packageLine10102);

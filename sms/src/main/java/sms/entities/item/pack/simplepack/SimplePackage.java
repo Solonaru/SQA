@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 
 import sms.entities.item.Item;
 import sms.enums.Month;
+import sms.enums.item.ItemType;
 
 @Entity
 @NamedQuery(name = "SimplePackage.findAll", query = "SELECT sp FROM SimplePackage sp")
@@ -27,10 +28,12 @@ public class SimplePackage extends Item {
 	// ------ Constructors -------
 	public SimplePackage() {
 		super();
+		this.itemType = ItemType.SIMPLE_PACKAGE;
 	}
 
-	public SimplePackage(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public SimplePackage(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
+		this.itemType = ItemType.SIMPLE_PACKAGE;
 	}
 
 	// ----- Getters and Setters -----

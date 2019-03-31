@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
 import sms.entities.item.component.Component;
+import sms.enums.item.ItemType;
 
 @Entity
 @NamedQuery(name = "Consumable.findAll", query = "SELECT h FROM Consumable h")
@@ -15,10 +16,12 @@ public class Consumable extends Component {
 	// ----- Constructors -----
 	public Consumable() {
 		super();
+		this.itemType = ItemType.CONSUMABLE;
 	}
 
-	public Consumable(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public Consumable(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
+		this.itemType = ItemType.CONSUMABLE;
 	}
 
 	// -----Methods-----

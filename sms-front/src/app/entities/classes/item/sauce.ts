@@ -1,13 +1,16 @@
-import { Category } from './category';
+import { Category } from '../category';
+import { ItemType } from '../../enums/item-type';
 
-export class Item {
+export class Sauce {
     id: Number;
     name: String;
     stockQuantity: Number;
+    stockPrice: Number;
     updateDate: Date;
     description: Date;
     category: Category;
     imageUrl: String;
     listed: Boolean;
     price: Number;
+    itemType: ItemType;
 }

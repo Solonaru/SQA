@@ -49,7 +49,7 @@ public class IngredientController {
 		ingredientService.updateIngredient(ingredient);
 	}
 
-	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/delete/{ingredientId}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteIngredient(@PathVariable("ingredientId") int ingredientId) {
 		dataDisplay.printCrudInfo(ingredientId); 
 		ingredientService.deleteIngredientById(ingredientId);

@@ -13,11 +13,11 @@ import { LoginComponent } from './components/front-office/login/login.component'
 import { RegisterComponent } from './components/front-office/register/register.component';
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
+import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
 
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { HomeComponent } from './components/front-office/home/home.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
-import { ProductMngComponent } from './components/back-office/product-mng/product-mng.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +29,11 @@ import { ProductMngComponent } from './components/back-office/product-mng/produc
     RegisterComponent,
 
     CategoryMngComponent,
+    ItemMngComponent,
 
     CareersComponent,
     JobComponent,
-    HomeComponent,
-    ProductMngComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

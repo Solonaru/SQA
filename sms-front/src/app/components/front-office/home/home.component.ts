@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IImage } from '../../../entities/helper-classes/IImage';
-import { Router } from '../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
   }
 
   onClick(categoryId: Number) {
-    /* Load the products page */
-    // this.router.navigate(['products/', { cat: categoryId }]);
+    /* Load the items page */
+    // this.router.navigate(['items/', { cat: categoryId }]);
   }
 
 }

@@ -25,18 +25,21 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import sms.entities.account.customer.comment.Comment;
 import sms.entities.account.customer.rating.Rating;
 import sms.entities.account.employee.Employee;
 import sms.entities.catalogue.item.CatalogueItem;
 import sms.entities.category.Category;
 import sms.enums.Month;
+import sms.enums.item.ItemType;
 import sms.utils.UtilMethods;
 
 @Entity
 @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "ITEM_TYPE")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "CLASS_TYPE")
 public abstract class Item implements Serializable, Comparable<Item> {
 	private static final long serialVersionUID = 1L;
 
@@ -47,6 +50,7 @@ public abstract class Item implements Serializable, Comparable<Item> {
 	protected Integer id;
 	protected String name;
 	protected Integer stockQuantity;
+	protected Double stockPrice;
 	protected String description;
 	protected String imageUrl;
 	@OneToMany(mappedBy = "item")
@@ -56,9 +60,11 @@ public abstract class Item implements Serializable, Comparable<Item> {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	protected List<CatalogueItem> catalogueItems = new ArrayList<CatalogueItem>();
 	@ManyToOne
+	@JsonIgnoreProperties(value = "items")
 	protected Category category;
 	@OneToMany(mappedBy = "item")
 	protected List<Comment> comments = new ArrayList<Comment>();
+	protected ItemType itemType;
 	@ManyToOne
 	protected Employee employee;
 	protected Date updateDate;
@@ -68,10 +74,11 @@ public abstract class Item implements Serializable, Comparable<Item> {
 		super();
 	}
 
-	public Item(String name, Integer stockQuantity, String description) {
+	public Item(String name, Integer stockQuantity, Double stockPrice, String description) {
 		super();
 		this.name = name;
 		this.stockQuantity = stockQuantity;
+		this.stockPrice = stockPrice;
 		this.description = description;
 		this.updateDate = new Date(System.currentTimeMillis());
 	}
@@ -99,6 +106,14 @@ public abstract class Item implements Serializable, Comparable<Item> {
 
 	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
+	}
+
+	public Double getStockPrice() {
+		return stockPrice;
+	}
+
+	public void setStockPrice(Double stockPrice) {
+		this.stockPrice = stockPrice;
 	}
 
 	public String getDescription() {
@@ -147,6 +162,14 @@ public abstract class Item implements Serializable, Comparable<Item> {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public ItemType getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
 	}
 
 	public Employee getEmployee() {

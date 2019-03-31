@@ -18,6 +18,7 @@ import sms.entities.item.product.Product;
 import sms.entities.item.recipe.line.RecipeLine;
 import sms.entities.logic.ILine;
 import sms.entities.logic.ILineIterator;
+import sms.enums.item.ItemType;
 
 @Entity
 @NamedQuery(name = "Recipe.findAll", query = "SELECT r FROM Recipe r")
@@ -33,10 +34,12 @@ public class Recipe extends Product implements ILineIterator {
 	// ----- Constructors -----
 	public Recipe() {
 		super();
+		this.itemType = ItemType.RECIPE;
 	}
 
-	public Recipe(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public Recipe(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
+		this.itemType = ItemType.RECIPE;
 	}
 
 	public List<RecipeLine> getRecipeLines() {

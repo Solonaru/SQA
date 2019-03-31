@@ -15,7 +15,7 @@ public abstract class Component extends Product {
 		super();
 	}
 
-	public Component(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public Component(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
 	}
 }

@@ -15,8 +15,8 @@ public abstract class Product extends Item {
 		super();
 	}
 
-	public Product(String name, Integer stockQuantity, String description) {
-		super(name, stockQuantity, description);
+	public Product(String name, Integer stockQuantity, Double stockPrice, String description) {
+		super(name, stockQuantity, stockPrice, description);
 	}
 
 }
