@@ -5,19 +5,24 @@
 </head>
 
 <body>
+       
     <main>
+            
         <div  class="nav">
             <div *ngFor="let job of jobs" class="card-body">
                
-                    <div class="card" style="width:30rem; height: 20rem">
+                   
                                 <div  class="card-body">
-                                    <img class="card-img-top" [src]="job.imageUrl" alt="{{job.imageUrl}}">
-                                    <h4 class="card-title">Job name: {{job.name}}</h4>
-                                    <p class="card-text">Job type: {{job.description}}</p>
-                                    <a routerLink="/job" class="btn btn-primary">See full job profile</a>
+                                    <div class="card-img-top"> 
+                                        <img class="card-img-top" [src]="job.imageUrl" alt="{{job.imageUrl}}">
+                                    </div>
+                                    <div class="card"> 
+                                        <h4 class="card-title text-md-left">Job name: {{job.name}}</h4>
+                                        <p class="card-text text-md-left">Job type: {{job.description}}</p>
+                                        <a routerLink="/job" class="btn btn-primary">See full job profile</a>
+                                    </div>
                                 </div>
-                    </div>
-                
+                                  
             </div>
         </div>
     </main>
