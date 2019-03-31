@@ -14,9 +14,10 @@
         <tr>
           <th class="text-center" scope="col" style="width: 4%">#</th>
           <th scope="col" style="width: 20%">Type</th>
-          <th scope="col" style="width: 52%">Description</th>
+          <th scope="col" style="width: 32%">Description</th>
+          <th class="text-center" scope="col" style="width: 10%">Subscribers</th>
           <th class="text-center" scope="col" style="width: 12%">Update Date</th>
-          <th class="text-center" scope="col" style="width: 12%">Action</th>
+          <th class="text-center" scope="col" style="width: 22%">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -25,9 +26,11 @@
             <th class="text-center" scope="row">{{i+1}}</th>
             <td>{{subscription.type}}</td>
             <td>{{subscription.description}}</td>
+            <td class="text-center">{{subscription.subscriptionsCount}}</td>
             <td class="text-center">{{subscription.updateDate}}</td>
             <td class="text-center">
               <button type="button" (click)="onUpdate(subscription)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#subscriptionModal">Edit</button>
+              <button type="button" (click)="downloadTxt(subscription)" style="margin-left: 5px" class="btn btn-primary btn-sm">Download subscribers list</button>
               <button type="button" (click)="onDelete(subscription)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm" data-toggle="modal"
                 data-target="#deleteSubscriptionModal">Delete</button>
             </td>

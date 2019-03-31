@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from '../../../entities/classes/subscription';
 import { SubscriptionService } from '../../../providers/services/subscription.service';
+import { Observable, of } from "rxjs";
+import { Customer } from '../../../entities/classes/customer';
 
 @Component({
   selector: 'app-subscriptions-mng',
@@ -20,6 +22,10 @@ export class SubscriptionsMngComponent implements OnInit {
 
   populateSubscriptions() {
     this.subscriptionService.getActiveSubscriptions().subscribe(data => { this.subscriptions = data; });
+  }
+
+  getSubscribers(subscription: Subscription): Customer[] {
+    return subscription.customers;
   }
 
   onAdd() {
@@ -52,6 +58,41 @@ export class SubscriptionsMngComponent implements OnInit {
 
   updateSubscription() {
     this.subscriptionService.updateSubscription(this.subscription).subscribe();
+  }
+
+  private setting = {
+    element: {
+      dynamicDownload: null as HTMLElement
+    }
+  }
+
+  downloadTxt(subscription: Subscription) {
+    var text = "";
+    for (var subscriber of Array.from(this.getSubscribers(subscription).values())) {
+      text += subscriber.name + ", " + subscriber.email + "\r\n";
+    }
+    this.dyanmicDownloadByHtmlTag({
+      fileName: 'Subscribers',
+      text: text
+    });
+  }
+
+  private dyanmicDownloadByHtmlTag(arg: {
+    fileName: string,
+    text: string
+  }) {
+    if (!this.setting.element.dynamicDownload) {
+      this.setting.element.dynamicDownload = document.createElement('a');
+    }
+
+    const element = this.setting.element.dynamicDownload;
+
+    var textToSend = encodeURIComponent(arg.text);
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + textToSend);
+    element.setAttribute('download', arg.fileName);
+
+    var event = new MouseEvent("click");
+    element.dispatchEvent(event);
   }
 
 }

@@ -13,7 +13,7 @@ export class SubscriptionService {
   };
 
   constructor(private http: HttpClient) { }
-
+  
   getSubscriptions() {
     return this.http.get(this.BASE_URL + 'all').pipe(map((res: Subscription[]) => { return res }));
   }

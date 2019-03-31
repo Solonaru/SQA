@@ -1,6 +1,7 @@
 package sms.entities.account.customer.subscription;
 
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,13 +37,17 @@ public class SubscriptionController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Subscription> getSubscriptions() {
 		dataDisplay.printCrudInfo();
-		return subscriptionService.findAllSubscriptions();
+		List<Subscription> subscriptions = subscriptionService.findAllSubscriptions();
+		Collections.sort(subscriptions);
+		return subscriptions;
 	}
-	
+
 	@RequestMapping(value = "/allActive", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Subscription> getActiveSubscriptions() {
 		dataDisplay.printCrudInfo();
-		return subscriptionService.findAllActiveSubscriptions();
+		List<Subscription> subscriptions = subscriptionService.findAllActiveSubscriptions();
+		Collections.sort(subscriptions);
+		return subscriptions;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

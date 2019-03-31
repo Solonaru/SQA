@@ -25,7 +25,7 @@ import sms.enums.Status;
 
 @Entity
 @NamedQuery(name = "Subscription.findAll", query = "SELECT s FROM Subscription s")
-public class Subscription implements Serializable {
+public class Subscription implements Serializable, Comparable<Subscription> {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,7 +39,7 @@ public class Subscription implements Serializable {
 	@JoinTable(name = "customer_subscriptions", joinColumns = {
 			@JoinColumn(name = "subscription_id") }, inverseJoinColumns = { @JoinColumn(name = "customer_id") })
 	@JsonIgnoreProperties(value = "subscriptions")
-	private List<Customer> customers = new ArrayList<Customer>();
+	private List<Customer> customers;
 	@ManyToOne
 	private Employee employee;
 	private Date updateDate;
@@ -54,6 +54,7 @@ public class Subscription implements Serializable {
 		super();
 		this.type = type;
 		this.description = description;
+		this.customers = new ArrayList<Customer>();
 		this.updateDate = new Date(System.currentTimeMillis());
 		this.status = Status.ACTIVE;
 	}
@@ -122,5 +123,14 @@ public class Subscription implements Serializable {
 
 	public void removeSubscription() {
 		this.setStatus(Status.INACTIVE);
+	}
+
+	public Integer getSubscriptionsCount() {
+		return customers.size();
+	}
+
+	@Override
+	public int compareTo(Subscription subscription) {
+		return -subscription.getType().compareToIgnoreCase(this.getType());
 	}
 }
