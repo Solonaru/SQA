@@ -20,6 +20,7 @@ import { CareersComponent } from './components/front-office/careers/careers.comp
 import { HomeComponent } from './components/front-office/home/home.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
 import { PromotionsComponent } from './components/front-office/promotions/promotions.component';
+import { AboutUsComponent } from './components/front-office/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PromotionsComponent } from './components/front-office/promotions/promot
     CareersComponent,
     JobComponent,
     HomeComponent,
-    PromotionsComponent
+    PromotionsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
