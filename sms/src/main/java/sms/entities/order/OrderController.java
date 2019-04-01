@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.entities.account.customer.Customer;
+import sms.entities.account.customer.ICustomerService;
 import sms.utils.DisplayData;
 
 @RestController
@@ -21,6 +23,8 @@ public class OrderController {
 
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private ICustomerService customerService;
 	
 	@Autowired
 	private DisplayData dataDisplay;
@@ -35,6 +39,18 @@ public class OrderController {
 	public List<Orders> getOrders() {
 		dataDisplay.printCrudInfo(); 
 		return orderService.findAllOrders();
+	}
+	
+	@RequestMapping(value = "/allByCustomer", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Orders> findOrdersByCustomer(@RequestBody Customer customer) {
+		dataDisplay.printCrudInfo(); 
+		return orderService.findAllCustomerOrders(customer);
+	}
+	
+	@RequestMapping(value = "/allByCustomer/{customerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Orders> findOrdersByCustomerId(@PathVariable("customerId") int customerId) {
+		Customer customer = customerService.findCustomerById(customerId).get();
+		return orderService.findAllCustomerOrders(customer);
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
