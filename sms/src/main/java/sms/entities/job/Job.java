@@ -1,6 +1,7 @@
 package sms.entities.job;
 
 import java.io.Serializable;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -40,13 +41,14 @@ public class Job implements Serializable, Comparable<Job> {
 	private Employee employee;
 	private Date updateDate;
 	private Status status;
+	private String location;
 
 	// ----- Constructors -----
 	public Job() {
 		super();
 	}
 
-	public Job(String name, String jobStatus, String description, String imageUrl, List<String> requirements,
+	public Job(String name, String jobStatus, String description, String imageUrl, String location, List<String> requirements,
 			List<String> responsabilities) {
 		super();
 		this.name = name;
@@ -138,6 +140,14 @@ public class Job implements Serializable, Comparable<Job> {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	// ----- Methods -----

@@ -1,9 +1,23 @@
+
+
 .card{
-    height: 12rem;
-    width: 23rem;
+    height: 10rem;
+    width: 20.1rem;
+    border: solid;
+    border-color:rgb(0, 60, 255);
 }
 
 .card-img-top{
     height:15rem;
-    width:23rem;
+    width:20rem;
+    border: solid;
+    border-color: rgb(0, 60, 255);
 }
+
+.img{
+    display: block;
+    margin: 0 auto;
+    height:10rem;
+    width: 30rem;
+  }
+ 

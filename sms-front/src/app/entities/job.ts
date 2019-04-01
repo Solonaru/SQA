@@ -4,6 +4,7 @@ export class Job {
     name: String;
     imageUrl: String;
     description: String;
+    location: String;
     requirements: String[];
     responsibilities: String[];
 }

@@ -5,25 +5,34 @@
 </head>
 
 <body>
-       
+<br>
+<img  src="../../../../assets/images/jobs/imgHiring.jpg" alt="We are hiring" class="img">
+<br>
+<h3 class="font-italic" style="text-align:center">Check out our job vacancies</h3>
+<br>
+ <div class="container"> 
     <main>
             
         <div  class="nav">
-            <div *ngFor="let job of jobs" class="card-body">
-               
-                   
-                                <div  class="card-body">
-                                    <div class="card-img-top"> 
-                                        <img class="card-img-top" [src]="job.imageUrl" alt="{{job.imageUrl}}">
-                                    </div>
-                                    <div class="card"> 
-                                        <h4 class="card-title text-md-left">Job name: {{job.name}}</h4>
-                                        <p class="card-text text-md-left">Job type: {{job.description}}</p>
-                                        <a routerLink="/job" class="btn btn-primary">See full job profile</a>
-                                    </div>
+            <ng-template ngFor let-job [ngForOf]="jobs" class="card-body">
+                <div *ngIf="job">
+                    <div  class="card-body">
+                            <div class="card-img-top"> 
+                                <img class="card-img-top" [src]="job.imageUrl" alt="{{job.imageUrl}}">
+                            </div>
+                            <div class="card"> 
+                                <div class="match-height">
+                                    <h4 class="card-title text-md-left font-weight-bold">Job name: {{job.name}}</h4>
+                                    <p class="card-text text-md-left font-italic">Job type: {{job.jobStatus}}</p>
+                                    <p class="card-text text-md-left font-italic">Location: {{job.location}}</p>
                                 </div>
-                                  
-            </div>
+                            </div>
+                            <button routerLink="/job" class="btn btn-primary font-weight-bold">See full job profile</button>
+                        </div>
+                </div>
+            </ng-template>
+        
         </div>
     </main>
+  </div>
 </body>

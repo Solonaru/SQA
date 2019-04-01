@@ -4,27 +4,63 @@
 </head>
 
 <body>
+    <img  src="../../../../assets/images/jobs/imgJoinUs.jpg" alt="We are hiring" class="img">
+    <br>
+    <br>
+    <br>
+    <br>
   <main>
+   
+    
+
     <div *ngFor="let job of jobs" class="container">
       <div *ngIf="job">
-
-        <h1>Job brief</h1>
+          
+       <div class="container">
+         <div class="row">
+          <div class="col">
+              <img src="{{job.imageUrl}}" alt="{{job.imageUrl}}" class="float-right" >
+          </div>
+         
+          <div class="col">
+              <h1 class="font-weight-bold text-uppercase" style="text-align:left">Job brief</h1>
+              <br>
+              <h4 class="font-italic" style="text-align:left">We are looking for {{job.name}}s.</h4>
+              <br>
+              <h5 class="font-italic" style="text-align:left"> The job is {{job.jobStatus}}.</h5>
+              <h5 class="font-italic" style="text-align:left">Location: {{job.location}}</h5>
+            </div>
+         </div>
         <br>
-        <img src="{{job.imageUrl}}" alt="imageUrl">
-        <br>
-        <p>We are looking for {{job.name}}s.
-          <br> The job is {{job.jobStatus}}.
-        </p>
-        <br>
-        <h2> Responsibilities</h2>
-        <ul *ngFor="let responsibility of job.responsabilities">
-          <li>{{responsibility}}</li>
-        </ul>
-        <h2> Requirements</h2>
-        <ul *ngFor="let requirement of job.requirements">
-          <li>{{requirement}}</li>
-        </ul>
-
+       <br>
+       <br>
+         <div class="card bg-warning">
+            <div class="card-body text-center">
+              <p class="card-text">{{job.description}}</p>
+            </div>
+        </div>
+       </div>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+        <div class="container" style="align-self:center">
+            <div class="row"> 
+              <div class="col">
+                  <h2 class="font-weight-bold"> Responsibilities</h2>
+                  <ul *ngFor="let responsibility of job.responsabilities">
+                    <li class="font-italic">{{responsibility}}</li>
+                  </ul>
+              </div>
+              <div class="col">
+                  <h2 class="font-weight-bold"> Requirements</h2>
+                  <ul *ngFor="let requirement of job.requirements" >
+                    <li class="font-italic">{{requirement}}</li>
+                  </ul>
+              </div>
+        </div>
+  </div>
       </div>
     </div>
 
