@@ -19,6 +19,7 @@ import { SubscriptionsMngComponent } from './components/back-office/subscription
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { HomeComponent } from './components/front-office/home/home.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
+import { PromotionsComponent } from './components/front-office/promotions/promotions.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { JobComponent } from './components/front-office/careers/job/job.componen
 
     CareersComponent,
     JobComponent,
-    HomeComponent
+    HomeComponent,
+    PromotionsComponent
   ],
   imports: [
     BrowserModule,
