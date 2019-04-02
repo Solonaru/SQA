@@ -11,6 +11,7 @@ import { FooterComponent } from './components/front-office/footer/footer.compone
 
 import { LoginComponent } from './components/front-office/login/login.component';
 import { RegisterComponent } from './components/front-office/register/register.component';
+import { ProfileComponent } from './components/front-office/profile/profile.component';
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
@@ -30,6 +31,7 @@ import { AboutUsComponent } from './components/front-office/about-us/about-us.co
 
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
 
     CategoryMngComponent,
     ItemMngComponent,

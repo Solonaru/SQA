@@ -6,6 +6,7 @@ import { FooterComponent } from './components/front-office/footer/footer.compone
 
 import { LoginComponent } from './components/front-office/login/login.component';
 import { RegisterComponent } from './components/front-office/register/register.component';
+import { ProfileComponent } from './components/front-office/profile/profile.component';
 import { HomeComponent } from './components/front-office/home/home.component';
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'home', component: HomeComponent },
 
   { path: 'category-mng', component: CategoryMngComponent },

@@ -1,0 +1,136 @@
+<div class="container profile">
+    <div class="row">
+        <div class="col-xs-12 col">
+            <ul class="profile__nav">
+                <ng-container *ngFor="let page of pages">
+                    <li class="profile__link" [ngClass]="{'active': page.active}" (click)="addActive(page)">
+                      <i [class]="page.icon"></i>
+                      {{ page.title }}
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+    <div class="pages__my-account" *ngIf="pages[0].active">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h3 class="profile__text">My info</h3>
+                <form class="profile__form" #infoForm="ngForm">
+                    <div class="form-group">
+                        <label class="profile__label">Full name</label>
+                        <input type="text" class="profile__info" [(ngModel)]="currentUser.name" name="full" #full="ngModel" required minlength="5" />
+                        <div *ngIf="full.invalid && (full.dirty || full.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="full.errors.required">
+                                First Name is required.
+                            </div>
+                            <div *ngIf="full.errors.minlength">
+                                First Name must be at least 5 characters long.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="profile__label">Username</label>
+                        <input type="text" disabled class="profile__info profile__info--disabled" [(ngModel)]="currentUser.username" name="username" />
+                    </div>
+                    <div class="form-group">
+                        <label class="profile__label">Phone number</label>
+                        <input type="tel" class="profile__info" [(ngModel)]="currentUser.phoneNumber" name="phoneNumber" #phone="ngModel" required pattern="^07\d{8}$"/>
+                        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="phone.errors.required">
+                                Phone is required.
+                            </div>
+                            <div *ngIf="phone.errors.pattern">
+                                Please insert a valid phone number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="profile__label">Email address</label>
+                        <input type="email" class="profile__info" [(ngModel)]="currentUser.email" name="email" #email="ngModel" required pattern="[a-z0-9._%+-]{3,}@[a-z]{3,}([.]{1}[a-z]{2,}|[.]{1}[a-z]{2,}[.]{1}[a-z]{2,})" />
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="email.errors.required">
+                                Email is required.
+                            </div>
+                            <div *ngIf="email.errors.pattern">
+                                Please insert a valid email.
+                            </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-primary profile__save" type="button" value="Save" (click)="updateCustomer()" [disabled]="!infoForm.valid">
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <h3 class="profile__text">Addresses</h3>
+                <div class="row">
+                    <div class="col-xs-12 col profile__address">
+                        {{ currentUser.address.street }}, {{ currentUser.address.streetNr }}, 
+                        <span *ngIf="currentUser.address.buildingNr">Building: {{ currentUser.address.buildingNr }},</span> 
+                        <span *ngIf="currentUser.address.apartmentNr">Apartament: {{ currentUser.address.apartamentNr }},</span>
+                        <span *ngIf="currentUser.address.floorNr">Floor: {{ currentUser.address.floorNr }},</span>
+                        {{ currentUser.address.city.name }} 
+                    </div>
+                </div>
+                <ng-container *ngFor="let address of currentUser.deliveryAddresses">
+                    <div class="row">
+                        <div class="col-xs-12 col profile__address">
+                            {{ address.street }}, {{ address.streetNr }}, 
+                            <span *ngIf="address.buildingNr">Building: {{ address.buildingNr }}, </span>
+                            <span *ngIf="address.apartamentNr">Apartament: {{ address.apartamentNr }}, </span>
+                            <span *ngIf="address.floorNr">Floor: {{ address.floorNr }}, </span>
+                            {{ address.city.name }} 
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="row profile__second-row">
+            <div class="col-sm-12 col-md-6">
+                <h3 class="profile__text">Security settings</h3>
+                <form class="profile__form" #pwdForm="ngForm">
+                    <div class="form-group">
+                        <label>New password</label>
+                        <input type="password" class="profile__info" [(ngModel)]="password" #pwd="ngModel" name="password" required pattern="(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$" [ngModelOptions]="{ updateOn: 'blur' }"/>
+                        <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="pwd.errors.required">
+                                Password is required.
+                            </div>
+                            <div *ngIf="pwd.errors.pattern">
+                                Password must be at least 8 (max. 16) characters long and contain at least one uppercase letter, one number and one special character.
+                            </div>
+                        </div>	    
+                    </div>
+                    <div class="form-group">
+                        <label>Repeat password</label>
+                        <input type="password" class="profile__info" [(ngModel)]="secondPassword" name="secondPassword" name="secondPassword" #repeatPassword="ngModel" required (blur)="onCheck()" />
+                        <div *ngIf="repeatPassword.invalid && (repeatPassword.dirty || repeatPassword.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="repeatPassword.errors.required">
+                                Repeat password is required.
+                            </div>
+                        </div>	
+                        <div *ngIf="repeatPassword.valid && !match" class="alert alert-danger mt-1">
+                            Passwords do not match.
+                        </div>  
+                    </div>
+                    <input class="btn btn-primary profile__save" type="button" value="Save" (click)="updatePassword()" [disabled]="!pwdForm.valid || !match">
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+    </div>
+  <div class="pages__orders" *ngIf="pages[1].active">
+    <div class="row">
+        <div class="col-sm-12 col">
+            <table class="pages__table">
+                <tr>
+                    <td>Date</td>
+                    <td>Status</td>
+                </tr>
+                <tr *ngFor="let order of orders">
+                    <td> {{ order.date }} </td>
+                    <td> {{ order.status }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>

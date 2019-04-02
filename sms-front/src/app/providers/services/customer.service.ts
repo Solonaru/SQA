@@ -21,4 +21,18 @@ export class CustomerService {
       .pipe(map((resp: any) => { return resp }));
   }
 
+  getCustomerById(customerId: Number) {
+    return this.http.get(this.BASE_URL + customerId)
+      .pipe(map((res: Customer) => { return res }));
+  }
+
+  getCustomers() {
+    return this.http.get(this.BASE_URL + 'all').pipe(map((res: Customer[]) => { return res }));
+  }
+
+  updateCustomer(customer: Customer) {
+    return this.http.put<Customer>(this.BASE_URL + 'update', JSON.stringify(customer), this.httpOptions)
+        .pipe(map((resp: any) => { return resp }));
+  }
+
 }

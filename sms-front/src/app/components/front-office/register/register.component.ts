@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
     
   onCheck() {
       this.secondPassword !== this.customer.password ? this.match = false : this.match = true;
-      console.log(this.match);
   }
 
   insertCustomer() {

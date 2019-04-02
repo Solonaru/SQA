@@ -1,0 +1,114 @@
+.profile {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-height: 60vh;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.profile__text {
+    text-align: center;
+}
+
+.profile__nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+.profile__link {
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #777;
+    padding: 1rem 0 .5rem 0;
+    margin-bottom: .5rem;
+    position: relative;
+}
+
+.profile__link::after {
+    background-color: red;
+    top: 100%;
+    left: 0;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: all .3s;
+}
+
+.profile__link:hover::after {
+    width: 100%;
+    height: 2px;
+}
+
+.active::after {
+    background-color: red;
+    top: 100%;
+    left: 0;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.profile__link:not(:last-child) {
+    margin-right: 1.5rem;
+}
+
+.profile__label {
+    display: block;
+    margin: 0;
+}
+
+.profile__info {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.profile__info:focus {
+    border-bottom: 1px solid #e00;
+}
+
+.profile__info--disabled {
+    border-bottom: 1px dashed #ccc;
+}
+
+.profile__save, .profile__delete {
+    display: block;
+    width: 20%;
+    margin: 0 auto;
+}
+
+.profile__delete {
+    margin-top: .5rem;
+    width: 30%;
+    cursor: pointer;
+}
+
+.profile__second-row {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.profile__address {
+    cursor: pointer;
+    margin-bottom: 8px;
+    padding: 1rem;
+}
+
+.profile__address:hover {
+    background: #ccc;
+}
+
+.pages__table {
+  width: 100%;
+}
+
+table, tr, th, td {
+  border: 1px solid #ccc;
+}
