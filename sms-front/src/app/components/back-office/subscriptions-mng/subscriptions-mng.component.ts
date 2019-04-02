@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from '../../../entities/classes/subscription';
 import { SubscriptionService } from '../../../providers/services/subscription.service';
-import { Observable, of } from "rxjs";
 import { Customer } from '../../../entities/classes/customer';
 
 @Component({

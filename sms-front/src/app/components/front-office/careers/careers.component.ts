@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Job } from '../../../entities/job';
+import { Job } from '../../../entities/classes/job';
 import { JobService } from '../../../providers/services/job.service';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 
 @Component({
@@ -12,10 +13,13 @@ import { JobService } from '../../../providers/services/job.service';
 
 export class CareersComponent implements OnInit {
 
-  job : Job;
+  job: Job;
   jobs: Job[];
 
-  constructor(private jobService:JobService) { }
+  constructor(private jobService: JobService, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
+
   ngOnInit() {
     this.populateJobs();
   }
@@ -23,6 +27,10 @@ export class CareersComponent implements OnInit {
   populateJobs() {
     this.jobService.getJobs().subscribe(data => { this.jobs = data; });
   }
- 
+
+  onClick(job: Job) {
+    this.router.navigate(['job/', { job: job.id }]);
+  }
+
 }
 

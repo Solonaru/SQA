@@ -1,38 +1,38 @@
-
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
 </head>
 
 <body>
-<br>
-<img  src="../../../../assets/images/jobs/imgHiring.jpg" alt="We are hiring" class="img">
-<br>
-<h3 class="font-italic" style="text-align:center">Check out our job vacancies</h3>
-<br>
- <div class="container"> 
-    <main>
-            
-        <div  class="nav">
-            <ng-template ngFor let-job [ngForOf]="jobs" class="card-body">
-                <div *ngIf="job">
-                    <div  class="card-body">
-                            <div class="card-img-top"> 
+    <br>
+    <img src="../../../../assets/images/jobs/imgHiring.jpg" alt="We are hiring" class="img">
+    <br>
+    <h3 class="font-italic" style="text-align:center">Check out our job vacancies</h3>
+    <br>
+    <br>
+    <div class="container">
+        <main>
+
+            <div class="nav">
+                <ng-template ngFor let-job [ngForOf]="jobs" class="card-body">
+                    <div *ngIf="job">
+                        <div class="card-body">
+                            <div class="card-img-top">
                                 <img class="card-img-top" [src]="job.imageUrl" alt="{{job.imageUrl}}">
                             </div>
-                            <div class="card"> 
-                                <div class="match-height">
+                            <div class="card">
+                                <div class="match-height has-padding-left-top">
                                     <h4 class="card-title text-md-left font-weight-bold">Job name: {{job.name}}</h4>
                                     <p class="card-text text-md-left font-italic">Job type: {{job.jobStatus}}</p>
                                     <p class="card-text text-md-left font-italic">Location: {{job.location}}</p>
                                 </div>
                             </div>
-                            <button routerLink="/job" class="btn btn-primary font-weight-bold">See full job profile</button>
+                            <button (click)="onClick(job)" class="btn btn-primary font-weight-bold">See full job profile</button>
                         </div>
-                </div>
-            </ng-template>
-        
-        </div>
-    </main>
-  </div>
+                    </div>
+                </ng-template>
+
+            </div>
+        </main>
+    </div>
 </body>

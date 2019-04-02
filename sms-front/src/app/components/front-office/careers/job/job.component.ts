@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Job } from '../../../../entities/job';
+import { Job } from '../../../../entities/classes/job';
 import { JobService } from '../../../../providers/services/job.service';
+import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-job',
@@ -10,19 +11,18 @@ import { JobService } from '../../../../providers/services/job.service';
 })
 export class JobComponent implements OnInit {
 
+  jobId : String;
   job : Job;
-  jobs: Job[];
-  
 
-
-  constructor(private jobService:JobService) { }
+  constructor(private jobService:JobService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.populateJobs();
+    this.jobId = this.route.snapshot.paramMap.get('job');
+    this.populateJob();
   }
 
-  populateJobs() {
-    this.jobService.getJobs().subscribe(data => { this.jobs = data; });
+  populateJob() {
+    this.jobService.getJobById(this.jobId).subscribe(data => { this.job = data });
   }
 }
 

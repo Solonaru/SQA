@@ -26,6 +26,10 @@ public class JobService implements IJobService {
 	public List<Job> findAllActiveJobs() {
 		return (List<Job>) jobRepository.findAllByStatus(Status.ACTIVE);
 	}
+	
+	public List<Job> findAllActiveJobsByLocation(String location) {
+		return (List<Job>) jobRepository.findAllByStatusAndLocation(Status.ACTIVE, location);
+	}
 
 	public void insertJob(Job job) {
 		jobRepository.save(job);

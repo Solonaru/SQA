@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.enums.Status;
 import sms.utils.DisplayData;
 
 @RestController
@@ -39,16 +40,27 @@ public class JobController {
 		Collections.sort(jobs);
 		return jobs;
 	}
+	
+	@RequestMapping(value = "/all/{location}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Job> getJobsByLocation(@PathVariable("location") String location) {
+		dataDisplay.printCrudInfo();
+		List<Job> jobs = jobService.findAllActiveJobsByLocation(location);
+		Collections.sort(jobs);
+		return jobs;
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void insertJob(@RequestBody Job job) {
 		dataDisplay.printCrudInfo();
+		job.setStatus(Status.ACTIVE);
+		job.setUpdateDate(new Date(System.currentTimeMillis()));
 		jobService.insertJob(job);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void updateJob(@RequestBody Job job) {
 		dataDisplay.printCrudInfo();
+		job.setUpdateDate(new Date(System.currentTimeMillis()));
 		jobService.updateJob(job);
 	}
 

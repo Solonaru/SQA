@@ -1,0 +1,101 @@
+<head>
+
+</head>
+
+<body>
+  <main>
+
+    <h1 class="is-title">Jobs management</h1>
+
+    <button type="button" (click)="onAdd()" class="btn btn-success is-create-button" data-toggle="modal" data-target="#jobModal">Create a new job</button>
+
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-center" scope="col" style="width: 4%">#</th>
+          <th scope="col" style="width: 20%">Name</th>
+          <th scope="col" style="width: 32%">Description</th>
+          <th class="text-center" scope="col" style="width: 10%">Location</th>
+          <th class="text-center" scope="col" style="width: 12%">Update Date</th>
+          <th class="text-center" scope="col" style="width: 22%">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let job of jobs; let i = index">
+          <tr>
+            <th class="text-center" scope="row">{{i+1}}</th>
+            <td>{{job.name}}</td>
+            <td>{{job.description}}</td>
+            <td class="text-center">{{job.location}}</td>
+            <td class="text-center">{{job.updateDate}}</td>
+            <td class="text-center">
+              <button type="button" (click)="onUpdate(job)" class="btn btn-info btn-sm" data-toggle="modal" data-target="#jobModal">Edit</button>
+              <button type="button" (click)="onDelete(job)" style="margin-left: 5px" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                data-target="#deleteJobModal">Delete</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <div *ngIf="job" class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="jobModalTitle">{{job.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="JobNameLabel">Type</span>
+              </div>
+              <input type="text" [(ngModel)]="job.name" class="form-control" placeholder="Job name" aria-label="JobName"
+                aria-describedby="JobNameLabel">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="JobDescriptionLabel">Description</span>
+              </div>
+              <textarea type="text" [(ngModel)]="job.description" class="form-control" placeholder="Job description" aria-label="JobDescription"
+                aria-describedby="JobDescriptionLabel">
+              </textarea>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onSubmit()" class="btn btn-success" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="job" class="modal fade" id="deleteJobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteJobModalTitle">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete the {{job.name}} job?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="onConfirmDelete()" class="btn btn-outline-success" data-dismiss="modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>

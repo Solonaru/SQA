@@ -37,6 +37,7 @@ import sms.entities.item.recipe.line.IRecipeLineService;
 import sms.entities.item.recipe.line.RecipeLine;
 import sms.entities.job.IJobService;
 import sms.entities.job.Job;
+import sms.enums.Status;
 import sms.enums.account.EmployeeStatus;
 
 @Component
@@ -114,7 +115,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Follow all relevant health department regulations ",
 						"Deliver checks and collect bill payments", "Offer menu recommendations upon request",
 						"Present menu and provide detailed information when asked (e.g. about portions, ingredients or potential food allergies)"));
-
+		waiter.setLocation("Iasi");
+		
 		Job manager = new Job("Manager", "Full-time", "Manager responsibilities include formulating"
 				+ " overall strategy, managing people and establishing policies. "
 				+ "To be successful in this role, you should be a thoughtful leader and a "
@@ -137,6 +139,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Cooperate with the rest of the staff",
 						"Provide solutions to issues (e.g. profit decline, employee conflicts,"
 						+ " loss of business to competitors)"));
+		manager.setLocation("Bacau");
 
 		Job sysAdmin = new Job("System Administrator", "Full-time", "Resourcefulness is a "
 				+ "necessary skill in this role. You should be able to diagnose and resolve "
@@ -159,6 +162,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Upgrade systems with new releases and models",
 						"Develop expertise to train staff on new technologies",
 						"Build an internal wiki with technical documentation, manuals and IT policies"));
+		sysAdmin.setLocation("Iasi");
 
 		Job operator = new Job("Operator", "Full-time", "A great operator is reliable and "
 				+ "able to work with attention to detail and safety standards. On-the-job training"
@@ -176,6 +180,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				Arrays.asList("Perform day-to-day operations ",
 						"Keep in touch with the administrators",
 						"Cooperate with the rest of the staff"));
+		operator.setLocation("Iasi");
 
 		Job janitor = new Job("Janitor", "Full-time", "Your goal is to keep our "
 				+ "building in a clean and orderly condition.n", 
@@ -193,6 +198,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Notify management of occurring deficiencies or needs for repairs",
 						"Make adjustments and minor repairs",
 						"Follow all health and safety regulations"));
+		janitor.setLocation("Bacau");
 
 		Job frontendDev = new Job("Front End Developer", "Full-time", "If you’re interested in "
 				+ "creating a user-friendly environment by writing code and moving forward "
@@ -223,6 +229,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Create quality mockups and prototypes",
 						"Ensure high quality graphic standards and brand consistency",
 						"Stay up-to-date on emerging technologies"));
+		frontendDev.setStatus(Status.INACTIVE);
+		frontendDev.setLocation("Iasi");
 
 		Job backendDev = new Job("Back End Developer", "Full-time", "If you have "
 				+ "excellent programming skills and a passion for developing applications"
@@ -250,6 +258,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Build reusable code and libraries for future use",
 						"Liaise with developers, designers and system administrators to identify new features",
 						"Follow emerging technologies"));
+		backendDev.setStatus(Status.INACTIVE);
+		backendDev.setLocation("Iasi");
 
 		Job deliveryDriver = new Job("Delivery Driver", "Full-time", "The Delivery Driver is responsible"
 				+ "with distributing products promptly to our customers. You will represent our company "
@@ -268,6 +278,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Load, unload, prepare, inspect and operate a delivery vehicle",
 						"Ask for feedback on provided services and resolve clients’ complaints",
 						"Inform customers about new products and services"));
+		deliveryDriver.setLocation("Iasi");
 
 		Job economist = new Job("Economist", "Full-time", 
 				"an Economist's responsibilities include budgeting, "
@@ -292,6 +303,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Prepare budgets and monitor expenditures",
 						"Handle monthly, quarterly and annual closings",
 						"Oversee external and internal audits"));
+		economist.setLocation("Iasi");
 
 		Job cook = new Job("Cook", "Part-time", "An excellent cook"
 				+ " must be able to follow instructions in cooking and delivering "
@@ -318,6 +330,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Ensure all food and other items are stored properly",
 						"Check quality of ingredients",
 						"Monitor stock and place orders when there are shortages"));
+		cook.setLocation("Bacau");
 
 		Job custRel = new Job("Customer Relations Representant", "Full-time", 
 				"Customer Relations Specialist responsibilities include resolving customer queries, "
@@ -340,6 +353,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 						"Identify customer needs and help customers use specific features",
 						"Monitor customer complaints on social media and reach out to provide assistance",
 						"Share feature requests and effective workarounds with team member"));
+		custRel.setLocation("Iasi");
+		System.out.println(waiter.getLocation());
 
 		jobService.insertJob(waiter);
 		jobService.insertJob(manager);

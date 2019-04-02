@@ -10,6 +10,8 @@ public interface IJobService {
 	public List<Job> findAllJobs();
 
 	public List<Job> findAllActiveJobs();
+	
+	public List<Job> findAllActiveJobsByLocation(String location);
 
 	public void insertJob(Job job);
 
