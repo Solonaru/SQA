@@ -25,6 +25,10 @@ import { JobComponent } from './components/front-office/careers/job/job.componen
 
 import { PromotionsComponent } from './components/front-office/promotions/promotions.component';
 import { AboutUsComponent } from './components/front-office/about-us/about-us.component';
+import { TermsCondComponent } from './components/front-office/terms-cond/terms-cond.component';
+import { PrivacyComponent } from './components/front-office/privacy/privacy.component';
+import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
+import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { AboutUsComponent } from './components/front-office/about-us/about-us.co
     JobComponent,
     
     PromotionsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    TermsCondComponent,
+    PrivacyComponent,
+    FeedbackComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

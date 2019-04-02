@@ -1,0 +1,87 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <section class="mb-4">
+          <h2 class="h1-responsive font-weight-bold text-center my-4">Feedback From</h2>
+          <p class="text-center w-responsive mx-auto mb-5">Do you have any questions, 
+            suggstions or complaints?
+            <br>
+            Please do not hesitate to contact us directly.
+            <br> Our team will come back to you within
+              a matter of hours to help you or collect your message.</p>
+        
+          <div class="row">
+              <div class="col-md-9 mb-md-0 mb-5">
+                  <form id="contact-form" name="form">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="name" name="name" class="form-control" required>
+                                  <label for="name" class="font-weight-bold">Your name</label>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="email" name="email" class="form-control"
+                                  [(ngModel)]="model.email" #name="ngModel" required>
+                                  <label for="email" class="font-weight-bold">Your email</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="md-form mb-0">
+                                  <input type="text" id="subject" name="subject" class="form-control"
+                                  [(ngModel)]="model.subject" #name="ngModel"  required>
+                                  <label for="subject" class="font-weight-bold">Subject</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+        
+                              <div class="md-form">
+                                  <textarea type="text" id="message" name="message" rows="2" 
+                                  class="form-control md-textarea"
+                                  [(ngModel)]="model.message" #name="ngModel"  required></textarea>
+                                  <label for="message" class="font-weight-bold">Your message</label>
+                              </div>
+        
+                          </div>
+                      </div>
+                  </form>
+        
+                  <div class="text-center text-md-left">
+                      <button class="btn btn-primary font-weight-bold" (click)="onSubmit()">Submit</button>
+                  </div>
+                  <div class="status"></div>
+              </div>
+              <div class="col-md-3 text-center">
+                  <ul class="list-unstyled mb-0">
+                      <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                          <p class="font-weight-bold">Str. Lalelelor 68A, Iasi, Romania</p>
+                      </li>
+        
+                      <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                          <p class="font-weight-bold">0232-225-225</p>
+                      </li>
+        
+                      <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                          <p class="font-weight-bold">pizzetta.srl@gmail.com</p>
+                      </li>
+                  </ul>
+              </div>
+        
+          </div>
+        
+        </section>
+    </div>
+ 
+  </main>
+</body>

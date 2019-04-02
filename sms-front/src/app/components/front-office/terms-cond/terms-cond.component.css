@@ -1,0 +1,9 @@
+.img-fluid{
+    height:10rem;
+    width: 100rem;
+}
+
+.card-img-overlay{
+    padding-top: 6.5rem;
+    color: aliceblue;
+}
