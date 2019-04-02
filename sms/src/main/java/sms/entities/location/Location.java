@@ -114,8 +114,9 @@ public class Location implements Serializable, Comparable<Location> {
 	public void removeLocation() {
 		this.setStatus(Status.INACTIVE);
 	}
-	
+
 	public String getCityName() {
-		return this.getAddress().getCity().getName();
+		return (null == this.getAddress()) ? (null)
+				: ((null == this.getAddress().getCity()) ? (null) : (this.getAddress().getCity().getName()));
 	}
 }

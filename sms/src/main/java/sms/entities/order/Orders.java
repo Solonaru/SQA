@@ -99,8 +99,8 @@ public class Orders implements Serializable {
 	}
 
 	// ----- Methods -----
-//	public Double getTotalValue() {
-//		return this.cart.getTotalValue();
-//	}
+	public Double getTotalValue() {
+		return (null == this.cart) ? 0.0 : this.cart.getTotalValue();
+	}
 
 }

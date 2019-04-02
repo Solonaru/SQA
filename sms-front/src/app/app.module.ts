@@ -18,6 +18,7 @@ import { CategoryMngComponent } from './components/back-office/category-mng/cate
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
 import { SubscriptionsMngComponent } from './components/back-office/subscriptions-mng/subscriptions-mng.component';
 import { JobMngComponent } from './components/back-office/job-mng/job-mng.component';
+import { LocationMngComponent } from './components/back-office/location-mng/location-mng.component';
 
 import { CareersComponent } from './components/front-office/careers/careers.component';
 import { JobComponent } from './components/front-office/careers/job/job.component';
@@ -40,6 +41,7 @@ import { AboutUsComponent } from './components/front-office/about-us/about-us.co
     ItemMngComponent,
     SubscriptionsMngComponent,
     JobMngComponent,
+    LocationMngComponent,
 
     CareersComponent,
     JobComponent,
