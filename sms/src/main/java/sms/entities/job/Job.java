@@ -1,7 +1,6 @@
 package sms.entities.job;
 
 import java.io.Serializable;
-
 import java.sql.Date;
 import java.util.List;
 
@@ -16,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
 import sms.entities.account.employee.Employee;
+import sms.entities.location.Location;
 import sms.enums.Status;
 
 @Entity
@@ -32,6 +32,8 @@ public class Job implements Serializable, Comparable<Job> {
 	private String jobStatus;
 	@Column(columnDefinition = "TEXT")
 	private String description;
+	@ManyToOne
+	private Location location;
 	private String imageUrl;
 	@ElementCollection
 	private List<String> requirements;
@@ -41,15 +43,14 @@ public class Job implements Serializable, Comparable<Job> {
 	private Employee employee;
 	private Date updateDate;
 	private Status status;
-	private String location;
 
 	// ----- Constructors -----
 	public Job() {
 		super();
 	}
 
-	public Job(String name, String jobStatus, String description, String imageUrl, String location, List<String> requirements,
-			List<String> responsabilities) {
+	public Job(String name, String jobStatus, String description, String imageUrl, String location,
+			List<String> requirements, List<String> responsabilities) {
 		super();
 		this.name = name;
 		this.jobStatus = jobStatus;
@@ -141,12 +142,12 @@ public class Job implements Serializable, Comparable<Job> {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
-	public String getLocation() {
+
+	public Location getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 

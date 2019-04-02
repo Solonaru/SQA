@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 import { map } from 'rxjs/operators';
 import { Job } from '../../entities/classes/job';
+import { Location } from '../../entities/classes/location';
 
 
 @Injectable({
@@ -20,6 +21,11 @@ export class JobService {
 
     getJobs() {
         return this.http.get(this.BASE_URL + 'all').pipe(map((res: Job[]) => { return res }));
+    }
+
+    getJobsByLocation(location: Location) {
+        return this.http.put(this.BASE_URL + 'all/byLocation', JSON.stringify(location), this.httpOptions)
+            .pipe(map((resp: Job[]) => { return resp }));
     }
 
     getJobById(jobId: String) {

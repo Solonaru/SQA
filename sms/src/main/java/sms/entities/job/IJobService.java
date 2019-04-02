@@ -3,6 +3,8 @@ package sms.entities.job;
 import java.util.List;
 import java.util.Optional;
 
+import sms.entities.location.Location;
+
 public interface IJobService {
 
 	public Optional<Job> findJobById(int jobId);
@@ -10,8 +12,8 @@ public interface IJobService {
 	public List<Job> findAllJobs();
 
 	public List<Job> findAllActiveJobs();
-	
-	public List<Job> findAllActiveJobsByLocation(String location);
+
+	public List<Job> findAllActiveJobsByLocation(Location location);
 
 	public void insertJob(Job job);
 

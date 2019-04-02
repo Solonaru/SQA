@@ -37,6 +37,8 @@ import sms.entities.item.recipe.line.IRecipeLineService;
 import sms.entities.item.recipe.line.RecipeLine;
 import sms.entities.job.IJobService;
 import sms.entities.job.Job;
+import sms.entities.location.ILocationService;
+import sms.entities.location.Location;
 import sms.enums.Status;
 import sms.enums.account.EmployeeStatus;
 
@@ -63,6 +65,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private IPackageLineService packageLineService;
 	@Autowired
 	private IJobService jobService;
+	@Autowired
+	private ILocationService locationService;
 
 	@Autowired
 	private DisplayData displayData;
@@ -90,284 +94,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		updateIngredients();
 		
+		updateLocation();
+		
 		updateJob();
 
 		displayData.printInfo("Data successfully loaded.");
 	}
-
-	private void updateJob() {
-		Job waiter = new Job("Waiter", "Part-time", "The right Waiter/Waitress uplifts the dining "
-				+ "experience for customers. We are looking for someone who will have the patience,"
-				+ " personality and perseverance to thrive in this role. "
-				+ "Keep in mind that Waiter/Waitress duties may require working in shifts and/or"
-				+ " occasionally during weekends and holidays.\r\n" + 
-				"\r\n" + 
-				"Ultimately, it is the duty of our Waiters/Waitresses to provide an excellent "
-				+ "overall dining experience for our guests.", 
-				"../../../../assets/images/jobs/imgWaiter.jpg", "Iasi",
-				Arrays.asList("Math Skills ",
-						"Previous experience as a waiter ",
-						"Hands-on experience with cash register and ordering information system (e.g. Revel POS or Toast POS)",
-						"Attentiveness and patience for customers", "Flexibility to work in shifts",
-						"High school diploma; food safety training is a plus"),
-				Arrays.asList("Serve food to clients ",
-						"Clean tables",
-						"Follow all relevant health department regulations ",
-						"Deliver checks and collect bill payments", "Offer menu recommendations upon request",
-						"Present menu and provide detailed information when asked (e.g. about portions, ingredients or potential food allergies)"));
-		waiter.setLocation("Iasi");
-		
-		Job manager = new Job("Manager", "Full-time", "Manager responsibilities include formulating"
-				+ " overall strategy, managing people and establishing policies. "
-				+ "To be successful in this role, you should be a thoughtful leader and a "
-				+ "confident decision-maker, helping our people develop and be productive, "
-				+ "while ensuring our profits are on the rise.\r\n" + 
-				"\r\n" + 
-				"Ultimately, you’ll help our company grow and thrive.", 
-				"../../../../assets/images/jobs/imgManager.jpg", "Bacau",
-				Arrays.asList("Proven experience as a General Manager or similar executive role ",
-						"Experience in planning and budgeting ",
-						"Strong analytical ability",
-						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
-						"Problem-solving aptitude",
-						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
-				Arrays.asList("Oversee day-to-day operations ",
-						"Design strategy and set goals for growth",
-						"Maintain budgets and optimize expenses",
-						"Set policies and processes",
-						"Ensure employees work productively and develop professionally",
-						"Cooperate with the rest of the staff",
-						"Provide solutions to issues (e.g. profit decline, employee conflicts,"
-						+ " loss of business to competitors)"));
-		manager.setLocation("Bacau");
-
-		Job sysAdmin = new Job("System Administrator", "Full-time", "Resourcefulness is a "
-				+ "necessary skill in this role. You should be able to diagnose and resolve "
-				+ "problems quickly. You should also have the patience to communicate with a"
-				+ " variety of interdisciplinary teams and users.\r\n" + 
-				"\r\n" + 
-				"Your goal will be to ensure that our technology infrastructure runs smoothly "
-				+ "and efficiently.", 
-				"../../../../assets/images/jobs/imgSysAdmin.jpg", "Iasi",
-				Arrays.asList("Proven experience as a System Administrator, Network Administrator or similar role ",
-						"Experience with databases, networks (LAN, WAN) and patch management ",
-						"Knowledge of system security (e.g. intrusion detection systems) and data backup/recovery",
-						"Familiarity with various operating systems and platforms", "Problem-solving aptitude",
-						"BSc/Ba in Information Technology, Computer Science or a related discipline; professional certification (e.g. Microsoft Certified Systems Administrator (MCSA)) is a plus"),
-				Arrays.asList("Install and configure software and hardware ",
-						"Manage network servers and technology toolss",
-						"Set up accounts and workstations",
-						"Troubleshoot issues and outages",
-						"Monitor performance and maintain systems according to requirements",
-						"Upgrade systems with new releases and models",
-						"Develop expertise to train staff on new technologies",
-						"Build an internal wiki with technical documentation, manuals and IT policies"));
-		sysAdmin.setLocation("Iasi");
-
-		Job operator = new Job("Operator", "Full-time", "A great operator is reliable and "
-				+ "able to work with attention to detail and safety standards. On-the-job training"
-				+ " is a good way to discover how to do the job better, so you should have"
-				+ " willingness to learn and improve."
-				+ " Being a team player is essential since all tasks will require close "
-				+ "collaboration with co-workers.", 
-				"../../../../assets/images/jobs/imgOperator.jpg", "Vaslui",
-				Arrays.asList("Great communication skills ",
-						"Great English skills ",
-						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
-						"Proeficient with handling software programs",
-						"Problem-solving aptitude",
-						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
-				Arrays.asList("Perform day-to-day operations ",
-						"Keep in touch with the administrators",
-						"Cooperate with the rest of the staff"));
-		operator.setLocation("Iasi");
-
-		Job janitor = new Job("Janitor", "Full-time", "Your goal is to keep our "
-				+ "building in a clean and orderly condition.n", 
-				"../../../../assets/images/jobs/imgJanitor.jpg", "Vaslui",
-				Arrays.asList("Proven working experience as a janitor ",
-						"Ability to handle heavy equipment and machinery",
-						"Knowledge of cleaning chemicals and supplies",
-						"Familiarity with Material Safety Data Sheets",
-						"Integrity and ability to work independently",
-						"High school degree"),
-				Arrays.asList(
-						"Clean and supply designated building areas (dusting, sweeping, vacuuming, mopping, cleaning ceiling vents, restroom cleaning etc) ",
-						"Stock and maintain supply rooms",
-						"Perform and document routine inspection and maintenance activities",
-						"Notify management of occurring deficiencies or needs for repairs",
-						"Make adjustments and minor repairs",
-						"Follow all health and safety regulations"));
-		janitor.setLocation("Bacau");
-
-		Job frontendDev = new Job("Front End Developer", "Full-time", "If you’re interested in "
-				+ "creating a user-friendly environment by writing code and moving forward "
-				+ "in your career, then this job is for you. We expect you to be a tech-savvy "
-				+ "professional, who is curious about new digital technologies and aspires "
-				+ "to combine usability with visual design.\r\n" + 
-				"\r\n" + 
-				"Ultimately, you should be able to create a "
-				+ "functional and attractive digital environment for our company,"
-				+ " ensuring great user experience.", 
-				"../../../../assets/images/jobs/imgFrontEndDev.jpg", "Iasi",
-				Arrays.asList("Proven work experience as a Front-end developer ",
-						"Hands on experience with markup languages ",
-						"Experience with JavaScript, CSS and jQuery",
-						"In-depth understanding of the entire web development process (design, development and deployment)",
-						"Understanding of layout aesthetics",
-						"Knowledge of SEO principles",
-						"Familiarity with software like Adobe Suite, Photoshop and content management systems",
-						"BSc degree in Computer Science or relevant field"),
-				Arrays.asList("Maintain and improve website ",
-						"Use markup languages like HTML to create user-friendly web pages",
-						"Optimize applications for maximum speed",
-						"Design mobile-based features",
-						"Manage cutting-edge technologies to improve legacy applications",
-						"Collaborate with back-end developers and web designers to improve usability",
-						"Get feedback from, and build solutions for, users and customers",
-						"Write functional requirement documents and guides",
-						"Create quality mockups and prototypes",
-						"Ensure high quality graphic standards and brand consistency",
-						"Stay up-to-date on emerging technologies"));
-		frontendDev.setStatus(Status.INACTIVE);
-		frontendDev.setLocation("Iasi");
-
-		Job backendDev = new Job("Back End Developer", "Full-time", "If you have "
-				+ "excellent programming skills and a passion for developing applications"
-				+ " or improving existing ones, we would like to meet you. As a Back-end developer, "
-				+ "you’ll work closely with our engineers to ensure system consistency and "
-				+ "improve user experience.\r\n" + 
-				"\r\n" + 
-				"Ultimately, you should be able to develop and maintain functional"
-				+ " and stable web applications to meet our company’s needs.", 
-				"../../../../assets/images/jobs/imgBackEndDev.jpg", "Iasi",
-				Arrays.asList("Proven work experience as a Back-end developer ",
-						"In-depth understanding of the entire web development process"
-								+ " (design, development and deployment) ",
-						"Hands on experience with programming languages like Java, Ruby, PHP and Python",
-						"Working knowledge of CMS framework",
-						"Familiarity with front-end languages (e.g. HTML, JavaScript and CSS)",
-						"Teamwork skills with a problem-solving attitude",
-						"BSc degree in Computer Science or relevant field"),
-				Arrays.asList("Participate in the entire application lifecycle, focusing on coding and debugging ",
-						"Write clean code to develop functional web applications",
-						"Troubleshoot and debug applications", "Perform UI tests to optimize performance",
-						"Manage cutting-edge technologies to improve legacy applications",
-						"Gather and address technical and design requirements",
-						"Provide training and support to internal teams",
-						"Build reusable code and libraries for future use",
-						"Liaise with developers, designers and system administrators to identify new features",
-						"Follow emerging technologies"));
-		backendDev.setStatus(Status.INACTIVE);
-		backendDev.setLocation("Iasi");
-
-		Job deliveryDriver = new Job("Delivery Driver", "Full-time", "The Delivery Driver is responsible"
-				+ "with distributing products promptly to our customers. You will represent our company "
-				+ "in a professional and cost-effective manner to increase our profitability"
-				+ " and customer satisfaction.", 
-				"../../../../assets/images/jobs/imgDelivery.jpg", "Bacau",
-				Arrays.asList("Proven working experience as a Delivery Driver ",
-						"Valid professional driver’s license ",
-						"Ability to operate forklifts and tractors in a variety of weather and traffic conditions",
-						"Excellent organizational and time management skills",
-						"Good driving record with no traffic violations",
-						"High school degree"),
-				Arrays.asList("Deliver a wide variety of items to different addresses and through different routes ",
-						"Follow routes and time schedule",
-						"Collect payments",
-						"Load, unload, prepare, inspect and operate a delivery vehicle",
-						"Ask for feedback on provided services and resolve clients’ complaints",
-						"Inform customers about new products and services"));
-		deliveryDriver.setLocation("Iasi");
-
-		Job economist = new Job("Economist", "Full-time", 
-				"an Economist's responsibilities include budgeting, "
-				+ "managing tax payments and performing internal audits. "
-				+ "You will act as a consultant for senior managers, conducting "
-				+ "cost and revenues analyses. To be qualified for this role, "
-				+ "you should have a degree in Accounting and relevant work experience.\r\n" + 
-				"\r\n" + 
-				"Ultimately, you will ensure all our accounting transactions comply"
-				+ " with the law and support our company’s investments.", 
-				"../../../../assets/images/jobs/imgEconomist.jpg", "Iasi",
-				Arrays.asList("Proven experience as an economist",
-						"Excellent communication skills",
-						"Excellent knowledge of accounting regulations and practices",
-						"In-depth experience in risk analysis, budgeting and forecasting",
-						"Excellent organizational and time management skills",
-						"Proficient in MS Office (especially Excel) and finance software",
-						"BSc/BA in Accounting, Finance or related field; professional certification (e.g. CPA) is a plus"),
-				Arrays.asList("Gather financial data and ledgers ",
-						"Manage periodical reporting",
-						"Consolidate and analyze financial statements and results",
-						"Prepare budgets and monitor expenditures",
-						"Handle monthly, quarterly and annual closings",
-						"Oversee external and internal audits"));
-		economist.setLocation("Iasi");
-
-		Job cook = new Job("Cook", "Part-time", "An excellent cook"
-				+ " must be able to follow instructions in cooking and delivering "
-				+ "well-prepared meals. They must be deft in moving around the"
-				+ " kitchen and apt in multi-tasking. Experience in using various "
-				+ "ingredients and cooking techniques is also important.\r\n" + 
-				"\r\n" + 
-				"The goal is to help preserve and enhance our reputation so "
-				+ "we can expand our clientele.", 
-				"../../../../assets/images/jobs/imgCook.jpg", "Suceava",
-				Arrays.asList("Proven experience as cook",
-						"Ability to work in a team ",
-						"Experience in using cutting tools, cookware and bakeware",
-						"Knowledge of various cooking procedures and methods (grilling, baking, boiling etc.)",
-						"Very good communication skills",
-						"Excellent physical condition and stamina",
-						"High school diploma or equivalent; Diploma from a culinary school will be an advantage"),
-				Arrays.asList("Set up workstations with all needed ingredients and cooking equipment ",
-						"Prepare ingredients to use in cooking (chopping and peeling vegetables, cutting meat etc.)",
-						"Cook food in various utensils or grillers",
-						"Check food while cooking to stir or turn",
-						"Ensure great presentation by dressing dishes before they are served",
-						"Keep a sanitized and orderly environment in the kitchen",
-						"Ensure all food and other items are stored properly",
-						"Check quality of ingredients",
-						"Monitor stock and place orders when there are shortages"));
-		cook.setLocation("Bacau");
-
-		Job custRel = new Job("Customer Relations Representant", "Full-time", 
-				"Customer Relations Specialist responsibilities include resolving customer queries, "
-				+ "recommending solutions and guiding product users through features and functionalities."
-				+ "To be successful in this role, you should be an excellent communicator who’s able to"
-				+ " earn our clients’ trust. You should also be familiar with help desk software.\r\n" + 
-				"\r\n" + 
-				"Ultimately, you will help establish our reputation as a company that offers excellent"
-				+ " customer support during all sales and after-sales procedures.", 
-				"../../../../assets/images/jobs/imgCustomerSupport.jpg", "Botosani",
-				Arrays.asList("Experience as a Customer Relations Specialist or similar CS role ",
-						"Familiarity with our industry is a plus ",
-						"Understanding of how CRM systems work",
-						"Experience using help desk software and remote support tools",
-						"Ability to work in a team",
-						"Very good communication skills",
-						"Multi-tasking abilities",
-						"BSc in Information Technology or relevant diploma"),
-				Arrays.asList("Respond to customer queries in a timely and accurate way, via phone, email or chat ",
-						"Identify customer needs and help customers use specific features",
-						"Monitor customer complaints on social media and reach out to provide assistance",
-						"Share feature requests and effective workarounds with team member"));
-		custRel.setLocation("Iasi");
-		System.out.println(waiter.getLocation());
-
-		jobService.insertJob(waiter);
-		jobService.insertJob(manager);
-		jobService.insertJob(sysAdmin);
-		jobService.insertJob(operator);
-		jobService.insertJob(janitor);
-		jobService.insertJob(frontendDev);
-		jobService.insertJob(backendDev);
-		jobService.insertJob(deliveryDriver);
-		jobService.insertJob(economist);
-		jobService.insertJob(cook);
-		jobService.insertJob(custRel);
-	}
+	
+	
 
 	private void updateCounty() {
 		String[] names = { "Iasi", "Bacau", "Botosani" };
@@ -875,6 +609,299 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		packageLineService.insertPackageLine(packageLine10101);
 		packageLineService.insertPackageLine(packageLine10102);
 
+	}
+	
+	private void updateLocation() {
+		Address address1 = new AddressBuilder("Alexandru cel Mare", 21).setZipCode(270123).getAddress();
+		address1.setCity(cityByName("Iasi"));
+		Address address2 = new AddressBuilder("Marinelor", 51).setZipCode(280129).getAddress();
+		address2.setCity(cityByName("Pascani"));
+		
+		addressService.insertAddress(address1);
+		addressService.insertAddress(address2);		
+		
+		Location location1 = new Location("Pizzetta Iasi", "Pizzetta restaurant in Iasi");
+		location1.setAddress(address1);
+		Location location2 = new Location("Pizzetta Pascani", "Pizzetta restaurant in Pascani");
+		location2.setAddress(address2);
+		
+		locationService.insertLocation(location1);
+		locationService.insertLocation(location2);
+	}
+
+	private void updateJob() {
+		List<Location> locations = locationService.findAllLocations(); 
+		
+		Job waiter = new Job("Waiter", "Part-time", "The right Waiter/Waitress uplifts the dining "
+				+ "experience for customers. We are looking for someone who will have the patience,"
+				+ " personality and perseverance to thrive in this role. "
+				+ "Keep in mind that Waiter/Waitress duties may require working in shifts and/or"
+				+ " occasionally during weekends and holidays.\r\n" + 
+				"\r\n" + 
+				"Ultimately, it is the duty of our Waiters/Waitresses to provide an excellent "
+				+ "overall dining experience for our guests.", 
+				"../../../../assets/images/jobs/imgWaiter.jpg", "Iasi",
+				Arrays.asList("Math Skills ",
+						"Previous experience as a waiter ",
+						"Hands-on experience with cash register and ordering information system (e.g. Revel POS or Toast POS)",
+						"Attentiveness and patience for customers", "Flexibility to work in shifts",
+						"High school diploma; food safety training is a plus"),
+				Arrays.asList("Serve food to clients ",
+						"Clean tables",
+						"Follow all relevant health department regulations ",
+						"Deliver checks and collect bill payments", "Offer menu recommendations upon request",
+						"Present menu and provide detailed information when asked (e.g. about portions, ingredients or potential food allergies)"));
+		waiter.setLocation(locations.get(0));
+		
+		Job manager = new Job("Manager", "Full-time", "Manager responsibilities include formulating"
+				+ " overall strategy, managing people and establishing policies. "
+				+ "To be successful in this role, you should be a thoughtful leader and a "
+				+ "confident decision-maker, helping our people develop and be productive, "
+				+ "while ensuring our profits are on the rise.\r\n" + 
+				"\r\n" + 
+				"Ultimately, you’ll help our company grow and thrive.", 
+				"../../../../assets/images/jobs/imgManager.jpg", "Bacau",
+				Arrays.asList("Proven experience as a General Manager or similar executive role ",
+						"Experience in planning and budgeting ",
+						"Strong analytical ability",
+						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
+						"Problem-solving aptitude",
+						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
+				Arrays.asList("Oversee day-to-day operations ",
+						"Design strategy and set goals for growth",
+						"Maintain budgets and optimize expenses",
+						"Set policies and processes",
+						"Ensure employees work productively and develop professionally",
+						"Cooperate with the rest of the staff",
+						"Provide solutions to issues (e.g. profit decline, employee conflicts,"
+						+ " loss of business to competitors)"));
+		manager.setLocation(locations.get(1));
+
+		Job sysAdmin = new Job("System Administrator", "Full-time", "Resourcefulness is a "
+				+ "necessary skill in this role. You should be able to diagnose and resolve "
+				+ "problems quickly. You should also have the patience to communicate with a"
+				+ " variety of interdisciplinary teams and users.\r\n" + 
+				"\r\n" + 
+				"Your goal will be to ensure that our technology infrastructure runs smoothly "
+				+ "and efficiently.", 
+				"../../../../assets/images/jobs/imgSysAdmin.jpg", "Iasi",
+				Arrays.asList("Proven experience as a System Administrator, Network Administrator or similar role ",
+						"Experience with databases, networks (LAN, WAN) and patch management ",
+						"Knowledge of system security (e.g. intrusion detection systems) and data backup/recovery",
+						"Familiarity with various operating systems and platforms", "Problem-solving aptitude",
+						"BSc/Ba in Information Technology, Computer Science or a related discipline; professional certification (e.g. Microsoft Certified Systems Administrator (MCSA)) is a plus"),
+				Arrays.asList("Install and configure software and hardware ",
+						"Manage network servers and technology toolss",
+						"Set up accounts and workstations",
+						"Troubleshoot issues and outages",
+						"Monitor performance and maintain systems according to requirements",
+						"Upgrade systems with new releases and models",
+						"Develop expertise to train staff on new technologies",
+						"Build an internal wiki with technical documentation, manuals and IT policies"));
+		sysAdmin.setLocation(locations.get(0));
+
+		Job operator = new Job("Operator", "Full-time", "A great operator is reliable and "
+				+ "able to work with attention to detail and safety standards. On-the-job training"
+				+ " is a good way to discover how to do the job better, so you should have"
+				+ " willingness to learn and improve."
+				+ " Being a team player is essential since all tasks will require close "
+				+ "collaboration with co-workers.", 
+				"../../../../assets/images/jobs/imgOperator.jpg", "Vaslui",
+				Arrays.asList("Great communication skills ",
+						"Great English skills ",
+						"Knowledge of business process and functions (finance, HR, procurement, operations etc.)",
+						"Proeficient with handling software programs",
+						"Problem-solving aptitude",
+						"BSc/BA in Business or relevant field; MSc/MA is a plus"),
+				Arrays.asList("Perform day-to-day operations ",
+						"Keep in touch with the administrators",
+						"Cooperate with the rest of the staff"));
+		operator.setLocation(locations.get(0));
+
+		Job janitor = new Job("Janitor", "Full-time", "Your goal is to keep our "
+				+ "building in a clean and orderly condition.n", 
+				"../../../../assets/images/jobs/imgJanitor.jpg", "Vaslui",
+				Arrays.asList("Proven working experience as a janitor ",
+						"Ability to handle heavy equipment and machinery",
+						"Knowledge of cleaning chemicals and supplies",
+						"Familiarity with Material Safety Data Sheets",
+						"Integrity and ability to work independently",
+						"High school degree"),
+				Arrays.asList(
+						"Clean and supply designated building areas (dusting, sweeping, vacuuming, mopping, cleaning ceiling vents, restroom cleaning etc) ",
+						"Stock and maintain supply rooms",
+						"Perform and document routine inspection and maintenance activities",
+						"Notify management of occurring deficiencies or needs for repairs",
+						"Make adjustments and minor repairs",
+						"Follow all health and safety regulations"));
+		janitor.setLocation(locations.get(1));
+
+		Job frontendDev = new Job("Front End Developer", "Full-time", "If you’re interested in "
+				+ "creating a user-friendly environment by writing code and moving forward "
+				+ "in your career, then this job is for you. We expect you to be a tech-savvy "
+				+ "professional, who is curious about new digital technologies and aspires "
+				+ "to combine usability with visual design.\r\n" + 
+				"\r\n" + 
+				"Ultimately, you should be able to create a "
+				+ "functional and attractive digital environment for our company,"
+				+ " ensuring great user experience.", 
+				"../../../../assets/images/jobs/imgFrontEndDev.jpg", "Iasi",
+				Arrays.asList("Proven work experience as a Front-end developer ",
+						"Hands on experience with markup languages ",
+						"Experience with JavaScript, CSS and jQuery",
+						"In-depth understanding of the entire web development process (design, development and deployment)",
+						"Understanding of layout aesthetics",
+						"Knowledge of SEO principles",
+						"Familiarity with software like Adobe Suite, Photoshop and content management systems",
+						"BSc degree in Computer Science or relevant field"),
+				Arrays.asList("Maintain and improve website ",
+						"Use markup languages like HTML to create user-friendly web pages",
+						"Optimize applications for maximum speed",
+						"Design mobile-based features",
+						"Manage cutting-edge technologies to improve legacy applications",
+						"Collaborate with back-end developers and web designers to improve usability",
+						"Get feedback from, and build solutions for, users and customers",
+						"Write functional requirement documents and guides",
+						"Create quality mockups and prototypes",
+						"Ensure high quality graphic standards and brand consistency",
+						"Stay up-to-date on emerging technologies"));
+		frontendDev.setStatus(Status.INACTIVE);
+		frontendDev.setLocation(locations.get(0));
+
+		Job backendDev = new Job("Back End Developer", "Full-time", "If you have "
+				+ "excellent programming skills and a passion for developing applications"
+				+ " or improving existing ones, we would like to meet you. As a Back-end developer, "
+				+ "you’ll work closely with our engineers to ensure system consistency and "
+				+ "improve user experience.\r\n" + 
+				"\r\n" + 
+				"Ultimately, you should be able to develop and maintain functional"
+				+ " and stable web applications to meet our company’s needs.", 
+				"../../../../assets/images/jobs/imgBackEndDev.jpg", "Iasi",
+				Arrays.asList("Proven work experience as a Back-end developer ",
+						"In-depth understanding of the entire web development process"
+								+ " (design, development and deployment) ",
+						"Hands on experience with programming languages like Java, Ruby, PHP and Python",
+						"Working knowledge of CMS framework",
+						"Familiarity with front-end languages (e.g. HTML, JavaScript and CSS)",
+						"Teamwork skills with a problem-solving attitude",
+						"BSc degree in Computer Science or relevant field"),
+				Arrays.asList("Participate in the entire application lifecycle, focusing on coding and debugging ",
+						"Write clean code to develop functional web applications",
+						"Troubleshoot and debug applications", "Perform UI tests to optimize performance",
+						"Manage cutting-edge technologies to improve legacy applications",
+						"Gather and address technical and design requirements",
+						"Provide training and support to internal teams",
+						"Build reusable code and libraries for future use",
+						"Liaise with developers, designers and system administrators to identify new features",
+						"Follow emerging technologies"));
+		backendDev.setStatus(Status.INACTIVE);
+		backendDev.setLocation(locations.get(0));
+
+		Job deliveryDriver = new Job("Delivery Driver", "Full-time", "The Delivery Driver is responsible"
+				+ "with distributing products promptly to our customers. You will represent our company "
+				+ "in a professional and cost-effective manner to increase our profitability"
+				+ " and customer satisfaction.", 
+				"../../../../assets/images/jobs/imgDelivery.jpg", "Bacau",
+				Arrays.asList("Proven working experience as a Delivery Driver ",
+						"Valid professional driver’s license ",
+						"Ability to operate forklifts and tractors in a variety of weather and traffic conditions",
+						"Excellent organizational and time management skills",
+						"Good driving record with no traffic violations",
+						"High school degree"),
+				Arrays.asList("Deliver a wide variety of items to different addresses and through different routes ",
+						"Follow routes and time schedule",
+						"Collect payments",
+						"Load, unload, prepare, inspect and operate a delivery vehicle",
+						"Ask for feedback on provided services and resolve clients’ complaints",
+						"Inform customers about new products and services"));
+		deliveryDriver.setLocation(locations.get(0));
+
+		Job economist = new Job("Economist", "Full-time", 
+				"an Economist's responsibilities include budgeting, "
+				+ "managing tax payments and performing internal audits. "
+				+ "You will act as a consultant for senior managers, conducting "
+				+ "cost and revenues analyses. To be qualified for this role, "
+				+ "you should have a degree in Accounting and relevant work experience.\r\n" + 
+				"\r\n" + 
+				"Ultimately, you will ensure all our accounting transactions comply"
+				+ " with the law and support our company’s investments.", 
+				"../../../../assets/images/jobs/imgEconomist.jpg", "Iasi",
+				Arrays.asList("Proven experience as an economist",
+						"Excellent communication skills",
+						"Excellent knowledge of accounting regulations and practices",
+						"In-depth experience in risk analysis, budgeting and forecasting",
+						"Excellent organizational and time management skills",
+						"Proficient in MS Office (especially Excel) and finance software",
+						"BSc/BA in Accounting, Finance or related field; professional certification (e.g. CPA) is a plus"),
+				Arrays.asList("Gather financial data and ledgers ",
+						"Manage periodical reporting",
+						"Consolidate and analyze financial statements and results",
+						"Prepare budgets and monitor expenditures",
+						"Handle monthly, quarterly and annual closings",
+						"Oversee external and internal audits"));
+		economist.setLocation(locations.get(0));
+
+		Job cook = new Job("Cook", "Part-time", "An excellent cook"
+				+ " must be able to follow instructions in cooking and delivering "
+				+ "well-prepared meals. They must be deft in moving around the"
+				+ " kitchen and apt in multi-tasking. Experience in using various "
+				+ "ingredients and cooking techniques is also important.\r\n" + 
+				"\r\n" + 
+				"The goal is to help preserve and enhance our reputation so "
+				+ "we can expand our clientele.", 
+				"../../../../assets/images/jobs/imgCook.jpg", "Suceava",
+				Arrays.asList("Proven experience as cook",
+						"Ability to work in a team ",
+						"Experience in using cutting tools, cookware and bakeware",
+						"Knowledge of various cooking procedures and methods (grilling, baking, boiling etc.)",
+						"Very good communication skills",
+						"Excellent physical condition and stamina",
+						"High school diploma or equivalent; Diploma from a culinary school will be an advantage"),
+				Arrays.asList("Set up workstations with all needed ingredients and cooking equipment ",
+						"Prepare ingredients to use in cooking (chopping and peeling vegetables, cutting meat etc.)",
+						"Cook food in various utensils or grillers",
+						"Check food while cooking to stir or turn",
+						"Ensure great presentation by dressing dishes before they are served",
+						"Keep a sanitized and orderly environment in the kitchen",
+						"Ensure all food and other items are stored properly",
+						"Check quality of ingredients",
+						"Monitor stock and place orders when there are shortages"));
+		cook.setLocation(locations.get(1));
+
+		Job custRel = new Job("Customer Relations Representant", "Full-time", 
+				"Customer Relations Specialist responsibilities include resolving customer queries, "
+				+ "recommending solutions and guiding product users through features and functionalities."
+				+ "To be successful in this role, you should be an excellent communicator who’s able to"
+				+ " earn our clients’ trust. You should also be familiar with help desk software.\r\n" + 
+				"\r\n" + 
+				"Ultimately, you will help establish our reputation as a company that offers excellent"
+				+ " customer support during all sales and after-sales procedures.", 
+				"../../../../assets/images/jobs/imgCustomerSupport.jpg", "Botosani",
+				Arrays.asList("Experience as a Customer Relations Specialist or similar CS role ",
+						"Familiarity with our industry is a plus ",
+						"Understanding of how CRM systems work",
+						"Experience using help desk software and remote support tools",
+						"Ability to work in a team",
+						"Very good communication skills",
+						"Multi-tasking abilities",
+						"BSc in Information Technology or relevant diploma"),
+				Arrays.asList("Respond to customer queries in a timely and accurate way, via phone, email or chat ",
+						"Identify customer needs and help customers use specific features",
+						"Monitor customer complaints on social media and reach out to provide assistance",
+						"Share feature requests and effective workarounds with team member"));
+		custRel.setLocation(locations.get(0));
+
+		jobService.insertJob(waiter);
+		jobService.insertJob(manager);
+		jobService.insertJob(sysAdmin);
+		jobService.insertJob(operator);
+		jobService.insertJob(janitor);
+		jobService.insertJob(frontendDev);
+		jobService.insertJob(backendDev);
+		jobService.insertJob(deliveryDriver);
+		jobService.insertJob(economist);
+		jobService.insertJob(cook);
+		jobService.insertJob(custRel);
 	}
 
 	private City cityByName(String name) {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.entities.location.Location;
 import sms.enums.Status;
 import sms.utils.DisplayData;
 
@@ -40,9 +41,9 @@ public class JobController {
 		Collections.sort(jobs);
 		return jobs;
 	}
-	
-	@RequestMapping(value = "/all/{location}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Job> getJobsByLocation(@PathVariable("location") String location) {
+
+	@RequestMapping(value = "/all/byLocation", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Job> getJobsByLocation(@RequestBody Location location) {
 		dataDisplay.printCrudInfo();
 		List<Job> jobs = jobService.findAllActiveJobsByLocation(location);
 		Collections.sort(jobs);

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../../../../entities/classes/job';
 import { JobService } from '../../../../providers/services/job.service';
-import { ActivatedRoute } from '../../../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job',

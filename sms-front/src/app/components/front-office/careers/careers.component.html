@@ -9,6 +9,13 @@
     <br>
     <h3 class="font-italic" style="text-align:center">Check out our job vacancies</h3>
     <br>
+
+    <p>Select location: </p>
+    <div *ngFor="let location of locations; let i = index" class="custom-control custom-radio">
+        <input (click)="onLocationChanged(location)" type="radio" [id]="'#customRadio' + i" name="customRadio" class="custom-control-input">
+        <label class="custom-control-label" [for]="'#customRadio' + i">{{location.cityName}}</label>
+    </div>
+
     <br>
     <div class="container">
         <main>
@@ -24,7 +31,7 @@
                                 <div class="match-height has-padding-left-top">
                                     <h4 class="card-title text-md-left font-weight-bold">Job name: {{job.name}}</h4>
                                     <p class="card-text text-md-left font-italic">Job type: {{job.jobStatus}}</p>
-                                    <p class="card-text text-md-left font-italic">Location: {{job.location}}</p>
+                                    <p class="card-text text-md-left font-italic">Location: {{job.location.cityName}}</p>
                                 </div>
                             </div>
                             <button (click)="onClick(job)" class="btn btn-primary font-weight-bold">See full job profile</button>

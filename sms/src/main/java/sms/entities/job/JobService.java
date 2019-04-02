@@ -1,12 +1,12 @@
 package sms.entities.job;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sms.entities.location.Location;
 import sms.enums.Status;
 
 @Service
@@ -27,7 +27,7 @@ public class JobService implements IJobService {
 		return (List<Job>) jobRepository.findAllByStatus(Status.ACTIVE);
 	}
 	
-	public List<Job> findAllActiveJobsByLocation(String location) {
+	public List<Job> findAllActiveJobsByLocation(Location location) {
 		return (List<Job>) jobRepository.findAllByStatusAndLocation(Status.ACTIVE, location);
 	}
 
