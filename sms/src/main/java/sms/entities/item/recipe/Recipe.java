@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -28,6 +30,7 @@ public class Recipe extends Product implements ILineIterator {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "recipe")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnoreProperties(value = { "recipe", "category" })
 	private List<RecipeLine> recipeLines;

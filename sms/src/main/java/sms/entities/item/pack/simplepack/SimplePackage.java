@@ -57,7 +57,7 @@ public class SimplePackage extends Item {
 			price += component.getStockPrice();
 		}
 
-		return (double) Math.round(price * 0.9);
+		return (double) Math.round(price * 0.95);
 	}
 	
 }

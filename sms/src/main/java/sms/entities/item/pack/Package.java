@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -28,6 +30,7 @@ public class Package extends Item implements ILineIterator {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "pack")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnoreProperties(value = { "pack", "category" })
 	private List<PackageLine> packageLines;
@@ -71,7 +74,7 @@ public class Package extends Item implements ILineIterator {
 			price += packageLine.getProduct().getStockPrice() * packageLine.getQuantity();
 		}
 
-		return (double) Math.round(price * 0.9);
+		return (double) Math.round(price * 0.95);
 	}
 
 	public Iterator<? extends ILine> createLinesIterator() {

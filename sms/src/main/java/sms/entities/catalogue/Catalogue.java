@@ -16,6 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.account.employee.Employee;
@@ -39,6 +42,7 @@ public class Catalogue implements Serializable, ILineIterator {
 	private Integer year;
 	private CatalogueStatus catalogueStatus;
 	@OneToMany(mappedBy = "catalogue")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonIgnoreProperties(value = "catalogue")
 	private List<CatalogueItem> catalogueItems = new ArrayList<CatalogueItem>();
 	@ManyToOne

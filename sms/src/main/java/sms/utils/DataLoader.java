@@ -24,9 +24,14 @@ import sms.entities.address.city.ICityService;
 import sms.entities.address.county.County;
 import sms.entities.address.county.ICountyService;
 import sms.entities.address.logic.AddressBuilder;
+import sms.entities.catalogue.Catalogue;
+import sms.entities.catalogue.ICatalogueService;
+import sms.entities.catalogue.item.CatalogueItem;
+import sms.entities.catalogue.item.ICatalogueItemService;
 import sms.entities.category.Category;
 import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
+import sms.entities.item.Item;
 import sms.entities.item.component.beverage.Beverage;
 import sms.entities.item.component.ingredient.Ingredient;
 import sms.entities.item.pack.Package;
@@ -40,8 +45,10 @@ import sms.entities.job.Job;
 import sms.entities.location.ILocationService;
 import sms.entities.location.Location;
 import sms.enums.CategoryType;
+import sms.enums.Month;
 import sms.enums.Status;
 import sms.enums.account.EmployeeStatus;
+import sms.enums.catalogue.CatalogueStatus;
 import sms.enums.item.MeasurementUnit;
 
 @Component
@@ -61,6 +68,10 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private ICategoryService categoryService;
 	@Autowired
 	private IItemService itemService;
+	@Autowired
+	private ICatalogueService catalogueService;
+	@Autowired
+	private ICatalogueItemService catalogueLineService;
 	@Autowired
 	private IRecipeLineService recipeLineService;
 	@Autowired
@@ -95,6 +106,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		updateEmployee();
 
 		updateIngredients();
+		
+		updateCatalogue();
 		
 		updateLocation();
 		
@@ -227,33 +240,33 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		category4.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category401 = new Category("Vegetables", "Vegetables category");
 		category401.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category401.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category402 = new Category("Fruits", "Fruits category");
 		category402.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category402.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category403 = new Category("Grains, Beans and Nuts", "Grains, beans and nuts category");
 		category403.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category403.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category404 = new Category("Meat and Poultry", "Meat and poultry category");
 		category404.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category404.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category405 = new Category("Fish and Seafood", "Fish and seafood category");
 		category405.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category405.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category406 = new Category("Dairy Foods", "Dairy foods category");
 		category406.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category406.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category407 = new Category("Pantry", "Pantry category");
 		category407.setParentCategory(category4);
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category407.setCategoryType(CategoryType.BACK_OFFICE);
 
 		Category category5 = new Category("Dough recipes", "Dough recipes category");
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category5.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category6 = new Category("Tomato sauce recipes", "Tomato sauce recipes category");
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category6.setCategoryType(CategoryType.BACK_OFFICE);
 		
 		Category category7 = new Category("Packages", "Packages cateogry");
-		category4.setCategoryType(CategoryType.BACK_OFFICE);
+		category7.setCategoryType(CategoryType.FRONT_OFFICE);
 
 		categoryService.insertCategory(category1);
 		categoryService.insertCategory(category2);
@@ -622,6 +635,27 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		packageLineService.insertPackageLine(packageLine10101);
 		packageLineService.insertPackageLine(packageLine10102);
 
+	}
+	
+	private void updateCatalogue() {
+		Double increase = 50.0;
+		Catalogue catalogue = new Catalogue(Month.APRIL, 2019, CatalogueStatus.ACTIVE);
+		List<Category> categories = categoryService.findAllActiveFrontOfficeCategories();
+		
+		for(Category category: categories) {
+			for(Item item: category.getItems()) {
+				CatalogueItem catalogueLine = new CatalogueItem(item.getStockPrice() * (1 + increase/100));
+				catalogueLine.setItem(item);
+				catalogue.addLine(catalogueLine);
+			}
+		}
+		
+		catalogueService.insertCatalogue(catalogue);
+		
+		for(CatalogueItem catalogueLine: catalogue.getCatalogueItems()) {
+			catalogueLineService.insertCatalogueItem(catalogueLine);
+		}
+		
 	}
 	
 	private void updateLocation() {

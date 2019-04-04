@@ -16,6 +16,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.account.employee.Employee;
@@ -44,6 +47,7 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	@JsonIgnoreProperties(value = "parentCategory")
 	private List<Category> childCategories;
 	@OneToMany(mappedBy = "category")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonIgnoreProperties(value = "category")
 	private List<Item> items = new ArrayList<Item>();
 	private CategoryType categoryType;
