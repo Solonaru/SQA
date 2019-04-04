@@ -17,7 +17,11 @@ export class CategoryService {
     constructor(private http: HttpClient) { }
 
     getCategories() {
-        return this.http.get(this.BASE_URL + 'all').pipe(map((res: Category[]) => { return res }));
+        return this.http.get(this.BASE_URL + 'all/active').pipe(map((res: Category[]) => { return res }));
+    }
+
+    getFrontOfficeCategories() {
+        return this.http.get(this.BASE_URL + 'all/active/frontOffice').pipe(map((res: Category[]) => { return res }));
     }
 
     getNoParentCategories() {

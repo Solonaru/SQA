@@ -4,10 +4,10 @@ import sms.entities.item.recipe.line.RecipeLine;
 
 public class RecipeLineFactory implements ILineAbstractFactory {
 
-	private Integer quantity;
+	private Double quantity;
 
 	// ----- Constructors -----
-	public RecipeLineFactory(Integer quantity) {
+	public RecipeLineFactory(Double quantity) {
 		this.quantity = quantity;
 	}
 

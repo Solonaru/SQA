@@ -18,8 +18,8 @@ import sms.entities.item.Item;
 import sms.entities.item.pack.line.PackageLine;
 import sms.entities.logic.ILine;
 import sms.entities.logic.ILineIterator;
-import sms.enums.Month;
 import sms.enums.item.ItemType;
+import sms.enums.item.MeasurementUnit;
 
 @Entity
 @NamedQuery(name = "Package.findAll", query = "SELECT p FROM Package p")
@@ -38,8 +38,8 @@ public class Package extends Item implements ILineIterator {
 		this.itemType = ItemType.PACKAGE;
 	}
 
-	public Package(String name, Integer stockQuantity, Double stockPrice, String description) {
-		super(name, stockQuantity, stockPrice, description);
+	public Package(String name, MeasurementUnit measurementUnit, Double stockQuantity, String description) {
+		super(name, measurementUnit, stockQuantity, description);
 		this.itemType = ItemType.PACKAGE;
 	}
 
@@ -62,27 +62,13 @@ public class Package extends Item implements ILineIterator {
 		packageLine.setPack(this);
 	}
 
-	/* TODO: See if desired implementation */
-	public Double getPrice() {
+	public Double getStockPrice() {
 		Double price = 0.0;
 		Iterator<? extends ILine> linesIterator = this.createLinesIterator();
 
 		while (linesIterator.hasNext()) {
 			PackageLine packageLine = (PackageLine) linesIterator.next();
-			price += packageLine.getProduct().getPrice();
-		}
-
-		return (double) Math.round(price * 0.9);
-	}
-
-	/* TODO: See if desired implementation */
-	public Double getPrice(Month month) {
-		Double price = 0.0;
-		Iterator<? extends ILine> linesIterator = this.createLinesIterator();
-
-		while (linesIterator.hasNext()) {
-			PackageLine packageLine = (PackageLine) linesIterator.next();
-			price += packageLine.getProduct().getPrice(month);
+			price += packageLine.getProduct().getStockPrice() * packageLine.getQuantity();
 		}
 
 		return (double) Math.round(price * 0.9);

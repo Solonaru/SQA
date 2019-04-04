@@ -4,10 +4,10 @@ import sms.entities.item.pack.line.PackageLine;
 
 public class PackageLineFactory implements ILineAbstractFactory {
 
-	private Integer quantity;
+	private Double quantity;
 
 	// ----- Constructors -----
-	public PackageLineFactory(Integer quantity) {
+	public PackageLineFactory(Double quantity) {
 		this.quantity = quantity;
 	}
 

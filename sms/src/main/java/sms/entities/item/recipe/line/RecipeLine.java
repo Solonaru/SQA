@@ -28,7 +28,7 @@ public class RecipeLine implements Serializable, ILine {
 	@SequenceGenerator(name = "recipe_line_generator", sequenceName = "recipe_line_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	private Integer quantity;
+	private Double quantity;
 	@ManyToOne
 	@JoinColumn(name = "recipe_id")
 	@JsonIgnoreProperties(value = "category")
@@ -42,7 +42,7 @@ public class RecipeLine implements Serializable, ILine {
 		super();
 	}
 
-	public RecipeLine(Integer quantity) {
+	public RecipeLine(Double quantity) {
 		super();
 		this.quantity = quantity;
 	}
@@ -56,11 +56,11 @@ public class RecipeLine implements Serializable, ILine {
 		this.id = id;
 	}
 
-	public Integer getNeededQuantity() {
+	public Double getNeededQuantity() {
 		return quantity;
 	}
 
-	public void setNeededQuantity(Integer neededQuantity) {
+	public void setNeededQuantity(Double neededQuantity) {
 		this.quantity = neededQuantity;
 	}
 

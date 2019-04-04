@@ -11,8 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 import sms.entities.item.Item;
-import sms.enums.Month;
 import sms.enums.item.ItemType;
+import sms.enums.item.MeasurementUnit;
 
 @Entity
 @NamedQuery(name = "SimplePackage.findAll", query = "SELECT sp FROM SimplePackage sp")
@@ -31,8 +31,8 @@ public class SimplePackage extends Item {
 		this.itemType = ItemType.SIMPLE_PACKAGE;
 	}
 
-	public SimplePackage(String name, Integer stockQuantity, Double stockPrice, String description) {
-		super(name, stockQuantity, stockPrice, description);
+	public SimplePackage(String name, MeasurementUnit measurementUnit, Double stockQuantity, String description) {
+		super(name, measurementUnit, stockQuantity, description);
 		this.itemType = ItemType.SIMPLE_PACKAGE;
 	}
 
@@ -50,23 +50,14 @@ public class SimplePackage extends Item {
 		packageComponents.add(component);
 	}
 
-	public Double getPrice() {
+	public Double getStockPrice() {
 		Double price = 0.0;
 
 		for (Item component : packageComponents) {
-			price += component.getPrice();
+			price += component.getStockPrice();
 		}
 
 		return (double) Math.round(price * 0.9);
 	}
-
-	public Double getPrice(Month month) {
-		Double price = 0.0;
-
-		for (Item component : packageComponents) {
-			price += component.getPrice(month);
-		}
-
-		return (double) Math.round(price * 0.9);
-	}
+	
 }

@@ -37,7 +37,23 @@ public class CategoryController {
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Category> getCategories() {
 		dataDisplay.printCrudInfo();
+		List<Category> categories = categoryService.findAllCategories();
+		Collections.sort(categories);
+		return categories;
+	}
+	
+	@RequestMapping(value = "/all/active", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Category> getActiveCategories() {
+		dataDisplay.printCrudInfo();
 		List<Category> categories = categoryService.findAllActiveCategories();
+		Collections.sort(categories);
+		return categories;
+	}
+	
+	@RequestMapping(value = "/all/active/frontOffice", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Category> getFrontOfficeActiveCategories() {
+		dataDisplay.printCrudInfo();
+		List<Category> categories = categoryService.findAllActiveFrontOfficeCategories();
 		Collections.sort(categories);
 		return categories;
 	}

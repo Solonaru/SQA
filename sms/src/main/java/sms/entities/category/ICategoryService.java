@@ -11,6 +11,8 @@ public interface ICategoryService {
 	
 	public List<Category> findAllActiveCategories();
 	
+	public List<Category> findAllActiveFrontOfficeCategories();
+	
 	public List<Category> findAllNoParentCategories();
 	
 	public List<Category> findAllNoChildCategories();

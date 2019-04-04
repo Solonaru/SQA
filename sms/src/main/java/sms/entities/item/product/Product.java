@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
 import sms.entities.item.Item;
+import sms.enums.item.MeasurementUnit;
 
 @Entity
 @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
@@ -15,8 +16,8 @@ public abstract class Product extends Item {
 		super();
 	}
 
-	public Product(String name, Integer stockQuantity, Double stockPrice, String description) {
-		super(name, stockQuantity, stockPrice, description);
+	public Product(String name, MeasurementUnit measurementUnit, Double stockQuantity, String description) {
+		super(name, measurementUnit, stockQuantity, description);
 	}
 
 }

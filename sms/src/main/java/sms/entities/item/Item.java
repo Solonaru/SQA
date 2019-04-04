@@ -34,6 +34,7 @@ import sms.entities.catalogue.item.CatalogueItem;
 import sms.entities.category.Category;
 import sms.enums.Month;
 import sms.enums.item.ItemType;
+import sms.enums.item.MeasurementUnit;
 import sms.utils.UtilMethods;
 
 @Entity
@@ -49,7 +50,8 @@ public abstract class Item implements Serializable, Comparable<Item> {
 	@Column(name = "id", updatable = false, nullable = false)
 	protected Integer id;
 	protected String name;
-	protected Integer stockQuantity;
+	protected MeasurementUnit measurementUnit;
+	protected Double stockQuantity;
 	protected Double stockPrice;
 	protected String description;
 	protected String imageUrl;
@@ -74,11 +76,11 @@ public abstract class Item implements Serializable, Comparable<Item> {
 		super();
 	}
 
-	public Item(String name, Integer stockQuantity, Double stockPrice, String description) {
+	public Item(String name, MeasurementUnit measurementUnit, Double stockQuantity, String description) {
 		super();
 		this.name = name;
+		this.measurementUnit = measurementUnit;
 		this.stockQuantity = stockQuantity;
-		this.stockPrice = stockPrice;
 		this.description = description;
 		this.updateDate = new Date(System.currentTimeMillis());
 	}
@@ -100,11 +102,19 @@ public abstract class Item implements Serializable, Comparable<Item> {
 		this.name = name;
 	}
 
-	public Integer getStockQuantity() {
+	public MeasurementUnit getMeasurementUnit() {
+		return measurementUnit;
+	}
+
+	public void setMeasurementUnit(MeasurementUnit measurementUnit) {
+		this.measurementUnit = measurementUnit;
+	}
+
+	public Double getStockQuantity() {
 		return stockQuantity;
 	}
 
-	public void setStockQuantity(Integer stockQuantity) {
+	public void setStockQuantity(Double stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
 
@@ -200,10 +210,12 @@ public abstract class Item implements Serializable, Comparable<Item> {
 		return false;
 	}
 
+	/* Catalogue price for current month */
 	public Double getPrice() {
 		return this.getPrice(UtilMethods.getMonthFromDate(Calendar.getInstance().getTime()));
 	}
 
+	/* Catalogue price for specified month */
 	public Double getPrice(Month month) {
 		for (CatalogueItem catalogueItem : this.getCatalogueItems()) {
 			if (month.equals(catalogueItem.getCatalogue().getMonth())) {

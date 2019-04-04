@@ -24,7 +24,7 @@ public class PackageLine implements ILine {
 	@SequenceGenerator(name = "package_line_generator", sequenceName = "package_line_sequence", initialValue = 1, allocationSize = 1)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
-	private Integer quantity;
+	private Double quantity;
 	@ManyToOne
 	@JoinColumn(name = "package_id")
 	@JsonIgnoreProperties(value = "category")
@@ -38,7 +38,7 @@ public class PackageLine implements ILine {
 		super();
 	}
 
-	public PackageLine(Integer quantity) {
+	public PackageLine(Double quantity) {
 		super();
 		this.quantity = quantity;
 	}
@@ -52,11 +52,11 @@ public class PackageLine implements ILine {
 		this.id = id;
 	}
 
-	public Integer getQuantity() {
+	public Double getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 

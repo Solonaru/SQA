@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   populateCategories() {
-    this.categoryService.getCategories().subscribe(data => { this.categories = data });
+    this.categoryService.getFrontOfficeCategories().subscribe(data => { this.categories = data });
   }
 
   onClick(category: Category) {

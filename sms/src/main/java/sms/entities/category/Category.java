@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sms.entities.account.employee.Employee;
 import sms.entities.item.Item;
 import sms.entities.item.logic.IItemIterator;
+import sms.enums.CategoryType;
 import sms.enums.Status;
 
 @Entity
@@ -45,6 +46,7 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 	@OneToMany(mappedBy = "category")
 	@JsonIgnoreProperties(value = "category")
 	private List<Item> items = new ArrayList<Item>();
+	private CategoryType categoryType;
 	@ManyToOne
 	private Employee employee;
 	private Date updateDate;
@@ -112,8 +114,12 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 		this.items = items;
 	}
 
-	public Iterator<Item> createIterator() {
-		return this.items.iterator();
+	public CategoryType getCategoryType() {
+		return categoryType;
+	}
+
+	public void setCategoryType(CategoryType categoryType) {
+		this.categoryType = categoryType;
 	}
 
 	public Employee getEmployee() {
@@ -168,5 +174,9 @@ public class Category implements Serializable, IItemIterator, Comparable<Categor
 		}
 
 		this.items = null;
+	}
+
+	public Iterator<Item> createIterator() {
+		return this.items.iterator();
 	}
 }

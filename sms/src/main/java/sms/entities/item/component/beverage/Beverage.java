@@ -6,6 +6,7 @@ import javax.persistence.NamedQuery;
 
 import sms.entities.item.component.Component;
 import sms.enums.item.ItemType;
+import sms.enums.item.MeasurementUnit;
 
 @Entity
 @NamedQuery(name = "Beverage.findAll", query = "SELECT h FROM Beverage h")
@@ -19,8 +20,8 @@ public class Beverage extends Component {
 		this.itemType = ItemType.BEVERAGE;
 	}
 
-	public Beverage(String name, Integer stockQuantity, Double stockPrice, String description) {
-		super(name, stockQuantity, stockPrice, description);
+	public Beverage(String name, MeasurementUnit measurementUnit, Double stockQuantity, Double stockPrice, String description) {
+		super(name, measurementUnit, stockQuantity, stockPrice, description);
 		this.itemType = ItemType.BEVERAGE;
 	}
 
