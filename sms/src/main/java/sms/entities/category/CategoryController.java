@@ -33,6 +33,11 @@ public class CategoryController {
 		dataDisplay.printCrudInfo(categoryId);
 		return categoryService.findCategoryById(categoryId);
 	}
+	
+	@RequestMapping(value = "/name/{categoryName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Category> findCategoryByName(@PathVariable("categoryName") String categoryName) {
+		return categoryService.findCategoryByName(categoryName);
+	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Category> getCategories() {

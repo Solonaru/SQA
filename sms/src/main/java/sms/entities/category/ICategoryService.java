@@ -6,6 +6,8 @@ import java.util.Optional;
 public interface ICategoryService {
 	
 	public Optional<Category> findCategoryById(int categoryId);
+	
+	public Optional<Category> findCategoryByName(String name);
 
 	public List<Category> findAllCategories();
 	

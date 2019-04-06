@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlideshowModule } from 'ng-simple-slideshow';
+import {MatNativeDateModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DemoMaterialModule} from './material-module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/front-office/header/header.component';
@@ -13,6 +16,8 @@ import { LoginComponent } from './components/front-office/login/login.component'
 import { RegisterComponent } from './components/front-office/register/register.component';
 import { HomeComponent } from './components/front-office/home/home.component';
 import { ProfileComponent } from './components/front-office/profile/profile.component';
+import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
+import { MakeOwnPizzaComponent } from './components/front-office/make-own-pizza/make-own-pizza.component';
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
@@ -29,7 +34,6 @@ import { TermsCondComponent } from './components/front-office/terms-cond/terms-c
 import { PrivacyComponent } from './components/front-office/privacy/privacy.component';
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
-import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { ShoppingComponent } from './components/front-office/shopping/shopping.c
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
+    ShoppingComponent,
+    MakeOwnPizzaComponent,
 
     CategoryMngComponent,
     ItemMngComponent,
@@ -56,15 +62,18 @@ import { ShoppingComponent } from './components/front-office/shopping/shopping.c
     TermsCondComponent,
     PrivacyComponent,
     FeedbackComponent,
-    ContactUsComponent,
-    ShoppingComponent
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SlideshowModule
+    SlideshowModule,
+    DemoMaterialModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

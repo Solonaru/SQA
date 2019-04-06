@@ -15,6 +15,10 @@ public class IngredientService implements IIngredientService {
 	public Optional<Ingredient> findIngredientById(int ingredientId) {
 		return ingredientRepository.findById(ingredientId);
 	}
+	
+	public Optional<Ingredient> findIngredientByName(String name) {
+		return ingredientRepository.findByName(name);
+	}
 
 	public List<Ingredient> findAllIngredients() {
 		return (List<Ingredient>) ingredientRepository.findAll();

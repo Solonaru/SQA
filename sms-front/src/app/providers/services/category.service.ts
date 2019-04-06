@@ -37,6 +37,11 @@ export class CategoryService {
             .pipe(map((res: Category) => { return res }));
     }
 
+    getCategoryByName(categoryName: String) {
+        return this.http.get(this.BASE_URL + 'name/' + categoryName)
+            .pipe(map((res: Category) => { return res }));
+    }
+
     insertCategory(category: Category) {
         return this.http.post<Category>(this.BASE_URL + 'add', JSON.stringify(category), this.httpOptions)
             .pipe(map((resp: Category) => { return resp }));

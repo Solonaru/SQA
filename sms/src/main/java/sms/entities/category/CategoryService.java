@@ -18,6 +18,10 @@ public class CategoryService implements ICategoryService {
 	public Optional<Category> findCategoryById(int categoryId) {
 		return categoryRepository.findById(categoryId);
 	}
+	
+	public Optional<Category> findCategoryByName(String name) {
+		return categoryRepository.findByName(name);
+	}
 
 	public List<Category> findAllCategories() {
 		return (List<Category>) categoryRepository.findAll();

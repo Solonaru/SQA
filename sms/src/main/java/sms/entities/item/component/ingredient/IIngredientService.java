@@ -6,6 +6,8 @@ import java.util.Optional;
 public interface IIngredientService {
 
 	public Optional<Ingredient> findIngredientById(int ingredientId);
+	
+	public Optional<Ingredient> findIngredientByName(String name);
 
 	public List<Ingredient> findAllIngredients();
 

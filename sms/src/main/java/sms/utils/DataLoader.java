@@ -33,6 +33,7 @@ import sms.entities.category.ICategoryService;
 import sms.entities.item.IItemService;
 import sms.entities.item.Item;
 import sms.entities.item.component.beverage.Beverage;
+import sms.entities.item.component.ingredient.IIngredientService;
 import sms.entities.item.component.ingredient.Ingredient;
 import sms.entities.item.pack.Package;
 import sms.entities.item.pack.line.IPackageLineService;
@@ -68,6 +69,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private ICategoryService categoryService;
 	@Autowired
 	private IItemService itemService;
+	@Autowired
+	private IIngredientService ingredientService;
 	@Autowired
 	private ICatalogueService catalogueService;
 	@Autowired
@@ -106,6 +109,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		updateEmployee();
 
 		updateIngredients();
+		
+		updateConflictIngredients();
 		
 		updateCatalogue();
 		
@@ -673,6 +678,24 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(package101);
 		packageLineService.insertPackageLine(packageLine10101);
 		packageLineService.insertPackageLine(packageLine10102);
+
+	}
+	
+	private void updateConflictIngredients() {
+		Ingredient redOnion = ingredientService.findIngredientByName("Red Onion").get();
+		Ingredient yellowOnion = ingredientService.findIngredientByName("Yellow Onion").get();
+		Ingredient lightBrownSugar = ingredientService.findIngredientByName("Light Brown Sugar").get();
+		Ingredient darkBrownSugar = ingredientService.findIngredientByName("Dark Brown Sugar").get();
+		
+		redOnion.addConflictIngredient(lightBrownSugar);
+		yellowOnion.addConflictIngredient(darkBrownSugar);
+		redOnion.addConflictIngredient(darkBrownSugar);
+		yellowOnion.addConflictIngredient(lightBrownSugar);
+		
+		ingredientService.updateIngredient(redOnion);
+		ingredientService.updateIngredient(yellowOnion);
+		ingredientService.updateIngredient(lightBrownSugar);
+		ingredientService.updateIngredient(darkBrownSugar);
 
 	}
 	

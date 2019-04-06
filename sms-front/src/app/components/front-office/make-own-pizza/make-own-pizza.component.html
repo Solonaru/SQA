@@ -1,0 +1,6 @@
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let ingredient of ingredients" cdkDrag>
+    {{ingredient.name}}
+    <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
+  </div>
+</div>
