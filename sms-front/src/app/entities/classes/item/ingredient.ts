@@ -14,5 +14,5 @@ export class Ingredient {
     price: Number;
     itemType: ItemType;
     disabled: Boolean;
-    conflictIngredients: Ingredient;
+    conflictIngredients: Ingredient[];
 }

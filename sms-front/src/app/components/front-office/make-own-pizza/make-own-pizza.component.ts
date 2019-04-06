@@ -17,7 +17,11 @@ export class MakeOwnPizzaComponent implements OnInit {
   categories: Category[];
   ingredients: Ingredient[];
   pizzaIngredients: Ingredient[] = [];
+
+  dough: Recipe;
   doughs: Recipe[];
+
+  sauce: Recipe;
   sauces: Recipe[];
 
   constructor(private categoryService: CategoryService, private ingredientService: IngredientService) { }
@@ -45,12 +49,14 @@ export class MakeOwnPizzaComponent implements OnInit {
   populateDoughs() {
     this.categoryService.getCategoryByName("Dough recipes").subscribe(data => {
       this.doughs = data.items;
+      this.dough = this.doughs[0];
     })
   }
 
   populateSauces() {
     this.categoryService.getCategoryByName("Tomato sauce recipes").subscribe(data => {
       this.sauces = data.items;
+      this.sauce = this.sauces[0];
     })
   }
 
@@ -64,36 +70,40 @@ export class MakeOwnPizzaComponent implements OnInit {
         event.currentIndex);
 
       if (event.container.id == "cdk-drop-list-1") {
-        
-        for (let ingredient of event.container.data) {
-          for (let conflictIngredient of JSON.parse(JSON.stringify(ingredient)).conflictIngredients) {
-            let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
-            if (undefined != foundConflictIngredient) {
-              foundConflictIngredient.disabled = true;
-            }
-          }
-        }
+
+        this.refreshIngredientsData()
 
       }
 
       if (event.container.id == "cdk-drop-list-0") {
 
-        this.ingredients.map(function(x) { 
-          x.disabled = false; 
+        this.ingredients.map(function (x) {
+          x.disabled = false;
           return x
         });
 
-        for (let ingredient of event.previousContainer.data) {
-          for (let conflictIngredient of JSON.parse(JSON.stringify(ingredient)).conflictIngredients) {
-            let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
-            if (undefined != foundConflictIngredient) {
-              foundConflictIngredient.disabled = true;
-            }
-          }
-        }
+        this.refreshIngredientsData();
 
       }
 
     }
+  }
+
+  refreshIngredientsData() {
+    for (let ingredient of this.pizzaIngredients) {
+      for (let conflictIngredient of ingredient.conflictIngredients) {
+        let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
+        if (undefined != foundConflictIngredient) {
+          foundConflictIngredient.disabled = true;
+        }
+      }
+    }
+  }
+
+  categoryChanged() {
+    this.ingredientService.getIngredientsByCategoryId(this.category.id).subscribe(data => {
+      this.ingredients = data;
+      this.refreshIngredientsData();
+    });
   }
 }

@@ -1,3 +1,17 @@
+<select (change)="categoryChanged()" [(ngModel)]="category">
+  <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
+</select>
+
+<select [(ngModel)]="dough">
+  <option *ngFor="let dou of doughs" [ngValue]="dou">{{dou.name}}</option>
+</select>
+
+<select [(ngModel)]="sauce">
+  <option *ngFor="let sau of sauces" [ngValue]="sau">{{sau.name}}</option>
+</select>
+
+<br>
+
 <div class="example-container">
   <h2>Ingredients</h2>
 
