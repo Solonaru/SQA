@@ -21,6 +21,11 @@ export class ItemService {
       .pipe(map((res: Item[]) => res));
   }
 
+  getListedItemsByCategoryId(categoryId: Number) {
+    return this.http.get(this.BASE_URL + 'all/listed/' + categoryId)
+      .pipe(map((res: Item[]) => { return res }));
+  }
+
   insertItem(item: Item) {
     return this.http.post<Item>(this.BASE_URL + 'add', JSON.stringify(item), this.httpOptions)
       .pipe(map((resp: Item) => resp));

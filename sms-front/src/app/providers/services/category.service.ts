@@ -32,7 +32,7 @@ export class CategoryService {
         return this.http.get(this.BASE_URL + 'all/noChild').pipe(map((res: Category[]) => { return res }));
     }
 
-    getCategoryById(categoryId: Number) {
+    getCategoryById(categoryId: String) {
         return this.http.get(this.BASE_URL + categoryId)
             .pipe(map((res: Category) => { return res }));
     }

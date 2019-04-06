@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   onClick(category: Category) {
     /* Load the items page */
-    this.router.navigate(['items/', { cat: category.id }]);
+    this.router.navigate(['shopping/', { cat: category.id }]);
   }
 
   logout() {

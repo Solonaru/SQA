@@ -394,11 +394,42 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgDarkBrownSugar.jpg");
 		
 		
-		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar", MeasurementUnit.UNIT, 10.0, 4.0, "");
+		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar 250ml", MeasurementUnit.UNIT, 10.0, 2.20, "");
 		beverage1.setCategory(category3);
 		beverage1.setImageUrl(
 				"../../../../assets/images/items/products/components/beverages/imgCocaColaZeroSugar.jpg");
-		
+		Beverage beverage2 = new Beverage("Diet Coke Cola 250ml", MeasurementUnit.UNIT, 10.0, 1.80, "");
+		beverage2.setCategory(category3);
+		beverage2.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgDietCokeCola.jpg");
+		Beverage beverage3 = new Beverage("Sprite Zero Lemon 2L", MeasurementUnit.UNIT, 10.0, 4.20, "");
+		beverage3.setCategory(category3);
+		beverage3.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgSpriteZeroLemon.jpg");
+		Beverage beverage4 = new Beverage("Sprite Lemon 2L", MeasurementUnit.UNIT, 10.0, 3.80, "");
+		beverage4.setCategory(category3);
+		beverage4.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgSpriteLemon.jpg");
+		Beverage beverage5 = new Beverage("Diet Pepsi 2L", MeasurementUnit.UNIT, 10.0, 4.40, "");
+		beverage5.setCategory(category3);
+		beverage5.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgDietPepsi.jpg");
+		Beverage beverage6 = new Beverage("Pepsi 2L", MeasurementUnit.UNIT, 10.0, 4.20, "");
+		beverage6.setCategory(category3);
+		beverage6.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgPepsi.jpg");
+		Beverage beverage7 = new Beverage("Coca Cola 250ml", MeasurementUnit.UNIT, 10.0, 1.69, "");
+		beverage7.setCategory(category3);
+		beverage7.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgCocaCola.jpg");
+		Beverage beverage8 = new Beverage("Coca Cola Zero Sugar 2L", MeasurementUnit.UNIT, 10.0, 4.20, "");
+		beverage8.setCategory(category3);
+		beverage8.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgCocaColaZeroSugar2L.jpg");
+		Beverage beverage9 = new Beverage("Coca Cola 2L", MeasurementUnit.UNIT, 10.0, 4.00, "");
+		beverage9.setCategory(category3);
+		beverage9.setImageUrl(
+				"../../../../assets/images/items/products/components/beverages/imgCocaCola2L.jpg");
 
 		itemService.insertItem(meatAndPoultry1);
 		itemService.insertItem(meatAndPoultry2);
@@ -432,6 +463,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		
 		
 		itemService.insertItem(beverage1);
+		itemService.insertItem(beverage2);
+		itemService.insertItem(beverage3);
+		itemService.insertItem(beverage4);
+		itemService.insertItem(beverage5);
+		itemService.insertItem(beverage6);
+		itemService.insertItem(beverage7);
+		itemService.insertItem(beverage8);
+		itemService.insertItem(beverage9);
 
 		/*-------------------------------------------*/
 
@@ -644,7 +683,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		
 		for(Category category: categories) {
 			for(Item item: category.getItems()) {
-				CatalogueItem catalogueLine = new CatalogueItem(item.getStockPrice() * (1 + increase/100));
+				CatalogueItem catalogueLine = new CatalogueItem(Double.parseDouble(String.format("%.2f", item.getStockPrice() * (1 + increase/100))));
 				catalogueLine.setItem(item);
 				catalogue.addLine(catalogueLine);
 			}

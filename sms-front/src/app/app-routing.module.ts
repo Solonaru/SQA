@@ -23,6 +23,7 @@ import { AboutUsComponent } from './components/front-office/about-us/about-us.co
 import { TermsCondComponent } from './components/front-office/terms-cond/terms-cond.component';
 import { PrivacyComponent } from './components/front-office/privacy/privacy.component';
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
+import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'shopping', component: ShoppingComponent },
 
   { path: 'category-mng', component: CategoryMngComponent },
   { path: 'item-mng', component: ItemMngComponent },
