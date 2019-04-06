@@ -8,8 +8,6 @@ import { LoginComponent } from './components/front-office/login/login.component'
 import { RegisterComponent } from './components/front-office/register/register.component';
 import { ProfileComponent } from './components/front-office/profile/profile.component';
 import { HomeComponent } from './components/front-office/home/home.component';
-import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
-import { MakeOwnPizzaComponent } from './components/front-office/make-own-pizza/make-own-pizza.component';
 
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
@@ -25,6 +23,8 @@ import { AboutUsComponent } from './components/front-office/about-us/about-us.co
 import { TermsCondComponent } from './components/front-office/terms-cond/terms-cond.component';
 import { PrivacyComponent } from './components/front-office/privacy/privacy.component';
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
+import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
+import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -37,7 +37,6 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'home', component: HomeComponent },
   { path: 'shopping', component: ShoppingComponent },
-  { path: 'make-own-pizza', component: MakeOwnPizzaComponent },
 
   { path: 'category-mng', component: CategoryMngComponent },
   { path: 'item-mng', component: ItemMngComponent },
@@ -50,6 +49,7 @@ const routes: Routes = [
 
   { path: 'promotions', component: PromotionsComponent },
   { path : 'about-us', component: AboutUsComponent},
+  { path: 'contact-us', component: ContactUsComponent },
   { path: 'terms-cond', component: TermsCondComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'feedback', component: FeedbackComponent }
