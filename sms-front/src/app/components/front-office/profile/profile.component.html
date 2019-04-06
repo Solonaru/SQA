@@ -61,26 +61,280 @@
             </div>
             <div class="col-sm-12 col-md-6">
                 <h3 class="profile__text">Addresses</h3>
-                <div class="row">
+                <a class="btn btn-primary profile__add-del" role="button" data-toggle="modal" data-target="#addAddressModal" (click)="newAddress()">Add Delivery Address</a>
+      
+                 <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="addAddressModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Add New Delivery Address</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                                 
+                            <div class="modal-body">
+                                <form #addAddressForm="ngForm">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>Street*</label>
+                                            <input type="text" class="form-control" name="street" [(ngModel)]="newDeliveryAddress.street" #street="ngModel" required>
+
+                                            <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="street.errors.required">
+                                                    Street is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Street Nr.*</label>
+                                            <input type="text" class="form-control" name="streetNr"[(ngModel)]="newDeliveryAddress.streetNr" required #streetNr="ngModel">
+
+                                            <div *ngIf="streetNr.invalid && (streetNr.dirty || streetNr.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="streetNr.errors.required">
+                                                    Street Nr. is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Building Nr.</label>
+                                            <input type="text" class="form-control" name="building" [(ngModel)]="newDeliveryAddress.buildingNr">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Entrance Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="newDeliveryAddress.entranceNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Floor Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="newDeliveryAddress.floorNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Apartment Nr.</label>
+                                            <input type="text" class="form-control" name="apartment" [(ngModel)]="newDeliveryAddress.apartamentNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Zip Code</label>
+                                            <input type="text" class="form-control" name="zip" [(ngModel)]="newDeliveryAddress.zipCode">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>City*</label>
+                                            <select class="form-control" [(ngModel)]="newSelectedCity" name="city" #city="ngModel" required>
+                                              <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                                            </select>
+
+                                            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="city.errors.required">
+                                                    Please select a City. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelAddress()">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="addDeliveryAddress()" [disabled]="!addAddressForm.valid">Save changes</button>
+                            </div>
+                          </div>
+                    </div>
+                </div>               
+                                    
+                <div class="row" *ngIf="currentUser.address.street" data-toggle="modal" data-target="#addressModal">
                     <div class="col-xs-12 col profile__address">
                         {{ currentUser.address.street }}, {{ currentUser.address.streetNr }}, 
-                        <span *ngIf="currentUser.address.buildingNr">Building: {{ currentUser.address.buildingNr }},</span> 
-                        <span *ngIf="currentUser.address.apartmentNr">Apartament: {{ currentUser.address.apartamentNr }},</span>
-                        <span *ngIf="currentUser.address.floorNr">Floor: {{ currentUser.address.floorNr }},</span>
+                        <span *ngIf="currentUser.address.buildingNr">Building: {{ currentUser.address.buildingNr }}, </span> 
+                        <span *ngIf="currentUser.address.apartmentNr">Apartament: {{ currentUser.address.apartamentNr }}, </span>
+                        <span *ngIf="currentUser.address.floorNr">Floor: {{ currentUser.address.floorNr }}, </span>
                         {{ currentUser.address.city.name }} 
                     </div>
                 </div>
+                
+                <div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="addressModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Address</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            
+                            
+                            <div class="modal-body">
+                                <form #addressForm="ngForm">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>Street*</label>
+                                            <input type="text" class="form-control" name="street" [(ngModel)]="currentUser.address.street" #street="ngModel" required>
+
+                                            <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="street.errors.required">
+                                                    Street is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Street Nr.*</label>
+                                            <input type="text" class="form-control" name="streetNr"[(ngModel)]="currentUser.address.streetNr" required #streetNr="ngModel">
+
+                                            <div *ngIf="streetNr.invalid && (streetNr.dirty || streetNr.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="streetNr.errors.required">
+                                                    Street Nr. is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Building Nr.</label>
+                                            <input type="text" class="form-control" name="building" [(ngModel)]="currentUser.address.buildingNr">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Entrance Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="currentUser.address.entranceNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Floor Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="currentUser.address.floorNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Apartment Nr.</label>
+                                            <input type="text" class="form-control" name="apartment" [(ngModel)]="currentUser.address.apartamentNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Zip Code</label>
+                                            <input type="text" class="form-control" name="zip" [(ngModel)]="currentUser.address.zipCode">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>City*</label>
+                                            <select class="form-control" [(ngModel)]="selectedCity" name="city" #city="ngModel" required>
+                                              <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                                            </select>
+
+                                            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="city.errors.required">
+                                                    Please select a City. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary" (click)="updateAddress()" [disabled]="!addressForm.valid">Save changes</button>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                
                 <ng-container *ngFor="let address of currentUser.deliveryAddresses">
-                    <div class="row">
+                    <div class="row" data-toggle="modal" data-target="#deliveryModal" (click)="getCurrentAddress(address)">
                         <div class="col-xs-12 col profile__address">
                             {{ address.street }}, {{ address.streetNr }}, 
-                            <span *ngIf="address.buildingNr">Building: {{ address.buildingNr }}, </span>
+                            <span *ngIf="address.buildingNr">Building: {{ address.buildingNr }}, 
+                            </span>
                             <span *ngIf="address.apartamentNr">Apartament: {{ address.apartamentNr }}, </span>
                             <span *ngIf="address.floorNr">Floor: {{ address.floorNr }}, </span>
                             {{ address.city.name }} 
                         </div>
                     </div>
                 </ng-container>
+                
+                
+                <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="deliveryModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Edit Delivery Address</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            
+                            
+                            <div class="modal-body">
+                                <form #selectedDeliveryAddressForm="ngForm">
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>Street*</label>
+                                            <input type="text" class="form-control" name="street" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].street" #street="ngModel" required>
+
+                                            <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="street.errors.required">
+                                                    Street is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Street Nr.*</label>
+                                            <input type="text" class="form-control" name="streetNr"[(ngModel)]="currentUser.deliveryAddresses[currentAddress].streetNr" required #streetNr="ngModel">
+
+                                            <div *ngIf="streetNr.invalid && (streetNr.dirty || streetNr.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="streetNr.errors.required">
+                                                    Street Nr. is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Building Nr.</label>
+                                            <input type="text" class="form-control" name="building" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].buildingNr">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Entrance Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].entranceNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Floor Nr.</label>
+                                            <input type="text" class="form-control" name="entrance" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].floorNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Apartment Nr.</label>
+                                            <input type="text" class="form-control" name="apartment" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].apartamentNr">
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3 col form-group">
+                                            <label>Zip Code</label>
+                                            <input type="text" class="form-control" name="zip" [(ngModel)]="currentUser.deliveryAddresses[currentAddress].zipCode">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-xs-12 col-sm-6 form-group">
+                                            <label>City*</label>
+                                            <select class="form-control" [(ngModel)]="delSelectedCity" name="city" #city="ngModel" required>
+                                              <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                                            </select>
+
+                                            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger mt-1">
+                                                <div *ngIf="city.errors.required">
+                                                    Please select a City. 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Address</button>
+                                  <button type="button" class="btn btn-primary" (click)="updateDeliveryAddress()" [disabled]="!selectedDeliveryAddressForm.valid">Save changes</button>
+                              </div>
+                          </div>
+                    </div>
+                </div>               
+                
             </div>
         </div>
         <div class="row profile__second-row">
@@ -122,15 +376,31 @@
         <div class="col-sm-12 col">
             <table class="pages__table">
                 <tr>
+                    <td>Order Id</td>
                     <td>Date</td>
                     <td>Status</td>
                 </tr>
                 <tr *ngFor="let order of orders">
+                    <td> {{ order.id }}</td>
                     <td> {{ order.date }} </td>
                     <td> {{ order.status }}</td>
                 </tr>
             </table>
         </div>
     </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-sm-12 col-md-6">
+            <div class="pages__subscriptions" *ngIf="pages[2].active">
+                <h3>Manage your subscriptions</h3>
+                <div class="form-check" *ngFor="let subscription of subscriptions">
+                    <input class="form-check-input" type="checkbox" [value]="subscription.id" [checked]="hasSubscription(subscription)" (click)="updateSubscriptions(subscription)">
+                    <label class="form-check-label">{{ subscription.description }}</label>
+                </div>
+                <a class="btn btn-primary text-white pages__sub-upd" role="button" (click)="updateCustomer()">Save</a>
+            </div>
+      </div>
+      <div class="col-sm-12 col-md-6"></div>
   </div>
 </div>

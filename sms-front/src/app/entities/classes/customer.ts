@@ -1,4 +1,5 @@
 import { Address } from './address';
+import { Subscription } from './subscription';
 
 export class Customer {
     id: Number;
@@ -8,4 +9,6 @@ export class Customer {
     email: String;
     phoneNumber: String;
     address: Address;
+    deliveryAddresses: Address[];
+    subscriptions: Subscription[];
 }
