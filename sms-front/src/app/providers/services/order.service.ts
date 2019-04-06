@@ -17,7 +17,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
   
   getCustomerOrders(id) {
-    return this.http.get(this.BASE_URL + `allByCustomer/${id}` ).pipe(map((res: Order[]) => { return res }));
+    return this.http.get(this.BASE_URL + `all/customer/${id}` ).pipe(map((res: Order[]) => { return res }));
   }
 
 

@@ -42,7 +42,7 @@ public class JobController {
 		return jobs;
 	}
 
-	@RequestMapping(value = "/all/byLocation", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/all/location", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Job> getJobsByLocation(@RequestBody Location location) {
 		dataDisplay.printCrudInfo();
 		List<Job> jobs = jobService.findAllActiveJobsByLocation(location);

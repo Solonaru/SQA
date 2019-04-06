@@ -3,9 +3,8 @@ import { Category } from '../../../entities/classes/category';
 import { Ingredient } from '../../../entities/classes/item/ingredient';
 import { Recipe } from '../../../entities/classes/item/recipe';
 import { CategoryService } from '../../../providers/services/category.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IngredientService } from '../../../providers/services/item/ingredient.service';
-import { RecipeService } from '../../../providers/services/item/recipe.service';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-make-own-pizza',
@@ -17,12 +16,11 @@ export class MakeOwnPizzaComponent implements OnInit {
   category: Category;
   categories: Category[];
   ingredients: Ingredient[];
+  pizzaIngredients: Ingredient[] = [];
   doughs: Recipe[];
   sauces: Recipe[];
 
-  constructor(private categoryService: CategoryService,
-    private ingredientService: IngredientService,
-    private recipeService: RecipeService) { }
+  constructor(private categoryService: CategoryService, private ingredientService: IngredientService) { }
 
   ngOnInit() {
     this.populateData();
@@ -38,8 +36,10 @@ export class MakeOwnPizzaComponent implements OnInit {
     this.categoryService.getCategoryByName('Ingredients').subscribe(data => {
       this.categories = data.childCategories;
       this.category = this.categories[0];
-      this.ingredients = this.category.items;
-    })
+      this.ingredientService.getIngredientsByCategoryId(this.category.id).subscribe(data => {
+        this.ingredients = data;
+      });
+    });
   }
 
   populateDoughs() {
@@ -54,7 +54,46 @@ export class MakeOwnPizzaComponent implements OnInit {
     })
   }
 
-  drop(event: CdkDragDrop<{name: string, imageUrl: string}[]>) {
-    moveItemInArray(this.ingredients, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+
+      if (event.container.id == "cdk-drop-list-1") {
+        
+        for (let ingredient of event.container.data) {
+          for (let conflictIngredient of JSON.parse(JSON.stringify(ingredient)).conflictIngredients) {
+            let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
+            if (undefined != foundConflictIngredient) {
+              foundConflictIngredient.disabled = true;
+            }
+          }
+        }
+
+      }
+
+      if (event.container.id == "cdk-drop-list-0") {
+
+        this.ingredients.map(function(x) { 
+          x.disabled = false; 
+          return x
+        });
+
+        for (let ingredient of event.previousContainer.data) {
+          for (let conflictIngredient of JSON.parse(JSON.stringify(ingredient)).conflictIngredients) {
+            let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
+            if (undefined != foundConflictIngredient) {
+              foundConflictIngredient.disabled = true;
+            }
+          }
+        }
+
+      }
+
+    }
   }
 }

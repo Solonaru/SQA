@@ -24,7 +24,7 @@ export class JobService {
     }
 
     getJobsByLocation(location: Location) {
-        return this.http.put(this.BASE_URL + 'all/byLocation', JSON.stringify(location), this.httpOptions)
+        return this.http.put(this.BASE_URL + 'all/location', JSON.stringify(location), this.httpOptions)
             .pipe(map((resp: Job[]) => { return resp }));
     }
 

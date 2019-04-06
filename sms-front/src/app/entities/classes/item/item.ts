@@ -1,5 +1,6 @@
 import { Category } from '../category';
 import { ItemType } from '../../enums/item-type';
+import { Ingredient } from './ingredient';
 
 export class Item {
     id: Number;

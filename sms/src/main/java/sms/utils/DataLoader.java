@@ -686,17 +686,20 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Ingredient yellowOnion = ingredientService.findIngredientByName("Yellow Onion").get();
 		Ingredient lightBrownSugar = ingredientService.findIngredientByName("Light Brown Sugar").get();
 		Ingredient darkBrownSugar = ingredientService.findIngredientByName("Dark Brown Sugar").get();
+		Ingredient babyBellaMushrooms = ingredientService.findIngredientByName("Baby Bella Mushrooms").get();
 		
 		redOnion.addConflictIngredient(lightBrownSugar);
-		yellowOnion.addConflictIngredient(darkBrownSugar);
 		redOnion.addConflictIngredient(darkBrownSugar);
+		redOnion.addConflictIngredient(babyBellaMushrooms);
 		yellowOnion.addConflictIngredient(lightBrownSugar);
+		yellowOnion.addConflictIngredient(darkBrownSugar);
+		yellowOnion.addConflictIngredient(babyBellaMushrooms);
 		
 		ingredientService.updateIngredient(redOnion);
 		ingredientService.updateIngredient(yellowOnion);
 		ingredientService.updateIngredient(lightBrownSugar);
 		ingredientService.updateIngredient(darkBrownSugar);
-
+		ingredientService.updateIngredient(babyBellaMushrooms);
 	}
 	
 	private void updateCatalogue() {

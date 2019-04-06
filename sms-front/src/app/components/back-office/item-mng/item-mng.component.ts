@@ -16,8 +16,8 @@ import { PackageService } from '../../../providers/services/item/package.service
 })
 export class ItemMngComponent implements OnInit {
 
-  items: Item[];
-  item: Item;
+  // items: Item[];
+  // item: Item;
 
   constructor(
     private itemService: ItemService,
@@ -30,118 +30,118 @@ export class ItemMngComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getItems();
+    // this.getItems();
   }
 
-  getItems() {
-    this.itemService.getItems().subscribe(
-      data => {
-        return this.items = data;
-      }
-    );
-  }
+  // getItems() {
+  //   this.itemService.getItems().subscribe(
+  //     data => {
+  //       return this.items = data;
+  //     }
+  //   );
+  // }
 
-  onUpdate(item: Item) {
-    this.item = item;
-  }
+  // onUpdate(item: Item) {
+  //   this.item = item;
+  // }
 
-  onDelete(item: Item) {
-    this.item = item;
-  }
+  // onDelete(item: Item) {
+  //   this.item = item;
+  // }
 
-  onAdd() {
-    this.item = new Item();
-  }
+  // onAdd() {
+  //   this.item = new Item();
+  // }
 
-  onConfirmDelete() {
-    switch (this.item.itemType) {
-      case ItemType.INGREDIENT: {
-        this.ingredientService.deleteIngredient(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      case ItemType.BEVERAGE: {
-        this.beverageService.deleteBeverage(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      case ItemType.SAUCE: {
-        this.sauceService.deleteSauce(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      case ItemType.CONSUMABLE: {
-        this.consumableService.deleteConsumable(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      case ItemType.RECIPE: {
-        this.recipeService.deleteRecipe(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      case ItemType.PACKAGE: {
-        this.packageService.deletePackage(this.item).subscribe(
-          data => { location.reload(); }
-        );
-        break;
-      }
-      default: {
-        console.log("Warning!! No such item.");
-      }
-    }
-  }
+  // onConfirmDelete() {
+  //   switch (this.item.itemType) {
+  //     case ItemType.INGREDIENT: {
+  //       this.ingredientService.deleteIngredient(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     case ItemType.BEVERAGE: {
+  //       this.beverageService.deleteBeverage(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     case ItemType.SAUCE: {
+  //       this.sauceService.deleteSauce(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     case ItemType.CONSUMABLE: {
+  //       this.consumableService.deleteConsumable(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     case ItemType.RECIPE: {
+  //       this.recipeService.deleteRecipe(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     case ItemType.PACKAGE: {
+  //       this.packageService.deletePackage(this.item).subscribe(
+  //         data => { location.reload(); }
+  //       );
+  //       break;
+  //     }
+  //     default: {
+  //       console.log("Warning!! No such item.");
+  //     }
+  //   }
+  // }
 
-  updateItem() {
-    switch (this.item.itemType) {
-      case ItemType.INGREDIENT: {
-        this.ingredientService.updateIngredient(this.item).subscribe();
-        break;
-      }
-      case ItemType.BEVERAGE: {
-        this.beverageService.updateBeverage(this.item).subscribe();
-        break;
-      }
-      case ItemType.SAUCE: {
-        this.sauceService.updateSauce(this.item).subscribe();
-        break;
-      }
-      case ItemType.CONSUMABLE: {
-        this.consumableService.updateConsumable(this.item).subscribe();
-        break;
-      }
-      case ItemType.RECIPE: {
-        this.recipeService.updateRecipe(this.item).subscribe();
-        break;
-      }
-      case ItemType.PACKAGE: {
-        this.packageService.updatePackage(this.item).subscribe();
-        break;
-      }
-      default: {
-        console.log("Warning!! No such item.");
-      }
-    }
-  }
+  // updateItem() {
+  //   switch (this.item.itemType) {
+  //     case ItemType.INGREDIENT: {
+  //       this.ingredientService.updateIngredient(this.item).subscribe();
+  //       break;
+  //     }
+  //     case ItemType.BEVERAGE: {
+  //       this.beverageService.updateBeverage(this.item).subscribe();
+  //       break;
+  //     }
+  //     case ItemType.SAUCE: {
+  //       this.sauceService.updateSauce(this.item).subscribe();
+  //       break;
+  //     }
+  //     case ItemType.CONSUMABLE: {
+  //       this.consumableService.updateConsumable(this.item).subscribe();
+  //       break;
+  //     }
+  //     case ItemType.RECIPE: {
+  //       this.recipeService.updateRecipe(this.item).subscribe();
+  //       break;
+  //     }
+  //     case ItemType.PACKAGE: {
+  //       this.packageService.updatePackage(this.item).subscribe();
+  //       break;
+  //     }
+  //     default: {
+  //       console.log("Warning!! No such item.");
+  //     }
+  //   }
+  // }
 
-  insertItem() {
-    this.ingredientService.insertIngredient(this.item).subscribe(
-      data => { location.reload(); }
-    );
+  // insertItem() {
+  //   this.ingredientService.insertIngredient(this.item).subscribe(
+  //     data => { location.reload(); }
+  //   );
 
-  }
+  // }
 
-  onSubmit() {
-    if (this.item.id !== undefined) {
-      this.updateItem();
-    } else {
-      this.insertItem();
-    }
-  }
+  // onSubmit() {
+  //   if (this.item.id !== undefined) {
+  //     this.updateItem();
+  //   } else {
+  //     this.insertItem();
+  //   }
+  // }
 
 }

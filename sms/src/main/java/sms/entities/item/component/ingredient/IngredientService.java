@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sms.entities.category.Category;
+
 @Service
 public class IngredientService implements IIngredientService {
 
@@ -22,6 +24,10 @@ public class IngredientService implements IIngredientService {
 
 	public List<Ingredient> findAllIngredients() {
 		return (List<Ingredient>) ingredientRepository.findAll();
+	}
+	
+	public List<Ingredient> findAllIngredientsByCategory(Category category) {
+		return (List<Ingredient>) ingredientRepository.findAllByCategory(category);
 	}
 
 	public void insertIngredient(Ingredient ingredient) {

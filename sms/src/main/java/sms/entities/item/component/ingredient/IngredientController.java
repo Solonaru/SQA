@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.entities.category.Category;
+import sms.entities.category.ICategoryService;
 import sms.utils.DisplayData;
 
 @RestController
@@ -21,6 +23,8 @@ public class IngredientController {
 
 	@Autowired
 	private IIngredientService ingredientService;
+	@Autowired
+	private ICategoryService categoryService;
 	@Autowired
 	private DisplayData dataDisplay;
 
@@ -35,6 +39,18 @@ public class IngredientController {
 	public List<Ingredient> getIngredients() {
 		dataDisplay.printCrudInfo(); 
 		return ingredientService.findAllIngredients();
+	}
+	
+	@RequestMapping(value = "/all/category", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Ingredient> findIngredientsByCategory(@RequestBody Category category) {
+		dataDisplay.printCrudInfo(); 
+		return ingredientService.findAllIngredientsByCategory(category);
+	}
+	
+	@RequestMapping(value = "/all/category/{categoryId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Ingredient> findIngredientsByCategoryId(@PathVariable("categoryId") int categoryId) {
+		Category category = categoryService.findCategoryById(categoryId).get();
+		return ingredientService.findAllIngredientsByCategory(category);
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

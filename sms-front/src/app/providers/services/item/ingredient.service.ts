@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Ingredient } from '../../../entities/classes/item/ingredient';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Category } from '../../../entities/classes/category';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,15 @@ export class IngredientService {
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get(this.BASE_URL + 'all')
       .pipe(map((res: Ingredient[]) => res));
+  }
+
+  getIngredientsByCategory(category: Category) {
+    return this.http.put(this.BASE_URL + 'all/category', JSON.stringify(category), this.httpOptions)
+        .pipe(map((resp: Ingredient[]) => { return resp }));
+  }
+
+  getIngredientsByCategoryId(categoryId: Number) {
+    return this.http.get(this.BASE_URL + `all/category/${categoryId}` ).pipe(map((res: Ingredient[]) => { return res }));
   }
 
   insertIngredient(ingredient: Ingredient) {

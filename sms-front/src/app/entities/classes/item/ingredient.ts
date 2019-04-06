@@ -13,4 +13,6 @@ export class Ingredient {
     listed: Boolean;
     price: Number;
     itemType: ItemType;
+    disabled: Boolean;
+    conflictIngredients: Ingredient;
 }

@@ -19,7 +19,7 @@ export class LocationService {
     constructor(private http: HttpClient) { }
 
     getLocations() {
-        return this.http.get(this.BASE_URL + 'allActive').pipe(map((res: Location[]) => { return res }));
+        return this.http.get(this.BASE_URL + 'all/active').pipe(map((res: Location[]) => { return res }));
     }
 
     getLocationById(locationId: String) {

@@ -41,13 +41,13 @@ public class OrderController {
 		return orderService.findAllOrders();
 	}
 	
-	@RequestMapping(value = "/allByCustomer", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/all/customer", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Orders> findOrdersByCustomer(@RequestBody Customer customer) {
 		dataDisplay.printCrudInfo(); 
 		return orderService.findAllCustomerOrders(customer);
 	}
 	
-	@RequestMapping(value = "/allByCustomer/{customerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/all/customer/{customerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Orders> findOrdersByCustomerId(@PathVariable("customerId") int customerId) {
 		Customer customer = customerService.findCustomerById(customerId).get();
 		return orderService.findAllCustomerOrders(customer);

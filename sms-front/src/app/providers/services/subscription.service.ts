@@ -19,7 +19,7 @@ export class SubscriptionService {
   }
 
   getActiveSubscriptions() {
-    return this.http.get(this.BASE_URL + 'allActive').pipe(map((res: Subscription[]) => { return res }));
+    return this.http.get(this.BASE_URL + 'all/active').pipe(map((res: Subscription[]) => { return res }));
   }
 
   getSubscriptionById(subscriptionId: Number) {

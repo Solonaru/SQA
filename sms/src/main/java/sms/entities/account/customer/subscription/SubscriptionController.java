@@ -42,7 +42,7 @@ public class SubscriptionController {
 		return subscriptions;
 	}
 
-	@RequestMapping(value = "/allActive", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/all/active", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Subscription> getActiveSubscriptions() {
 		dataDisplay.printCrudInfo();
 		List<Subscription> subscriptions = subscriptionService.findAllActiveSubscriptions();

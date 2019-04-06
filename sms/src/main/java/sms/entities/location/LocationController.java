@@ -42,7 +42,7 @@ public class LocationController {
 		return locations;
 	}
 
-	@RequestMapping(value = "/allActive", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/all/active", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Location> getActiveLocations() {
 		dataDisplay.printCrudInfo();
 		List<Location> locations = locationService.findAllActiveLocations();
