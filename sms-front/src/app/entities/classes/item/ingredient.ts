@@ -1,17 +1,18 @@
 import { Category } from '../category';
 import { ItemType } from '../../enums/item-type';
+import { Product } from './product';
 
-export class Ingredient {
-    id: Number;
-    name: String;
-    stockQuantity: Number;
-    stockPrice: Number;
+export class Ingredient implements Product {
+    id: number;
+    name: string;
+    stockQuantity: number;
+    stockPrice: number;
     updateDate: Date;
-    description: Date;
+    description: string;
     category: Category;
-    imageUrl: String;
+    imageUrl: string;
     listed: Boolean;
-    price: Number;
+    price: number;
     itemType: ItemType;
     disabled: Boolean;
     conflictIngredients: Ingredient[];

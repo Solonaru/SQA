@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   imageUrls: (string | IImage)[] = [
 	  { url: '../../../../assets/images/featured/featured1.jpg', caption: 'Pizzas', clickAction: () => this.onClick(8001) },
-    { url: '../../../../assets/images/featured/featured2.jpg', caption: 'Drinks', clickAction: () => this.onClick(8013) },
-    { url: '../../../../assets/images/featured/featured3.jpg', caption: 'Desserts', clickAction: () => this.onClick(8015) }
+    { url: '../../../../assets/images/featured/featured2.jpg', caption: 'Beverages', clickAction: () => this.onClick(8003) },
+    { url: '../../../../assets/images/featured/featured3.jpg', caption: 'Desserts', clickAction: () => this.onClick(8002) }
   ];
   height: string = '400px';
   minHeight: string;
@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
   }
 
   onClick(categoryId: Number) {
-    /* Load the items page */
-    // this.router.navigate(['items/', { cat: categoryId }]);
+    /* Load the shopping page */
+    this.router.navigate(['shopping/', { cat: categoryId }]);
   }
 
 }

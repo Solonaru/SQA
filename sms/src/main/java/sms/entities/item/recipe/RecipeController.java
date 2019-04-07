@@ -40,6 +40,7 @@ public class RecipeController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void insertRecipe(@RequestBody Recipe recipe) {
 		dataDisplay.printCrudInfo(); 
+		System.out.println("Inserting recipe");
 		recipeService.insertRecipe(recipe);
 	}
 

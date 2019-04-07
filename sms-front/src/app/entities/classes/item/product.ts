@@ -1,7 +1,8 @@
+import { Item } from '../product';
 import { Category } from '../category';
 import { ItemType } from '../../enums/item-type';
 
-export class Item {
+export class Product extends Item {
     id: number;
     name: string;
     stockQuantity: number;

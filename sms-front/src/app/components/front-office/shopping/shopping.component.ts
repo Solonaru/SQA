@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../../../entities/classes/item/item';
 import { ItemService } from '../../../providers/services/item/item.service';
 import { CategoryService } from '../../../providers/services/category.service';
-import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shopping',

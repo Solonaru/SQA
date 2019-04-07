@@ -35,9 +35,6 @@ import sms.entities.item.Item;
 import sms.entities.item.component.beverage.Beverage;
 import sms.entities.item.component.ingredient.IIngredientService;
 import sms.entities.item.component.ingredient.Ingredient;
-import sms.entities.item.pack.Package;
-import sms.entities.item.pack.line.IPackageLineService;
-import sms.entities.item.pack.line.PackageLine;
 import sms.entities.item.recipe.Recipe;
 import sms.entities.item.recipe.line.IRecipeLineService;
 import sms.entities.item.recipe.line.RecipeLine;
@@ -48,6 +45,7 @@ import sms.entities.location.Location;
 import sms.enums.CategoryType;
 import sms.enums.Month;
 import sms.enums.Status;
+import sms.enums.account.AccountType;
 import sms.enums.account.EmployeeStatus;
 import sms.enums.catalogue.CatalogueStatus;
 import sms.enums.item.MeasurementUnit;
@@ -77,8 +75,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private ICatalogueItemService catalogueLineService;
 	@Autowired
 	private IRecipeLineService recipeLineService;
-	@Autowired
-	private IPackageLineService packageLineService;
 	@Autowired
 	private IJobService jobService;
 	@Autowired
@@ -211,13 +207,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Employee employee1 = new Employee("viorel", "viorel123", "Viorel", "viorelsolonaru@gmail.com", "0748974417",
 				EmployeeStatus.SENIOR, new Admin());
 		employee1.setAddress(randomAddress());
+		employee1.setAccountType(AccountType.ADMIN);
 		Employee employee2 = new Employee("andrei", "andrei123", "Andrei", "andreihumulescu@gmail.com", "0721314417",
 				EmployeeStatus.INTERNSHIP, new OperatorProducts());
 		employee2.setAddress(randomAddress());
-
+		employee2.setAccountType(AccountType.ADMIN);
 		Employee employee3 = new Employee("mihai", "mihai", "Mihai", "m.m@m.com", "0741234567", EmployeeStatus.JUNIOR,
 				new OperatorProducts());
 		employee3.setAddress(randomAddress());
+		employee3.setAccountType(AccountType.ADMIN);
 
 		accountService.insertAccount(employee1);
 		accountService.insertAccount(employee2);
@@ -269,9 +267,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		category5.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category6 = new Category("Tomato sauce recipes", "Tomato sauce recipes category");
 		category6.setCategoryType(CategoryType.BACK_OFFICE);
-		
-		Category category7 = new Category("Packages", "Packages cateogry");
-		category7.setCategoryType(CategoryType.FRONT_OFFICE);
 
 		categoryService.insertCategory(category1);
 		categoryService.insertCategory(category2);
@@ -288,8 +283,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		categoryService.insertCategory(category5);
 		categoryService.insertCategory(category6);
-		
-		categoryService.insertCategory(category7);
 
 		/*-------------------------------------------*/
 
@@ -398,6 +391,35 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		pantry9.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/pantry/imgDarkBrownSugar.jpg");
 		
+		Ingredient fruits1 = new Ingredient("Rainer Apple", MeasurementUnit.KG, 10.0, 2.4, "");
+		fruits1.setCategory(category402);
+		fruits1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fruits/imgRainerApple.jpg");
+		Ingredient fruits2 = new Ingredient("Lemon", MeasurementUnit.KG, 10.0, 1.5, "");
+		fruits2.setCategory(category402);
+		fruits2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fruits/imgLemon.jpg");
+		Ingredient fruits3 = new Ingredient("Golden Pineapple", MeasurementUnit.KG, 10.0, 6.2, "");
+		fruits3.setCategory(category402);
+		fruits3.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fruits/imgGoldenPineapple.jpg");
+		
+		Ingredient fishAndSeafood1 = new Ingredient("Fresh Tuna", MeasurementUnit.KG, 10.0, 6.4, "");
+		fishAndSeafood1.setCategory(category405);
+		fishAndSeafood1.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fish_and_seafood/imgFreshTuna.jpg");
+		Ingredient fishAndSeafood2 = new Ingredient("Atlantic Salmon", MeasurementUnit.KG, 10.0, 9.2, "");
+		fishAndSeafood2.setCategory(category405);
+		fishAndSeafood2.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fish_and_seafood/imgAtlanticSalmon.jpg");
+		Ingredient fishAndSeafood3 = new Ingredient("Sword Fish", MeasurementUnit.KG, 10.0, 10.8, "");
+		fishAndSeafood3.setCategory(category405);
+		fishAndSeafood3.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fish_and_seafood/imgSwordFish.jpg");
+		Ingredient fishAndSeafood4 = new Ingredient("Salmon", MeasurementUnit.KG, 7.0, 10.8, "");
+		fishAndSeafood4.setCategory(category405);
+		fishAndSeafood4.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/fish_and_seafood/imgSalmon.jpg");
 		
 		Beverage beverage1 = new Beverage("Coca-Cola Zero Sugar Sugar 250ml", MeasurementUnit.UNIT, 10.0, 2.20, "");
 		beverage1.setCategory(category3);
@@ -465,6 +487,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(pantry7);
 		itemService.insertItem(pantry8);
 		itemService.insertItem(pantry9);
+		
+		itemService.insertItem(fruits1);
+		itemService.insertItem(fruits2);
+		itemService.insertItem(fruits3);
+		
+		itemService.insertItem(fishAndSeafood1);
+		itemService.insertItem(fishAndSeafood2);
+		itemService.insertItem(fishAndSeafood3);
+		itemService.insertItem(fishAndSeafood4);
 		
 		
 		itemService.insertItem(beverage1);
@@ -665,20 +696,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		
 		/*-------------------------------------------*/
 		
-		PackageLine packageLine10101 = new PackageLine(1.0);
-		packageLine10101.setProduct(recipe106);
-		PackageLine packageLine10102 = new PackageLine(1.0);
-		packageLine10102.setProduct(beverage1);
-		
-		Package package101 = new Package("Pizza + Coca-Cola", MeasurementUnit.UNIT, 10.0, "");
-		package101.setCategory(category7);
-		package101.addLine(packageLine10101);
-		package101.addLine(packageLine10102);
-		
-		itemService.insertItem(package101);
-		packageLineService.insertPackageLine(packageLine10101);
-		packageLineService.insertPackageLine(packageLine10102);
-
+		// Remove unused categories
+		categoryService.deleteCategoryById(category403.getId());
 	}
 	
 	private void updateConflictIngredients() {

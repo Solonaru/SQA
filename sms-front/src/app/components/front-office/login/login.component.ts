@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../entities/classes/user';
 import { AuthService } from '../../../providers/services/auth.service';
 import { Router } from '@angular/router';
+import { LogInOutService } from '../../../entities/helper-classes/log-in-out';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
   user: User;
   foundUser: User;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService,
+    private logInOutService: LogInOutService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,8 +34,9 @@ export class LoginComponent implements OnInit {
 
   loginCheck() {
     if (this.foundUser != null) {
-      this.router.navigate(['home']);
       this.auth.setLoggedIn(this.foundUser.id);
+      this.logInOutService.checkUser();
+      this.router.navigate(['home']);
     } else {
       window.alert("No user found!!");
     }

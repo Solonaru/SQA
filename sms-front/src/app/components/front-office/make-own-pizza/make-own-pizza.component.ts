@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../entities/classes/category';
 import { Ingredient } from '../../../entities/classes/item/ingredient';
-import { Recipe } from '../../../entities/classes/item/recipe';
+import { Recipe } from '../../../entities/classes/item/recipe/recipe';
 import { CategoryService } from '../../../providers/services/category.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IngredientService } from '../../../providers/services/item/ingredient.service';
+import { RecipeLine } from '../../../entities/classes/item/recipe/recipeLine';
+import { RecipeService } from '../../../providers/services/item/recipe.service';
 
 @Component({
   selector: 'app-make-own-pizza',
@@ -24,7 +26,11 @@ export class MakeOwnPizzaComponent implements OnInit {
   sauce: Recipe;
   sauces: Recipe[];
 
-  constructor(private categoryService: CategoryService, private ingredientService: IngredientService) { }
+  totalPrice: Number;
+
+  constructor(private categoryService: CategoryService,
+    private ingredientService: IngredientService,
+    private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.populateData();
@@ -39,6 +45,7 @@ export class MakeOwnPizzaComponent implements OnInit {
   populateCategoriesAndIngredients() {
     this.categoryService.getCategoryByName('Ingredients').subscribe(data => {
       this.categories = data.childCategories;
+      this.categories.splice(this.categories.length - 1, 1);
       this.category = this.categories[0];
       this.ingredientService.getIngredientsByCategoryId(this.category.id).subscribe(data => {
         this.ingredients = data;
@@ -48,14 +55,14 @@ export class MakeOwnPizzaComponent implements OnInit {
 
   populateDoughs() {
     this.categoryService.getCategoryByName("Dough recipes").subscribe(data => {
-      this.doughs = data.items;
+      this.doughs = <Recipe[]>data.items;
       this.dough = this.doughs[0];
     })
   }
 
   populateSauces() {
     this.categoryService.getCategoryByName("Tomato sauce recipes").subscribe(data => {
-      this.sauces = data.items;
+      this.sauces = <Recipe[]>data.items;
       this.sauce = this.sauces[0];
     })
   }
@@ -71,7 +78,7 @@ export class MakeOwnPizzaComponent implements OnInit {
 
       if (event.container.id == "cdk-drop-list-1") {
 
-        this.refreshIngredientsData()
+        this.refreshIngredientsData();
 
       }
 
@@ -105,5 +112,23 @@ export class MakeOwnPizzaComponent implements OnInit {
       this.ingredients = data;
       this.refreshIngredientsData();
     });
+  }
+
+  // TODO: Find out why doesn't work
+  onAddToCart() {
+    let recipe: Recipe = new Recipe("Personalized");
+
+    let recipeLineDough: RecipeLine = new RecipeLine(this.dough);
+    let recipeLineSauce: RecipeLine = new RecipeLine(this.sauce);
+
+    recipe.recipeLines.push(recipeLineDough);
+    recipe.recipeLines.push(recipeLineSauce);
+
+    for (let ingredient of this.pizzaIngredients) {
+      let recipeLine = new RecipeLine(ingredient);
+      recipe.recipeLines.push(recipeLine);
+    }
+
+    this.recipeService.insertRecipe(recipe);
   }
 }

@@ -21,11 +21,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import sms.entities.account.logic.AccountDeserializer;
 import sms.entities.address.Address;
 import sms.enums.account.AccountStatus;
+import sms.enums.account.AccountType;
 
 @Entity
 @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "ACCOUNT_TYPE")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "CLASS_TYPE")
 @JsonDeserialize(using = AccountDeserializer.class)
 public abstract class Account implements Serializable, Comparable<Account> {
 	private static final long serialVersionUID = 1L;
@@ -44,6 +45,7 @@ public abstract class Account implements Serializable, Comparable<Account> {
 	protected AccountStatus status;
 	@ManyToOne
 	protected Address address;
+	protected AccountType accountType;
 
 	// -----Constructors-----
 	public Account() {
@@ -58,6 +60,7 @@ public abstract class Account implements Serializable, Comparable<Account> {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.creationDate = new Date(System.currentTimeMillis());
+		this.accountType = AccountType.USER;
 	}
 
 	// -----Getters and Setters-----
@@ -131,6 +134,14 @@ public abstract class Account implements Serializable, Comparable<Account> {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
 
 	// -----Methods-----
