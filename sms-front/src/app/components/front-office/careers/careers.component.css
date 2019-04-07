@@ -1,23 +1,50 @@
-
-
-.card{
-    height: 10rem;
-    width: 20.1rem;
-    border: solid;
-    border-color:rgb(0, 60, 255);
+.container {
+    margin-top: 2rem;
 }
 
-.card-img-top{
-    height:15rem;
-    width:20rem;
-    border: solid;
-    border-color: rgb(0, 60, 255);
+.careers__location {
 }
+
+.careers__location p {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.card {
+    text-align: center;
+    margin-top: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-title {
+    min-height: 50px;
+}
+
+.card-text, .card-title {
+    margin-bottom: .5rem;
+}
+
 
 .img{
     display: block;
     margin: 0 auto;
     height:10rem;
     width: 30rem;
+}
+
+.careers__col {
+    margin: 0 auto;
+}
+
+@media (max-width: 780px) {
+    .img {
+        width: 100%;
+    }
 }
  
