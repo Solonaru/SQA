@@ -1,1 +1,98 @@
- to do
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Administrative Dashboard</a>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
+        <li class="nav-item active font-weight-bold">
+            <a class="nav-link" href="#"> <h4>Home</h4> 
+                <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item font-weight-bold">
+            <a  class="nav-link nav-link-collapse"
+                href="#"
+                id="hasSubItems"
+                data-toggle="collapse"
+                data-target="#collapseSubItems2"
+                aria-controls="collapseSubItems2"
+                aria-expanded="false">
+                <h4>Back-office pages</h4>
+            </a>
+            <ul class="nav-second-level collapse" id="collapseSubItems2" 
+            data-parent="#navAccordion">
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/category-mng">
+                    <span class="nav-link-text"> <h5>Category Management</h5></span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" routerLink="/item-mng">
+                    <span class="nav-link-text"><h5>Item Management</h5></span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  routerLink="/job-mng">
+                    <span class="nav-link-text"><h5>Jobs Management</h5></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  routerLink="/location-mng">
+                    <span class="nav-link-text"><h5>Location Management</h5></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  routerLink="/subscription-mng">
+                    <span class="nav-link-text"><h5>Subscriptions Management</h5></span>
+                </a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item font-weight-bold">
+            <a  class="nav-link nav-link-collapse"
+            href="#"
+            id="hasSubItems"
+            data-toggle="collapse"
+            data-target="#collapseSubItems2"
+            aria-controls="collapseSubItems2"
+            aria-expanded="false">
+            <h4>Reports</h4>
+            </a>
+        <ul class="nav-second-level collapse" id="collapseSubItems2" 
+        data-parent="#navAccordion">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="nav-link-text">
+                        <h5>Total income per day/month/quarter/semestrer/year</h5></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="nav-link-text">
+                        <h5>Most and least ordered products</h5></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="nav-link-text">
+                        <h5>Product sales forecast per day/month/quarter/semestrer/year</h5></span>
+                </a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+        <form class="form-inline ml-auto mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    </nav>
+    
+    <main class="content-wrapper">     
+        <div class="container-fluid d-flex justify-content-center">
+            <h1 font-weight-bold>Welcome to Pizzetta Dashboard!</h1>         
+        </div>   
+    </main>
+</body>
+        
+              
