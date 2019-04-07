@@ -1,9 +1,12 @@
 .card-title{
-    color:white;
+    color:black;
 }
 .card-text{
-    color:white;
-    height: 40rem;
+    color:black;
+    height: 30rem;
     width: 45rem;;
+}
+.img-fluid{
+    padding-top: 6rem;
 }
 
