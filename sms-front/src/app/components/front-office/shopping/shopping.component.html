@@ -1,11 +1,17 @@
-<div *ngIf="items" class="card-columns">
-  <div *ngFor="let item of items" class="card" style="width: 18rem;">
-    <img [src]="item.imageUrl" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{item.name}}</h5>
-      <p class="card-text">{{item.price}}</p>
-      <button type="button" class="btn btn-outline-primary">View</button>
-      <button type="button" class="btn btn-info">Add to cart</button>
+<div class="container">
+    <div class="row" *ngIf="items">
+        <div class="col-xs-12 col-sm-6 col-md-3 items__col" *ngFor="let item of items">
+            <div  class="card">
+                <img [src]="item.imageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.price}} RON</p>
+                    <div class="items__btn">
+                        <button type="button" class="btn btn-outline-primary btn-view">View</button>
+                        <button type="button" class="btn btn-info">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+</div>  
