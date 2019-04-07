@@ -1,90 +1,108 @@
 <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
         crossorigin="anonymous">
 </head>
 
 <body>
-  <main>
-    <div class="card">
-    <img  src="../../../../assets/images/feedback/imgFeedback.jpg" alt="Feedback From" class="img-fluid">
-    <div class="card-img-overlay">
-      <section class="mb-4 float-left" style="padding-top:4rem; padding-left: 10rem;">
-          <h2 class="h1-responsive font-weight-bold mb-4">Feedback From</h2>
-          <p class="w-responsive mx-auto mb-5">Do you have any questions, 
-            suggstions or complaints?
-            <br>
-            Please do not hesitate to contact us directly.
-            <br> Our team will come back to you within
-              a matter of hours to help you or collect your message.</p>
-    </section>
+    <main>
+        <div class="card">
+            <img src="../../../../assets/images/feedback/imgFeedback.jpg" alt="Feedback From" class="img-fluid">
+            <div class="card-img-overlay">
+                <section class="mb-4 float-left" style="padding-top:4rem; padding-left: 10rem;">
+                    <h2 class="h1-responsive font-weight-bold mb-4">Feedback From</h2>
+                    <p class="w-responsive mx-auto mb-5">Do you have any questions, suggestions or complaints?
+                        <br> Please do not hesitate to contact us directly.
+                        <br> Our team will come back to you within a matter of hours to help you or collect your message.</p>
+                </section>
+            </div>
         </div>
-    </div>
+        <br>
+        <br>
         <div class="container">
-          <div class="row">
-              <div class="col-md-9 mb-md-0 mb-5">
-                  <form id="contact-form" name="form">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="md-form mb-0">
-                                  <input type="text" id="name" name="name" class="form-control" required>
-                                  <label for="name" class="font-weight-bold">Your name</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="md-form mb-0">
-                                  <input type="text" id="email" name="email" class="form-control"
-                                  [(ngModel)]="model.email" #name="ngModel" required>
-                                  <label for="email" class="font-weight-bold">Your email</label>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-12">
-                              <div class="md-form mb-0">
-                                  <input type="text" id="subject" name="subject" class="form-control"
-                                  [(ngModel)]="model.subject" #name="ngModel"  required>
-                                  <label for="subject" class="font-weight-bold">Subject</label>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-md-12">
-        
-                              <div class="md-form">
-                                  <textarea type="text" id="message" name="message" rows="2" 
-                                  class="form-control md-textarea"
-                                  [(ngModel)]="model.message" #name="ngModel"  required></textarea>
-                                  <label for="message" class="font-weight-bold">Your message</label>
-                              </div>
-        
-                          </div>
-                      </div>
-                  </form>
-        
-                  <div class="text-center text-md-left">
-                      <button class="btn btn-primary font-weight-bold" (click)="onSubmit()">Submit</button>
-                  </div>
-                  <div class="status"></div>
-              </div>
-              <div class="col-md-3 text-center">
-                  <ul class="list-unstyled mb-0">
-                      <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                          <p class="font-weight-bold">Str. Lalelelor 68A, Iasi, Romania</p>
-                      </li>
-        
-                      <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                          <p class="font-weight-bold">0232-225-225</p>
-                      </li>
-        
-                      <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                          <p class="font-weight-bold">pizzetta.srl@gmail.com</p>
-                      </li>
-                  </ul>
-              </div>
-        
-          </div>
-    </div>
- 
-  </main>
+            <div class="row">
+                <div class="col-md-9 mb-md-0 mb-5">
+                    <form id="contact-form" name="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" required>
+                                    <label for="name" class="font-weight-bold">Your name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="email" name="email" class="form-control" [(ngModel)]="email" required>
+                                    <label for="email" class="font-weight-bold">Your email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="subject" name="subject" class="form-control" [(ngModel)]="subject" required>
+                                    <label for="subject" class="font-weight-bold">Subject</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="md-form">
+                                    <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea" [(ngModel)]="message" required></textarea>
+                                    <label for="message" class="font-weight-bold">Your message</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="text-center text-md-left">
+                        <button class="btn btn-primary font-weight-bold" (click)="onSubmit()" data-toggle="modal"
+                        data-target="#submittedModal">Submit</button>
+                    </div>
+                    <div class="status"></div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                            <p class="font-weight-bold">Str. Lalelelor 68A, Iasi, Romania</p>
+                        </li>
+
+                        <li>
+                            <i class="fas fa-phone mt-4 fa-2x"></i>
+                            <p class="font-weight-bold">0232-225-225</p>
+                        </li>
+
+                        <li>
+                            <i class="fas fa-envelope mt-4 fa-2x"></i>
+                            <p class="font-weight-bold">pizzetta.srl@gmail.com</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="submittedModal" tabindex="-1" role="dialog" aria-labelledby="submittedModalTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="submittedModalTitle">Thank you!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Your feedback was successfully submitted! Thank you!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
 </body>
