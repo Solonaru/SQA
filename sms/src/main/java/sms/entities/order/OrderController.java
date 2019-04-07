@@ -43,7 +43,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "/all/customer", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Orders> findOrdersByCustomer(@RequestBody Customer customer) {
-		dataDisplay.printCrudInfo(); 
+		dataDisplay.printCrudInfo();
 		return orderService.findAllCustomerOrders(customer);
 	}
 	

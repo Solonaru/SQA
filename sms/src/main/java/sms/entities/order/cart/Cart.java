@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sms.entities.order.Orders;
 import sms.entities.order.cart.line.CartLine;
 import sms.entities.order.promotion.Promotion;
+import sms.entities.account.customer.Customer;
 import sms.entities.logic.ILine;
 import sms.entities.logic.ILineIterator;
 
@@ -40,6 +41,8 @@ public class Cart implements Serializable, ILineIterator {
 	@OneToMany(mappedBy = "cart")
 	@JsonIgnoreProperties(value = "cart")
 	private List<CartLine> cartLines = new ArrayList<CartLine>();
+	@ManyToOne
+	private Customer customer;
 	@ManyToOne
 	private Promotion promotion;
 
@@ -71,6 +74,14 @@ public class Cart implements Serializable, ILineIterator {
 
 	public void setOrder(Orders order) {
 		this.order = order;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public Promotion getPromotion() {

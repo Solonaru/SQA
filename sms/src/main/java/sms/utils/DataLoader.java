@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import sms.entities.account.IAccountService;
 import sms.entities.account.customer.Customer;
+import sms.entities.account.customer.feedback.Feedback;
+import sms.entities.account.customer.feedback.IFeedbackService;
 import sms.entities.account.customer.subscription.ISubscriptionService;
 import sms.entities.account.customer.subscription.Subscription;
 import sms.entities.account.employee.Employee;
@@ -79,6 +81,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	private IJobService jobService;
 	@Autowired
 	private ILocationService locationService;
+	@Autowired
+	private IFeedbackService feedbackService;
 
 	@Autowired
 	private DisplayData displayData;
@@ -113,6 +117,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		updateLocation();
 		
 		updateJob();
+		
+		updateFeedback();
 
 		displayData.printInfo("Data successfully loaded.");
 	}
@@ -1034,7 +1040,23 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		jobService.insertJob(cook);
 		jobService.insertJob(custRel);
 	}
-
+	
+	private void updateFeedback() {
+		Feedback feedback1 = new Feedback("Maxim", "maxim96@gmail.com", "Good job",
+				"Hi. I appreciate very much your work. The website looks great. Keep it up.");
+		Feedback feedback2 = new Feedback("Alina", "marandiuc.alina@yahoo.com", "Great pizza",
+				"Ordered a pizza from your web site and it was very delicious."
+				+ "From now on I'll order only from you!!");
+		Feedback feedback3 = new Feedback("George", "george.george@gmail.com", "Other languages",
+				"Hi. I think it would be great to allow the user to choose multiple"
+				+ "languages as not everyone know english. Besides that, great jobs,"
+				+ "the web site looks amazing!!");
+		
+		feedbackService.insertFeedback(feedback1);
+		feedbackService.insertFeedback(feedback2);
+		feedbackService.insertFeedback(feedback3);
+	}
+	
 	private City cityByName(String name) {
 		Optional<City> city = cityService.findCityByName(name);
 		return city.orElseGet(() -> new City(""));

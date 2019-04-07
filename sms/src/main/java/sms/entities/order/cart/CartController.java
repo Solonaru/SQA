@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.entities.account.customer.Customer;
+import sms.entities.account.customer.ICustomerService;
+import sms.entities.order.Orders;
 import sms.utils.DisplayData;
 
 @RestController
@@ -21,6 +24,8 @@ public class CartController {
 
 	@Autowired
 	private ICartService cartService;
+	@Autowired
+	private ICustomerService customerService;
 	@Autowired
 	private DisplayData dataDisplay;
 	
@@ -34,6 +39,18 @@ public class CartController {
 	public List<Cart> getCarts() {
 		dataDisplay.printCrudInfo(); 
 		return cartService.findAllCarts();
+	}
+	
+	@RequestMapping(value = "/all/customer", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Orders> findCartsByCustomer(@RequestBody Customer customer) {
+		dataDisplay.printCrudInfo();
+		return cartService.findAllCustomerCarts(customer);
+	}
+	
+	@RequestMapping(value = "/all/customer/{customerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Orders> findCartsByCustomerId(@PathVariable("customerId") int customerId) {
+		Customer customer = customerService.findCustomerById(customerId).get();
+		return cartService.findAllCustomerCarts(customer);
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

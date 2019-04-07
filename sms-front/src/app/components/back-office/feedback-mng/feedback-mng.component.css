@@ -1,0 +1,21 @@
+.is-title {
+    text-align: center;
+    padding: 1.2rem;
+    font-weight: bold;
+}
+
+.is-create-button {
+    margin: 1.2rem;
+}
+
+tr {
+    transition: none;
+}
+
+.is-main-div {
+    padding: 2rem;
+}
+
+.is-secondary-div {
+    margin: 2rem;
+}

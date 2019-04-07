@@ -3,11 +3,16 @@ package sms.entities.order.cart;
 import java.util.List;
 import java.util.Optional;
 
+import sms.entities.account.customer.Customer;
+import sms.entities.order.Orders;
+
 public interface ICartService {
 
 	public Optional<Cart> findCartById(int cartId);
 	
 	public List<Cart> findAllCarts();
+	
+	public List<Orders> findAllCustomerCarts(Customer customer);
 
 	public void insertCart(Cart cart);
 

@@ -28,6 +28,7 @@ import { PrivacyComponent } from './components/front-office/privacy/privacy.comp
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
 import { SessionGuard } from './providers/guards/session.guard';
+import { FeedbackMngComponent } from './components/back-office/feedback-mng/feedback-mng.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -83,6 +84,10 @@ const routes: Routes = [
   },
   {
     path: 'location-mng', component: LocationMngComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'feedback-mng', component: FeedbackMngComponent,
     canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
   },
 

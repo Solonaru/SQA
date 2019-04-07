@@ -45,6 +45,8 @@ public class Feedback implements Serializable, Comparable<Feedback> {
 		this.userEmail = userEmail;
 		this.subject = subject;
 		this.message = message;
+		this.updateDate = new Date(System.currentTimeMillis());
+		this.status = Status.ACTIVE;
 	}
 
 	// ----- Getters and Setters ------

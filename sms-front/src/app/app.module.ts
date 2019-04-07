@@ -36,6 +36,7 @@ import { TermsCondComponent } from './components/front-office/terms-cond/terms-c
 import { PrivacyComponent } from './components/front-office/privacy/privacy.component';
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
+import { FeedbackMngComponent } from './components/back-office/feedback-mng/feedback-mng.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ContactUsComponent } from './components/front-office/contact-us/contact
     PrivacyComponent,
     FeedbackComponent,
     ContactUsComponent,
-    AdministrativeComponent
+    AdministrativeComponent,
+    FeedbackMngComponent
   ],
   imports: [
     BrowserModule,

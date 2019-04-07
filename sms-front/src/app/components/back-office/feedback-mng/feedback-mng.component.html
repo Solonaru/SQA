@@ -1,0 +1,19 @@
+<h1 class="is-title">Feedback management</h1>
+
+<div class="is-main-div">
+  
+  <div class="card text-center is-secondary-div" *ngFor="let feedback of feedbacks">
+    <div class="card-header">
+      {{feedback.userName}} <br>
+      {{feedback.userEmail}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{feedback.subject}}</h5>
+      <p class="card-text">{{feedback.message}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      {{feedback.updateDate}}
+    </div>
+  </div>
+
+</div>
