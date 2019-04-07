@@ -25,6 +25,7 @@ import { PrivacyComponent } from './components/front-office/privacy/privacy.comp
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ShoppingComponent } from './components/front-office/shopping/shopping.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
+import { AdministrativeComponent } from './components/back-office/administrative/administrative.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'shopping', component: ShoppingComponent },
 
+  { path: 'adinistrative', component: AdministrativeComponent},
   { path: 'category-mng', component: CategoryMngComponent },
   { path: 'item-mng', component: ItemMngComponent },
   { path: 'subscription-mng', component: SubscriptionsMngComponent },
