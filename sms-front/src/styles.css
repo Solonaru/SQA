@@ -6,3 +6,7 @@ html {
 body, header, footer {
     width: 100vw;
 }
+
+.c-pointer {
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.dropdown-menu {
+  padding-left: .4rem;  
+  padding-right: .4rem;
+  width: 250px;
+  left: -100%;
+}
+
+.dropdown-item {
+  text-align: center;
+}
+
+.cart__head {
+  display: flex;
+  margin-bottom: .5rem;
+}
+
+.cart__name {
+  flex: 3;
+}
+
+.cart__price {
+  flex: 1;
+}
+
+.cart__remove {
+  margin-left: 7px;
+  align-self: flex-start;
+  cursor: pointer;
+  color: red;
+}

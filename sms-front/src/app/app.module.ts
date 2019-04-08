@@ -11,6 +11,7 @@ import { LogInOutService } from './entities/helper-classes/log-in-out';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/front-office/header/header.component';
+import { CartComponent } from './components/front-office/cart/cart.component';
 import { FooterComponent } from './components/front-office/footer/footer.component';
 
 import { LoginComponent } from './components/front-office/login/login.component';
@@ -42,6 +43,7 @@ import { FeedbackMngComponent } from './components/back-office/feedback-mng/feed
   declarations: [
     AppComponent,
     HeaderComponent,
+    CartComponent,
     FooterComponent,
 
     LoginComponent,
