@@ -38,6 +38,7 @@ import { PrivacyComponent } from './components/front-office/privacy/privacy.comp
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
 import { FeedbackMngComponent } from './components/back-office/feedback-mng/feedback-mng.component';
+import { ReportsComponent } from './components/back-office/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { FeedbackMngComponent } from './components/back-office/feedback-mng/feed
     FeedbackComponent,
     ContactUsComponent,
     AdministrativeComponent,
-    FeedbackMngComponent
+    FeedbackMngComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,

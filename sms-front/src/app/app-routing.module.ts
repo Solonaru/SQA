@@ -12,6 +12,7 @@ import { ShoppingComponent } from './components/front-office/shopping/shopping.c
 import { MakeOwnPizzaComponent } from './components/front-office/make-own-pizza/make-own-pizza.component';
 
 import { AdministrativeComponent } from './components/back-office/administrative/administrative.component';
+import { ReportsComponent } from './components/back-office/reports/reports.component';
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
 import { SubscriptionsMngComponent } from './components/back-office/subscriptions-mng/subscriptions-mng.component';
@@ -64,6 +65,10 @@ const routes: Routes = [
 
   {
     path: 'administrative', component: AdministrativeComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'reports', component: ReportsComponent,
     canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
   },
   {
