@@ -47,6 +47,13 @@ public class Payment implements Serializable {
 		this.date = new Date(System.currentTimeMillis());
 	}
 
+	public Payment(PaymentType type, PaymentStatus paymentStatus, Date date) {
+		super();
+		this.type = type;
+		this.paymentStatus = paymentStatus;
+		this.date = date;
+	}
+
 	// -----Getters and Setters-----
 	public Integer getId() {
 		return id;

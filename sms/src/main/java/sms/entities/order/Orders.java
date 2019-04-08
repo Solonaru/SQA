@@ -49,6 +49,12 @@ public class Orders implements Serializable {
 		this.date = new Date(System.currentTimeMillis());
 	}
 
+	public Orders(Date date, OrderStatus status) {
+		super();
+		this.date = date;
+		this.status = status;
+	}
+
 	// -----Getters and Setters-----
 	public Integer getId() {
 		return id;

@@ -1,0 +1,51 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="chart">
+            <div id="chartContainer">
+                <img *ngIf="!category" src="../../../../assets/images/no-data-available.png" alt="Placeholder image">
+            </div>
+        </section>
+
+        <section class="section-controls">
+            <div class="controls">
+                <p class="is-title">Settings</p>
+                <form action="#" class="controls__form">
+
+                    <label class="is-label1"> Category: </label>
+                    <select [(ngModel)]="selectedCategory" (change)="changeCategory()" name="category" class="controls__category">
+                        <option [value]="-1" class="d">--- Select a category ---</option>
+                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                    </select>
+
+                    <label> Month: </label>
+                    <select [(ngModel)]="selectedMonth" (change)="changeMonth()" name="month" class="controls__month">
+                        <option *ngFor="let catalogue of catalogues" [value]="catalogue.id">{{catalogue.month + ", " + catalogue.year}}</option>
+                    </select>
+
+                    <label class="is-label-amount"> Top: </label>
+                    <select [(ngModel)]="selectedAmount" (change)="changeAmount()" name="amount" class="controls__amount">
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+</body>

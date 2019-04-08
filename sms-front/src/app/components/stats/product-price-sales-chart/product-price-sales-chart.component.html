@@ -1,0 +1,38 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="chart">
+            <div id="chartContainer">
+                <img *ngIf="!category" src="../../../../assets/images/no-data-available.png" alt="Placeholder image">
+            </div>
+        </section>
+
+        <section class="section-controls">
+            <div class="controls">
+                <p class="is-title">Settings</p>
+                <form action="#" class="controls__form">
+
+                    <label class="is-label1"> Product: </label>
+                    <select [(ngModel)]="selectedCategory" (change)="changeCategory()" name="category" class="controls__category">
+                        <option value="-1">--- Select a category ---</option>
+                        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                    </select>
+                    <select *ngIf="items" [(ngModel)]="selectedValue" (change)="changeItem()" name="product" class="controls__product">
+                        <option value="-1">--- Select a product ---</option>
+                        <option *ngFor="let item of items" [value]="item.id">{{item.name}}</option>
+                    </select>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>

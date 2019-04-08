@@ -31,6 +31,15 @@ import { ContactUsComponent } from './components/front-office/contact-us/contact
 import { SessionGuard } from './providers/guards/session.guard';
 import { FeedbackMngComponent } from './components/back-office/feedback-mng/feedback-mng.component';
 
+import { ProductChartMonthComponent } from './components/stats/product-chart-month/product-chart-month.component';
+import { ProductPriceSalesChartComponent } from './components/stats/product-price-sales-chart/product-price-sales-chart.component';
+import { ProductForecastMonthComponent } from './components/stats/product-forecast-month/product-forecast-month.component';
+import { CategoryChartMonthComponent } from './components/stats/category-chart-month/category-chart-month.component';
+import { CategoryForecastMonthComponent } from './components/stats/category-forecast-month/category-forecast-month.component';
+import { ProductsShareInCategoryComponent } from './components/stats/products-share-in-category/products-share-in-category.component';
+import { TopProductsByQuantityChartComponent } from './components/stats/top-products-by-quantity-chart/top-products-by-quantity-chart.component';
+import { TopProductsByPriceChartComponent } from './components/stats/top-products-by-price-chart/top-products-by-price-chart.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
@@ -106,7 +115,16 @@ const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'terms-cond', component: TermsCondComponent },
   { path: 'privacy', component: PrivacyComponent },
-  { path: 'feedback', component: FeedbackComponent }
+  { path: 'feedback', component: FeedbackComponent },
+
+  { path: 'category-chart-month', component: CategoryChartMonthComponent },
+  { path: 'category-forecast-month', component: CategoryForecastMonthComponent },
+  { path: 'products-share-in-category', component: ProductsShareInCategoryComponent },
+  { path: 'top-products-by-quantity-chart', component: TopProductsByQuantityChartComponent },
+  { path: 'top-products-by-price-chart', component: TopProductsByPriceChartComponent },
+  { path: 'product-chart-month', component: ProductChartMonthComponent },
+  { path: 'product-price-sales-chart', component: ProductPriceSalesChartComponent },
+  { path: 'product-forecast-month', component: ProductForecastMonthComponent }
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import { ShoppingComponent } from './components/front-office/shopping/shopping.c
 import { MakeOwnPizzaComponent } from './components/front-office/make-own-pizza/make-own-pizza.component';
 
 import { AdministrativeComponent } from './components/back-office/administrative/administrative.component';
+import { ReportsComponent } from './components/back-office/reports/reports.component';
 import { CategoryMngComponent } from './components/back-office/category-mng/category-mng.component';
 import { ItemMngComponent } from './components/back-office/item-mng/item-mng.component';
 import { SubscriptionsMngComponent } from './components/back-office/subscriptions-mng/subscriptions-mng.component';
@@ -38,7 +39,17 @@ import { PrivacyComponent } from './components/front-office/privacy/privacy.comp
 import { FeedbackComponent } from './components/front-office/feedback/feedback.component';
 import { ContactUsComponent } from './components/front-office/contact-us/contact-us.component';
 import { FeedbackMngComponent } from './components/back-office/feedback-mng/feedback-mng.component';
-import { ReportsComponent } from './components/back-office/reports/reports.component';
+
+import { ProductChartMonthComponent } from './components/stats/product-chart-month/product-chart-month.component';
+import { ProductPriceSalesChartComponent } from './components/stats/product-price-sales-chart/product-price-sales-chart.component';
+import { ProductForecastMonthComponent } from './components/stats/product-forecast-month/product-forecast-month.component';
+import { CategoryChartMonthComponent } from './components/stats/category-chart-month/category-chart-month.component';
+import { CategoryForecastMonthComponent } from './components/stats/category-forecast-month/category-forecast-month.component';
+import { ProductsShareInCategoryComponent } from './components/stats/products-share-in-category/products-share-in-category.component';
+import { TopProductsByQuantityChartComponent } from './components/stats/top-products-by-quantity-chart/top-products-by-quantity-chart.component';
+import { TopProductsByPriceChartComponent } from './components/stats/top-products-by-price-chart/top-products-by-price-chart.component';
+
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -54,6 +65,8 @@ import { ReportsComponent } from './components/back-office/reports/reports.compo
     ShoppingComponent,
     MakeOwnPizzaComponent,
 
+    AdministrativeComponent,
+    ReportsComponent,
     CategoryMngComponent,
     ItemMngComponent,
     SubscriptionsMngComponent,
@@ -69,9 +82,17 @@ import { ReportsComponent } from './components/back-office/reports/reports.compo
     PrivacyComponent,
     FeedbackComponent,
     ContactUsComponent,
-    AdministrativeComponent,
     FeedbackMngComponent,
-    ReportsComponent
+
+    ProductChartMonthComponent,
+    FooterComponent,
+    ProductPriceSalesChartComponent,
+    ProductForecastMonthComponent,
+    CategoryChartMonthComponent,
+    CategoryForecastMonthComponent,
+    ProductsShareInCategoryComponent,
+    TopProductsByQuantityChartComponent,
+    TopProductsByPriceChartComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +104,7 @@ import { ReportsComponent } from './components/back-office/reports/reports.compo
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [LogInOutService],
   bootstrap: [AppComponent]

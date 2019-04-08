@@ -26,6 +26,11 @@ export class ItemService {
       .pipe(map((res: Item[]) => { return res }));
   }
 
+  getItemById(itemId: string) {
+    return this.http.get(this.BASE_URL + itemId)
+      .pipe(map((res: Item) => { return res }));
+  }
+
   insertItem(item: Item) {
     return this.http.post<Item>(this.BASE_URL + 'add', JSON.stringify(item), this.httpOptions)
       .pipe(map((resp: Item) => resp));
