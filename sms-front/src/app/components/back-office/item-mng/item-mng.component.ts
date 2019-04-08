@@ -6,7 +6,7 @@ import { IngredientService } from '../../../providers/services/item/ingredient.s
 import { BeverageService } from '../../../providers/services/item/beverage.service';
 import { SauceService } from '../../../providers/services/item/sauce.service';
 import { ConsumableService } from '../../../providers/services/item/consumable.service';
-import { RecipeService } from '../../../providers/services/item/recipe.service';
+import { RecipeService } from '../../../providers/services/item/recipe/recipe.service';
 import { PackageService } from '../../../providers/services/item/package.service';
 
 @Component({

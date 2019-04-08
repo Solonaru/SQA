@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Recipe } from '../../../entities/classes/item/recipe/recipe';
+import { Recipe } from '../../../../entities/classes/item/recipe/recipe';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -22,7 +22,6 @@ export class RecipeService {
   }
 
   insertRecipe(recipe: Recipe) {
-    console.log(recipe);
     return this.http.post<Recipe>(this.BASE_URL + 'add', JSON.stringify(recipe), this.httpOptions)
       .pipe(map((resp: Recipe) => resp));
   }

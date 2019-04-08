@@ -6,7 +6,8 @@ import { CategoryService } from '../../../providers/services/category.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IngredientService } from '../../../providers/services/item/ingredient.service';
 import { RecipeLine } from '../../../entities/classes/item/recipe/recipeLine';
-import { RecipeService } from '../../../providers/services/item/recipe.service';
+import { RecipeService } from '../../../providers/services/item/recipe/recipe.service';
+import { RecipeLineService } from '../../../providers/services/item/recipe/recipeLine.service';
 
 @Component({
   selector: 'app-make-own-pizza',
@@ -30,7 +31,8 @@ export class MakeOwnPizzaComponent implements OnInit {
 
   constructor(private categoryService: CategoryService,
     private ingredientService: IngredientService,
-    private recipeService: RecipeService) { }
+    private recipeService: RecipeService,
+    private recipeLineService: RecipeLineService) { }
 
   ngOnInit() {
     this.populateData();
@@ -114,7 +116,7 @@ export class MakeOwnPizzaComponent implements OnInit {
     });
   }
 
-  // TODO: Find out why doesn't work
+  // TODO: First of all deserializer for product should be made
   onAddToCart() {
     let recipe: Recipe = new Recipe("Personalized");
 
@@ -129,6 +131,6 @@ export class MakeOwnPizzaComponent implements OnInit {
       recipe.recipeLines.push(recipeLine);
     }
 
-    this.recipeService.insertRecipe(recipe);
+    this.recipeService.insertRecipe(recipe).subscribe(data => { });
   }
 }

@@ -5,9 +5,9 @@ export class RecipeLine {
     id: Number;
     quantity: Number;
     recipe: Recipe;
-    product: Product;
+    component: Product;
 
-    constructor(product: Product) {
-        this.product = product;
+    constructor(component: Product) {
+        this.component = component;
     }
 }
