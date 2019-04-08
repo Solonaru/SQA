@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sms.entities.account.customer.Customer;
 import sms.entities.account.customer.ICustomerService;
-import sms.entities.order.Orders;
 import sms.utils.DisplayData;
 
 @RestController
@@ -42,13 +41,13 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/all/customer", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Orders> findCartsByCustomer(@RequestBody Customer customer) {
+	public List<Cart> findCartsByCustomer(@RequestBody Customer customer) {
 		dataDisplay.printCrudInfo();
 		return cartService.findAllCustomerCarts(customer);
 	}
 	
 	@RequestMapping(value = "/all/customer/{customerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Orders> findCartsByCustomerId(@PathVariable("customerId") int customerId) {
+	public List<Cart> findCartsByCustomerId(@PathVariable("customerId") int customerId) {
 		Customer customer = customerService.findCustomerById(customerId).get();
 		return cartService.findAllCustomerCarts(customer);
 	}

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sms.entities.account.customer.Customer;
-import sms.entities.order.Orders;
 
 @Service
 public class CartService implements ICartService{
@@ -23,8 +22,8 @@ public class CartService implements ICartService{
 		return (List<Cart>) cartRepository.findAll();
 	}
 	
-	public List<Orders> findAllCustomerCarts(Customer customer) {
-		return (List<Orders>) cartRepository.findAllByCustomer(customer);
+	public List<Cart> findAllCustomerCarts(Customer customer) {
+		return (List<Cart>) cartRepository.findAllByCustomer(customer);
 	}
 
 	public void insertCart(Cart cart) {

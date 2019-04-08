@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import sms.entities.account.customer.Customer;
-import sms.entities.order.Orders;
 
 public interface ICartService {
 
@@ -12,7 +11,7 @@ public interface ICartService {
 	
 	public List<Cart> findAllCarts();
 	
-	public List<Orders> findAllCustomerCarts(Customer customer);
+	public List<Cart> findAllCustomerCarts(Customer customer);
 
 	public void insertCart(Cart cart);
 
