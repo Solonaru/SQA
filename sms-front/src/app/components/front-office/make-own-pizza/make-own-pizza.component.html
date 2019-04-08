@@ -1,39 +1,44 @@
-<select (change)="categoryChanged()" [(ngModel)]="category">
-  <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
-</select>
+<div class="container make__container">
+  <div class="form-group">
+     <div class="form-row">
+        <select (change)="categoryChanged()" [(ngModel)]="category" class="form-control col-sm-3">
+          <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
+        </select>
 
-<select [(ngModel)]="dough">
-  <option *ngFor="let dou of doughs" [ngValue]="dou">{{dou.name}}</option>
-</select>
+        <select [(ngModel)]="dough" class="form-control col-sm-3">
+          <option *ngFor="let dou of doughs" [ngValue]="dou">{{dou.name}}</option>
+        </select>
 
-<select [(ngModel)]="sauce">
-  <option *ngFor="let sau of sauces" [ngValue]="sau">{{sau.name}}</option>
-</select>
+        <select [(ngModel)]="sauce" class="form-control col-sm-3">
+          <option *ngFor="let sau of sauces" [ngValue]="sau">{{sau.name}}</option>
+        </select>
+     </div>
+  </div>
 
-<br>
+  <br>
 
-<div class="example-container">
-  <h2>Ingredients</h2>
+  <div class="example-container">
+    <h2>Ingredients</h2>
 
-  <div cdkDropList #ingredientsList="cdkDropList" [cdkDropListData]="ingredients" [cdkDropListConnectedTo]="[pizzaIngredientsList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let ingredient of ingredients" cdkDrag [cdkDragDisabled]="ingredient.disabled">
-      {{ingredient.name}}
-      <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
+    <div cdkDropList #ingredientsList="cdkDropList" [cdkDropListData]="ingredients" [cdkDropListConnectedTo]="[pizzaIngredientsList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let ingredient of ingredients" cdkDrag [cdkDragDisabled]="ingredient.disabled">
+        {{ingredient.name}}
+        <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
+      </div>
     </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Make your own pizza</h2>
+  <div class="example-container">
+    <h2>Make your own pizza</h2>
 
-  <div cdkDropList #pizzaIngredientsList="cdkDropList" [cdkDropListData]="pizzaIngredients" [cdkDropListConnectedTo]="[ingredientsList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let ingredient of pizzaIngredients" cdkDrag>
-      {{ingredient.name}}
-      <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
+    <div cdkDropList #pizzaIngredientsList="cdkDropList" [cdkDropListData]="pizzaIngredients" [cdkDropListConnectedTo]="[ingredientsList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let ingredient of pizzaIngredients" cdkDrag>
+        {{ingredient.name}}
+        <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
+      </div>
     </div>
   </div>
+  <button type="button" class="btn btn-success">Add to cart</button>
 </div>
-
-<button type="button" class="btn btn-success">Add to cart</button>
