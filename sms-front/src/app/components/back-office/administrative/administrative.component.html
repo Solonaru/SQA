@@ -1,98 +1,80 @@
-
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Administrative Dashboard</a>
+<head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+          crossorigin="anonymous">   
+    </head>
     
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
-        <li class="nav-item active font-weight-bold">
-            <a class="nav-link" href="#"> <h4>Home</h4> 
-                <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item font-weight-bold">
-            <a  class="nav-link nav-link-collapse"
-                href="#"
-                id="hasSubItems"
-                data-toggle="collapse"
-                data-target="#collapseSubItems2"
-                aria-controls="collapseSubItems2"
-                aria-expanded="false">
-                <h4>Back-office pages</h4>
-            </a>
-            <ul class="nav-second-level collapse" id="collapseSubItems2" 
-            data-parent="#navAccordion">
-                <li class="nav-item">
-                <a class="nav-link" routerLink="/category-mng">
-                    <span class="nav-link-text"> <h5>Category Management</h5></span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" routerLink="/item-mng">
-                    <span class="nav-link-text"><h5>Item Management</h5></span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link"  routerLink="/job-mng">
-                    <span class="nav-link-text"><h5>Jobs Management</h5></span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  routerLink="/location-mng">
-                    <span class="nav-link-text"><h5>Location Management</h5></span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link"  routerLink="/subscription-mng">
-                    <span class="nav-link-text"><h5>Subscriptions Management</h5></span>
-                </a>
-            </li>
-            </ul>
-        </li>
-        <li class="nav-item font-weight-bold">
-            <a  class="nav-link nav-link-collapse"
-            href="#"
-            id="hasSubItems"
-            data-toggle="collapse"
-            data-target="#collapseSubItems2"
-            aria-controls="collapseSubItems2"
-            aria-expanded="false">
-            <h4>Reports</h4>
-            </a>
-        <ul class="nav-second-level collapse" id="collapseSubItems2" 
-        data-parent="#navAccordion">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span class="nav-link-text">
-                        <h5>Total income per day/month/quarter/semestrer/year</h5></span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span class="nav-link-text">
-                        <h5>Most and least ordered products</h5></span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span class="nav-link-text">
-                        <h5>Product sales forecast per day/month/quarter/semestrer/year</h5></span>
-                </a>
-            </li>
-        </ul>
-        </li>
-        </ul>
-        <form class="form-inline ml-auto mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    </nav>
-    
-    <main class="content-wrapper">     
-        <div class="container-fluid d-flex justify-content-center">
-            <h1 font-weight-bold>Welcome to Pizzetta Dashboard!</h1>         
-        </div>   
-    </main>
-</body>
-        
-              
+    <body>
+        <main>
+            <br><br>
+            <h1 class="font-weight-bold text-center">Administrative Page</h1>
+            <br>
+            <h3 class="text-center">Management has never been easier!</h3>
+            <h3 class="text-center">You're only one click away to manage a module</h3>
+            <br><br><br>
+            <div class="container">
+                <div class="card-columns">
+               
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Category Management</div>
+                        <div class="card-body">
+                            <p class="card-text">The Category Management module allows you to add. edit and delete certain 
+                                categories of products.
+                            </p>
+                            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/categoty-mng">Go to page</button>
+                        </div>
+                    </div>
+         
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Feedback Management</div>
+                        <div class="card-body">
+                            <p class="card-text">This module manages all the feedback messages we receive from 
+                                customers via the Feedback from page</p>
+                           <button type="button" class="btn btn-primary font-weight-bold" routerLink="/categoty-mng">Go to page</button>
+                        </div>
+                    </div>
+             
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Items Management</div>
+                        <div class="card-body">
+                            <p class="card-text">Via this module, you can either add, edit or delete items from the system.
+                                It's just that simple!
+                            </p>
+                            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/item-mng">Go to page</button>
+                        </div>
+                    </div>
+                
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Jobs Management</div>
+                        <div class="card-body">
+                            <p class="card-text">The Job Management module ets you add, edit or delete o job that is displayes in the 
+                                Carrers page, so the users can see in real time the open vacancies.
+                            </p>
+                            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/job-mng">Go to page</button>
+                        </div>
+                    </div>
+             
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Locations Management</div>
+                        <div class="card-body">
+                            <p class="card-text">In case we are opening a new franchise or closiing an existing one, 
+                                this is the module you'll have to use - to eiter add, edit or delete a location.
+                            </p>
+                            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/location-mng">Go to page</button>
+                        </div>
+                    </div>
+     
+                    <div class="card">
+                        <div class="card-header font-weight-bold">Subscriptions Management</div>
+                        <div class="card-body">
+                            <p class="card-text">This module is based on GDPR, and is also directly linked to the
+                                Newsletters module. </p>
+                            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/subscriptions-mng">Go to page</button>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </main>
+    </body>
