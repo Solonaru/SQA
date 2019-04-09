@@ -99,12 +99,28 @@ public class CategoryStatsController {
 		Map<Integer, Double> statisticData = new TreeMap<Integer, Double>();
 		Calendar cal = Calendar.getInstance();
 
-		for (CartLine cartLine : cartLineService.findAllCartLines()) {
+		Integer startMonth = dataRequest.getMonthStart().ordinal();
+		Integer endMonth = dataRequest.getMonthEnd().ordinal();
 
-			if ((UtilMethods.getMonthFromDate(cartLine.getCart().getOrder().getDate()).ordinal() >= dataRequest
-					.getMonthStart().ordinal())
-					&& (UtilMethods.getMonthFromDate(cartLine.getCart().getOrder().getDate()).ordinal() <= dataRequest
-							.getMonthEnd().ordinal())) {
+		if (startMonth < 4) {
+			startMonth += 12;
+			endMonth += 12;
+		} else if (endMonth < 4) {
+			endMonth += 12;
+		}
+
+		for (CartLine cartLine : cartLineService.findAllCartLines()) {
+			Integer cartStartMonth = UtilMethods.getMonthFromDate(cartLine.getCart().getOrder().getDate()).ordinal();
+			Integer cartEndMonth = UtilMethods.getMonthFromDate(cartLine.getCart().getOrder().getDate()).ordinal();
+
+			if (cartStartMonth < 4) {
+				cartStartMonth += 12;
+				cartEndMonth += 12;
+			} else if (cartEndMonth < 4) {
+				cartEndMonth += 12;
+			}
+
+			if ((cartStartMonth >= startMonth) && (cartEndMonth <= endMonth)) {
 
 				if (cartLine.getItem().getCategory().getId().equals(dataRequest.getObjectId())) {
 					Double value = cartLine.getValue();
