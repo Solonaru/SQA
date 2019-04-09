@@ -26,3 +26,26 @@
 .fa-instagram:hover {
   color: red;
 }
+
+.footer__list {
+  list-style-type: none;
+  display: block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.footer__item {
+  display: inline-block;
+}
+
+.footer__item a {
+    color: #212529;
+}
+
+.footer__item a:hover {
+  text-decoration: none;
+}
+
+.footer__item:not(:last-child) {
+  padding-right: 10px;
+}

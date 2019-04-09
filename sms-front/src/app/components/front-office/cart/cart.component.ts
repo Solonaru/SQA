@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
     this.customer.id = currentUserId;
     this.cart = new Cart();
     this.cart.customer = this.customer;
-    this.addCart();
+//    this.addCart();
   }
   
   getAllCarts(id) {
