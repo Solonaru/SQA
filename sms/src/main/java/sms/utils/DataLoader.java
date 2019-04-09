@@ -38,6 +38,7 @@ import sms.entities.item.Item;
 import sms.entities.item.component.beverage.Beverage;
 import sms.entities.item.component.ingredient.IIngredientService;
 import sms.entities.item.component.ingredient.Ingredient;
+import sms.entities.item.component.sauce.Sauce;
 import sms.entities.item.recipe.Recipe;
 import sms.entities.item.recipe.line.IRecipeLineService;
 import sms.entities.item.recipe.line.RecipeLine;
@@ -328,6 +329,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		category5.setCategoryType(CategoryType.BACK_OFFICE);
 		Category category6 = new Category("Tomato sauce recipes", "Tomato sauce recipes category");
 		category6.setCategoryType(CategoryType.BACK_OFFICE);
+		
+		Category category7 = new Category("Sauces", "Sauces category");
+		category7.setCategoryType(CategoryType.FRONT_OFFICE);
 
 		categoryService.insertCategory(category1);
 		categoryService.insertCategory(category2);
@@ -344,6 +348,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		categoryService.insertCategory(category5);
 		categoryService.insertCategory(category6);
+		
+		categoryService.insertCategory(category7);
 
 		/*-------------------------------------------*/
 
@@ -509,6 +515,27 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Beverage beverage9 = new Beverage("Coca Cola 2L", MeasurementUnit.UNIT, 10.0, 4.00, "");
 		beverage9.setCategory(category3);
 		beverage9.setImageUrl("../../../../assets/images/items/products/components/beverages/imgCocaCola2L.jpg");
+		
+		
+		Beverage desert1 = new Beverage("Cornetto Ice Cream", MeasurementUnit.UNIT, 10.0, 7.20, "");
+		desert1.setCategory(category2);
+		desert1.setImageUrl("../../../../assets/images/items/products/components/deserts/imgCornettoIceCream.jpg");
+		Beverage desert2 = new Beverage("Jumbo Ice Cream", MeasurementUnit.UNIT, 10.0, 8.00, "");
+		desert2.setCategory(category2);
+		desert2.setImageUrl("../../../../assets/images/items/products/components/deserts/imgJumboIceCream.jpg");
+		Beverage desert3 = new Beverage("Butter Scotch Ice Cream", MeasurementUnit.UNIT, 10.0, 7.50, "");
+		desert3.setCategory(category2);
+		desert3.setImageUrl("../../../../assets/images/items/products/components/deserts/imgButterScotchIceCream.jpg");
+		Beverage desert4 = new Beverage("Amul Ice Cream", MeasurementUnit.UNIT, 10.0, 6.70, "");
+		desert4.setCategory(category2);
+		desert4.setImageUrl("../../../../assets/images/items/products/components/deserts/imgAmulIceCream.jpg");
+		
+		Sauce sauce1 = new Sauce("Ketchup", MeasurementUnit.UNIT, 10.0, 1.40, "");
+		sauce1.setCategory(category7);
+		sauce1.setImageUrl("../../../../assets/images/items/products/components/sauces/imgKetchup.jpg");
+		Sauce sauce2 = new Sauce("Maionese", MeasurementUnit.UNIT, 10.0, 1.20, "");
+		sauce2.setCategory(category7);
+		sauce2.setImageUrl("../../../../assets/images/items/products/components/sauces/imgMaionese.jpg");
 
 		itemService.insertItem(meatAndPoultry1);
 		itemService.insertItem(meatAndPoultry2);
@@ -558,6 +585,14 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(beverage7);
 		itemService.insertItem(beverage8);
 		itemService.insertItem(beverage9);
+		
+		itemService.insertItem(desert1);
+		itemService.insertItem(desert2);
+		itemService.insertItem(desert3);
+		itemService.insertItem(desert4);
+		
+		itemService.insertItem(sauce1);
+		itemService.insertItem(sauce2);
 
 		/*-------------------------------------------*/
 
