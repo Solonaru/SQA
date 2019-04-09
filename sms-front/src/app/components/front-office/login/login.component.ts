@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.logInOutService.checkUser();
       this.router.navigate(['home']);
     } else {
-      window.alert("No user found!!");
+      document.getElementById("openModalButton").click();
     }
   }
 

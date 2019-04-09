@@ -133,4 +133,9 @@ export class MakeOwnPizzaComponent implements OnInit {
 
     this.recipeService.insertRecipe(recipe).subscribe(data => { });
   }
+
+  onCloseStub() {
+    this.pizzaIngredients.length = 0;
+  }
+
 }

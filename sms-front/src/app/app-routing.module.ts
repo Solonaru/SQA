@@ -117,14 +117,38 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'feedback', component: FeedbackComponent },
 
-  { path: 'category-chart-month', component: CategoryChartMonthComponent },
-  { path: 'category-forecast-month', component: CategoryForecastMonthComponent },
-  { path: 'products-share-in-category', component: ProductsShareInCategoryComponent },
-  { path: 'top-products-by-quantity-chart', component: TopProductsByQuantityChartComponent },
-  { path: 'top-products-by-price-chart', component: TopProductsByPriceChartComponent },
-  { path: 'product-chart-month', component: ProductChartMonthComponent },
-  { path: 'product-price-sales-chart', component: ProductPriceSalesChartComponent },
-  { path: 'product-forecast-month', component: ProductForecastMonthComponent }
+  {
+    path: 'category-chart-month', component: CategoryChartMonthComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'category-forecast-month', component: CategoryForecastMonthComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'products-share-in-category', component: ProductsShareInCategoryComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'top-products-by-quantity-chart', component: TopProductsByQuantityChartComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'top-products-by-price-chart', component: TopProductsByPriceChartComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'product-chart-month', component: ProductChartMonthComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'product-price-sales-chart', component: ProductPriceSalesChartComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  },
+  {
+    path: 'product-forecast-month', component: ProductForecastMonthComponent,
+    canActivate: [SessionGuard], data: { allowed: ['ADMIN'] }
+  }
 ];
 
 @NgModule({
@@ -132,5 +156,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  
+
 }

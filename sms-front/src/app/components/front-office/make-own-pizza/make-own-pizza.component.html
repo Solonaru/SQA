@@ -1,18 +1,18 @@
 <div class="container make__container">
   <div class="form-group">
-     <div class="form-row">
-        <select (change)="categoryChanged()" [(ngModel)]="category" class="form-control col-sm-3">
-          <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
-        </select>
+    <div class="form-row">
+      <select (change)="categoryChanged()" [(ngModel)]="category" class="form-control col-sm-3">
+        <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
+      </select>
 
-        <select [(ngModel)]="dough" class="form-control col-sm-3">
-          <option *ngFor="let dou of doughs" [ngValue]="dou">{{dou.name}}</option>
-        </select>
+      <select [(ngModel)]="dough" class="form-control col-sm-3">
+        <option *ngFor="let dou of doughs" [ngValue]="dou">{{dou.name}}</option>
+      </select>
 
-        <select [(ngModel)]="sauce" class="form-control col-sm-3">
-          <option *ngFor="let sau of sauces" [ngValue]="sau">{{sau.name}}</option>
-        </select>
-     </div>
+      <select [(ngModel)]="sauce" class="form-control col-sm-3">
+        <option *ngFor="let sau of sauces" [ngValue]="sau">{{sau.name}}</option>
+      </select>
+    </div>
   </div>
 
   <br>
@@ -38,9 +38,32 @@
         {{ingredient.name}}
         <img *cdkDragPreview [src]="ingredient.imageUrl" [alt]="ingredient.name">
       </div>
-    </div> 
+    </div>
   </div>
   <div class="make__add">
-    <button type="button" class="btn btn-success">Add to cart</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#submittedModal">Add to cart</button>
+  </div>
+</div>
+
+<div class="modal fade" id="submittedModal" tabindex="-1" role="dialog" aria-labelledby="submittedModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 *ngIf="0 != pizzaIngredients.length" class="modal-title" id="submittedModalTitle">Success!</h5>
+        <h5 *ngIf="0 == pizzaIngredients.length" class="modal-title" id="submittedModalTitle">Error!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="0 != pizzaIngredients.length" class="modal-body">
+        Your pizza was successfully added to the cart.
+      </div>
+      <div *ngIf="0 == pizzaIngredients.length" class="modal-body">
+        You didn't add any ingredient to the recipe!
+      </div>
+      <div class="modal-footer">
+        <button (click)="onCloseStub()" type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

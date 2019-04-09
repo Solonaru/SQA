@@ -1,5 +1,5 @@
-<div class="container-fluid login-container">
-   <div class="login-box">
+<div class="is-div container-fluid login-container">
+    <div class="is-div login-box">
         <img src="../../assets/images/login_page/avatar.png" class="avatar">
         <h1>Welcome</h1>
         <form (submit)="loginUser($event)">
@@ -9,9 +9,30 @@
             <input type="password" name="password" id="password" placeholder="Password">
             <input type="submit" name="submit" value="Login">
         </form>
-        <div class="text-center form__register">
-            Don't have an account? 
+        <div class=" is-divtext-center form__register">
+            Don't have an account?
             <a routerLink="/register">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#submittedModal">Open Modal</button>
+
+<div class="modal fade" id="submittedModal" tabindex="-1" role="dialog" aria-labelledby="submittedModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="submittedModalTitle">Error!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Wrong password or username. Try again.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

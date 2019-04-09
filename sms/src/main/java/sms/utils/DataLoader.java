@@ -776,24 +776,61 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 	}
 
 	private void updateConflictIngredients() {
+		Ingredient sweetItalianPorkSausage = ingredientService.findIngredientByName("Sweet Italian Pork Sausage").get();
+		Ingredient porkBacon = ingredientService.findIngredientByName("Pork Bacon").get();
+		
 		Ingredient redOnion = ingredientService.findIngredientByName("Red Onion").get();
 		Ingredient yellowOnion = ingredientService.findIngredientByName("Yellow Onion").get();
-		Ingredient lightBrownSugar = ingredientService.findIngredientByName("Light Brown Sugar").get();
-		Ingredient darkBrownSugar = ingredientService.findIngredientByName("Dark Brown Sugar").get();
-		Ingredient babyBellaMushrooms = ingredientService.findIngredientByName("Baby Bella Mushrooms").get();
+		Ingredient garlic = ingredientService.findIngredientByName("Garlic").get();
+		
+		Ingredient gorgonzola = ingredientService.findIngredientByName("Gorgonzola").get();
+		
+		Ingredient rainerApple = ingredientService.findIngredientByName("Rainer Apple").get();
+		Ingredient goldenPineapple = ingredientService.findIngredientByName("Golden Pineapple").get();
+		
+		Ingredient freshTuna = ingredientService.findIngredientByName("Fresh Tuna").get();
+		Ingredient atlanticSalmon = ingredientService.findIngredientByName("Atlantic Salmon").get();
+		Ingredient swordFish = ingredientService.findIngredientByName("Sword Fish").get();
+		Ingredient salmon = ingredientService.findIngredientByName("Salmon").get();
 
-		redOnion.addConflictIngredient(lightBrownSugar);
-		redOnion.addConflictIngredient(darkBrownSugar);
-		redOnion.addConflictIngredient(babyBellaMushrooms);
-		yellowOnion.addConflictIngredient(lightBrownSugar);
-		yellowOnion.addConflictIngredient(darkBrownSugar);
-		yellowOnion.addConflictIngredient(babyBellaMushrooms);
+		redOnion.addConflictIngredient(rainerApple);
+		redOnion.addConflictIngredient(goldenPineapple);
+		redOnion.addConflictIngredient(gorgonzola);
+		yellowOnion.addConflictIngredient(rainerApple);
+		yellowOnion.addConflictIngredient(goldenPineapple);
+		yellowOnion.addConflictIngredient(gorgonzola);
+		garlic.addConflictIngredient(rainerApple);
+		garlic.addConflictIngredient(goldenPineapple);
+		porkBacon.addConflictIngredient(rainerApple);
+		porkBacon.addConflictIngredient(goldenPineapple);
+		sweetItalianPorkSausage.addConflictIngredient(rainerApple);
+		sweetItalianPorkSausage.addConflictIngredient(goldenPineapple);
+		freshTuna.addConflictIngredient(porkBacon);
+		freshTuna.addConflictIngredient(sweetItalianPorkSausage);
+		atlanticSalmon.addConflictIngredient(porkBacon);
+		atlanticSalmon.addConflictIngredient(sweetItalianPorkSausage);
+		swordFish.addConflictIngredient(porkBacon);
+		swordFish.addConflictIngredient(sweetItalianPorkSausage);
+		salmon.addConflictIngredient(porkBacon);
+		salmon.addConflictIngredient(sweetItalianPorkSausage);
+		
 
+		ingredientService.updateIngredient(sweetItalianPorkSausage);
+		ingredientService.updateIngredient(porkBacon);
+		
 		ingredientService.updateIngredient(redOnion);
 		ingredientService.updateIngredient(yellowOnion);
-		ingredientService.updateIngredient(lightBrownSugar);
-		ingredientService.updateIngredient(darkBrownSugar);
-		ingredientService.updateIngredient(babyBellaMushrooms);
+		ingredientService.updateIngredient(garlic);
+		
+		ingredientService.updateIngredient(gorgonzola);
+		
+		ingredientService.updateIngredient(rainerApple);
+		ingredientService.updateIngredient(goldenPineapple);
+		
+		ingredientService.updateIngredient(freshTuna);
+		ingredientService.updateIngredient(atlanticSalmon);
+		ingredientService.updateIngredient(swordFish);
+		ingredientService.updateIngredient(salmon);
 	}
 
 	private void updateCatalogue() {

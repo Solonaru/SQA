@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     { url: '../../../../assets/images/featured/featured2.jpg', caption: 'Beverages', clickAction: () => this.onClick(8003) },
     { url: '../../../../assets/images/featured/featured3.jpg', caption: 'Desserts', clickAction: () => this.onClick(8002) }
   ];
-  height: string = '400px';
+  height: string = '382px';
   minHeight: string;
   arrowSize: string = '30px';
   showArrows: boolean = true;

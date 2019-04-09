@@ -18,6 +18,7 @@ import { CartLineService } from '../../../providers/services/cartLine.service';
 export class ShoppingComponent implements OnInit {
   
   items: Item[];
+  currentItem: Item;
 //  customer: Customer;
 //  carts: Cart[];
 //  cart: Cart;
@@ -39,6 +40,10 @@ export class ShoppingComponent implements OnInit {
     this.categoryService.getCategoryById(categoryId).subscribe(category => {
       this.itemService.getListedItemsByCategoryId(category.id).subscribe(items => { this.items = items; });
     });
+  }
+
+  view(item: Item) {
+    this.currentItem = item;
   }
   
 //  getCarts(id) {
