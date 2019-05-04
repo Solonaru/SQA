@@ -95,14 +95,15 @@ public class ItemController {
 	private boolean checkItem(Item item, int categoryId) {
 		boolean ret_val = false;
 
-		if (item.isListed()) {
+		// TODO uncomment
+//		if (item.isListed()) {
 			if (item.getCategory().getId().equals(categoryId)) {
 				ret_val = true;
 			} else if (categoryService.findCategoryById(categoryId).get().getChildCategories()
 					.indexOf(item.getCategory()) != -1) {
 				ret_val = true;
 			}
-		}
+//		}
 
 		return ret_val;
 	}

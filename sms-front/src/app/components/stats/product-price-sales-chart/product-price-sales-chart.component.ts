@@ -116,7 +116,7 @@ export class ProductPriceSalesChartComponent implements OnInit {
   }
 
   changeCategory() {
-    this.itemService.getListedItemsByCategoryId(this.selectedCategory).subscribe(data => { this.items = data });
+    this.itemService.getListedItemsByCategoryId(this.selectedCategory).subscribe(data => { this.items = data; });
   }
 
   changeItem() {
