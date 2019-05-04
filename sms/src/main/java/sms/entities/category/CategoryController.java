@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import sms.enums.CategoryType;
 import sms.enums.Status;
 import sms.utils.DisplayData;
 
@@ -82,6 +83,7 @@ public class CategoryController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void insertCategory(@RequestBody Category category) {
 		dataDisplay.printCrudInfo();
+		category.setCategoryType(CategoryType.FRONT_OFFICE);
 		category.setStatus(Status.ACTIVE);
 		category.setUpdateDate(new Date(System.currentTimeMillis()));
 		categoryService.insertCategory(category);
