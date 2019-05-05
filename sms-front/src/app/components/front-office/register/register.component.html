@@ -2,27 +2,27 @@
 	<div class="form-row">
 		<div class="col-xs-12 col-sm-6 form-group">
 			<label>First name* </label>   
-		  	<input type="text" class="form-control" placeholder="" [(ngModel)]="firstName"  name="first" #first="ngModel" required minlength="2">
+		  	<input type="text" class="form-control" placeholder="" [(ngModel)]="firstName"  name="first" #first="ngModel" required minlength="3" maxlength="50"> 
 		  	
             <div *ngIf="first.invalid && (first.dirty || first.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="first.errors.required">
                     First Name is required.
                 </div>
                 <div *ngIf="first.errors.minlength">
-                    First Name must be at least 2 characters long.
+                    First Name must be at least 3 characters long.
                 </div>
             </div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col form-group">
 			<label>Last name*</label>
-		  	<input type="text" class="form-control" placeholder="" [(ngModel)]="lastName" name="last" #last="ngModel" required minlength="3">
+		  	<input type="text" class="form-control" placeholder="" [(ngModel)]="lastName" name="last" #last="ngModel" required minlength="2" maxlength="50">
 		  	
 		  	<div *ngIf="last.invalid && (last.dirty || last.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="last.errors.required">
                     Last Name is required.
                 </div>
                 <div *ngIf="last.errors.minlength">
-                    Last Name must be at least 3 characters long.
+                    Last Name must be at least 2 characters long.
                 </div>
             </div>
 		</div>
@@ -30,7 +30,7 @@
 	
     <div class="form-group">
 		<label>Username*</label>
-		<input type="text" class="form-control" placeholder="" [(ngModel)]="customer.username" name="username" #username="ngModel" required minlength="4">
+		<input type="text" class="form-control" placeholder="" [(ngModel)]="customer.username" name="username" #username="ngModel" required minlength="4" maxlength="50">
 		
         <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger mt-1">
             <div *ngIf="username.errors.required">
@@ -38,6 +38,9 @@
             </div>
             <div *ngIf="username.errors.minlength">
                 Username must be at least 4 characters long.
+            </div>
+			<div *ngIf="username.errors.maxlenth">
+                Username must be at most 50 characters long.
             </div>
         </div>
 	</div>
@@ -58,7 +61,7 @@
 	
     <div class="form-group">
 		<label>Phone number*</label>
-		<input type="tel" class="form-control" placeholder="" [(ngModel)]="customer.phoneNumber" [ngModelOptions]="{ updateOn: 'blur' }" name="phone" #phone="ngModel" required pattern="^07\d{8}$">
+		<input type="tel" class="form-control" placeholder="" [(ngModel)]="customer.phoneNumber" [ngModelOptions]="{ updateOn: 'blur' }" name="phone" #phone="ngModel" required pattern="^\d{10,15}$">
 		
         <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger mt-1">
             <div *ngIf="phone.errors.required">
@@ -73,12 +76,18 @@
    	<div class="form-row">
 		<div class="col-xs-12 col-sm-6 form-group">
 		    <label>Street*</label>
-		    <input type="text" class="form-control" name="street" [(ngModel)]="customer.address.street" #street="ngModel" required>
+		    <input type="text" class="form-control" name="street" [(ngModel)]="customer.address.street" #street="ngModel" required minlength="5" maxlength="100">
 		    
             <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="street.errors.required">
                     Street is required.
                 </div>
+				<div *ngIf="street.errors.minlength">
+					Street must be at least 5 characters long.
+				</div>
+				<div *ngIf="street.errors.maxlenth">
+					Username must be at most 100 characters long.
+				</div>
             </div>
 		</div>
 		<div class="col-xs-6 col-sm-3 col form-group">
@@ -109,7 +118,13 @@
 		</div>
 		<div class="col-xs-6 col-sm-6 col form-group">
 			<label>Zip Code</label>
-			<input type="text" class="form-control" name="zip" [(ngModel)]="customer.address.zipCode">
+			<input type="text" class="form-control" name="zip" [(ngModel)]="customer.address.zipCode" #zip="ngModel" pattern="^[0-9]{6}$">
+			
+			<div *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="zip.errors.pattern">
+                    Please enter a valid zip.
+                </div>
+            </div>
 		</div>
 		<div class="col-xs-12 col-sm-6 form-group">
 			<label>City*</label>
