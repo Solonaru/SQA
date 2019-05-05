@@ -14,6 +14,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import sms.entities.item.component.Component;
+import sms.enums.Status;
 import sms.enums.item.ItemType;
 import sms.enums.item.MeasurementUnit;
 
@@ -27,17 +28,20 @@ public class Ingredient extends Component {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JsonIgnoreProperties(value = { "conflictIngredients", "category" })
 	private Set<Ingredient> conflictIngredients;
+	private Status status;
 
 	// -----Constructors-----
 	public Ingredient() {
 		super();
 		this.itemType = ItemType.INGREDIENT;
+		this.status = Status.ACTIVE;
 	}
 
 	public Ingredient(String name, MeasurementUnit measurementUnit, Double stockQuantity, Double stockPrice,
 			String description) {
 		super(name, measurementUnit, stockQuantity, stockPrice, description);
 		this.itemType = ItemType.INGREDIENT;
+		this.status = Status.ACTIVE;
 	}
 
 	public Set<Ingredient> getConflictIngredients() {
@@ -46,6 +50,19 @@ public class Ingredient extends Component {
 
 	public void setConflictIngredients(Set<Ingredient> conflictIngredients) {
 		this.conflictIngredients = conflictIngredients;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	// -----Methods-----
+	public String toString() {
+		return "Name: " + name;
 	}
 
 	public void addConflictIngredient(Ingredient ingredient) {
@@ -58,13 +75,8 @@ public class Ingredient extends Component {
 		}
 
 		this.conflictIngredients.add(ingredient);
-		if(true == recursive) {
+		if (true == recursive) {
 			ingredient.addConflictIngredient(this, false);
 		}
-	}
-
-	// -----Methods-----
-	public String toString() {
-		return "Name: " + name;
 	}
 }

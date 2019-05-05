@@ -78,12 +78,6 @@ export class MakeOwnPizzaComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
 
-      if (event.container.id == "cdk-drop-list-1") {
-
-        this.refreshIngredientsData();
-
-      }
-
       if (event.container.id == "cdk-drop-list-0") {
 
         this.ingredients.map(function (x) {
@@ -91,9 +85,9 @@ export class MakeOwnPizzaComponent implements OnInit {
           return x
         });
 
-        this.refreshIngredientsData();
-
       }
+
+      this.refreshIngredientsData();
 
     }
   }
@@ -101,7 +95,9 @@ export class MakeOwnPizzaComponent implements OnInit {
   refreshIngredientsData() {
     for (let ingredient of this.pizzaIngredients) {
       for (let conflictIngredient of ingredient.conflictIngredients) {
+
         let foundConflictIngredient = this.ingredients.find(i => i.id === conflictIngredient.id);
+
         if (undefined != foundConflictIngredient) {
           foundConflictIngredient.disabled = true;
         }

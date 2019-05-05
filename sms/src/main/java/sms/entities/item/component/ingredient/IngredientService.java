@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sms.entities.category.Category;
+import sms.enums.Status;
 
 @Service
 public class IngredientService implements IIngredientService {
@@ -27,7 +28,7 @@ public class IngredientService implements IIngredientService {
 	}
 	
 	public List<Ingredient> findAllIngredientsByCategory(Category category) {
-		return (List<Ingredient>) ingredientRepository.findAllByCategory(category);
+		return (List<Ingredient>) ingredientRepository.findAllByStatusAndCategory(Status.ACTIVE, category);
 	}
 
 	public void insertIngredient(Ingredient ingredient) {

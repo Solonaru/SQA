@@ -402,6 +402,11 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		vegetables8.setCategory(category401);
 		vegetables8.setImageUrl(
 				"../../../../assets/images/items/products/components/ingredients/vegetables/imgOregano.jpg");
+		Ingredient vegetables9 = new Ingredient("Serrano Peppers", MeasurementUnit.KG, 10.0, 1.5, "");
+		vegetables9.setStatus(Status.INACTIVE);
+		vegetables9.setCategory(category401);
+		vegetables9.setImageUrl(
+				"../../../../assets/images/items/products/components/ingredients/vegetables/imgSerranoPeppers.jpg");
 
 		Ingredient dairyFoods1 = new Ingredient("Swiss Emmental", MeasurementUnit.KG, 10.0, 16.0, "");
 		dairyFoods1.setCategory(category406);
@@ -550,6 +555,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		itemService.insertItem(vegetables6);
 		itemService.insertItem(vegetables7);
 		itemService.insertItem(vegetables8);
+		itemService.insertItem(vegetables9);
 
 		itemService.insertItem(dairyFoods1);
 		itemService.insertItem(dairyFoods2);
@@ -792,6 +798,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		Ingredient atlanticSalmon = ingredientService.findIngredientByName("Atlantic Salmon").get();
 		Ingredient swordFish = ingredientService.findIngredientByName("Sword Fish").get();
 		Ingredient salmon = ingredientService.findIngredientByName("Salmon").get();
+		
+		Ingredient lemon = ingredientService.findIngredientByName("Lemon").get();
+		Ingredient serannoPeppers = ingredientService.findIngredientByName("Serrano Peppers").get();
 
 		redOnion.addConflictIngredient(rainerApple);
 		redOnion.addConflictIngredient(goldenPineapple);
@@ -814,6 +823,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		salmon.addConflictIngredient(porkBacon);
 		salmon.addConflictIngredient(sweetItalianPorkSausage);
 		
+		lemon.addConflictIngredient(serannoPeppers);
 
 		ingredientService.updateIngredient(sweetItalianPorkSausage);
 		ingredientService.updateIngredient(porkBacon);
@@ -831,6 +841,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 		ingredientService.updateIngredient(atlanticSalmon);
 		ingredientService.updateIngredient(swordFish);
 		ingredientService.updateIngredient(salmon);
+		
+		ingredientService.updateIngredient(lemon);
+		ingredientService.updateIngredient(serannoPeppers);
 	}
 
 	private void updateCatalogue() {
